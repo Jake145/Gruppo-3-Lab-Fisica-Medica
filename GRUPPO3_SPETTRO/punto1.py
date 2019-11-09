@@ -32,7 +32,7 @@ plt.show()
 
 z=(y/max(y))-(fondo/max(fondo)) #vettore dei dati normalizzati con il fondo sottratto
 
-z[z<0]=0 # una sorta di unit test (versione ritardato) che elimina eventuali dati negativi
+z[z<0]=0 # una sorta di unit test che elimina eventuali dati negativi
 data=z*max(y) #tolgo la normalizzazione
 plt.figure('americio senza fondo')#plot dati senza fondo
 plt.title('americio senza fondo')
