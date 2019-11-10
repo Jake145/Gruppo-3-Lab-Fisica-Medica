@@ -14,7 +14,7 @@ fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 
 
 mu_Cu=np.array([933.72,931.77,931.15,930.70,930.76,929.70])#vettori dei valori che ho ottenuto 
-sigma_Cu=np.array([28.12,28.82,28.92,28.33,29.00,29.33])    #sui vari file
+sigma_Cu=np.array([28.12,28.82,28.92,28.33,29.00,29.33])    #sui vari file facendo il fit gaussiano
 mu_Al=np.array([927.59,930.60,928.24,927.59,926.62])
 sigma_Al=np.array([27.59,27.96,28.24,29.37,30.75])
 
@@ -109,9 +109,9 @@ pylab.show()
 
 
 
-##Fit Rame da completare
-y1=np.linspace(-20,20,1000)    #genero una ascissa a caso per il fit
-w=2.41 #spessore moneta rame singolo in cm
+##Fit Rame che viene male
+y1=np.linspace(-10,10,1000)    #genero una ascissa a caso per il fit
+w=0.25 #spessore moneta rame singolo in cm
 spessori=np.array([0,w,2*w,3*w,4*w,5*w])
 
  
@@ -136,7 +136,7 @@ print(*popt)
 print(pcov)
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
-print('il coefficiente di assorbimento è %.3f, la costante moltiplicativa è %.3f' % (mu,ch_0))
+print('il coefficiente di assorbimento del rame è %.3f, la costante moltiplicativa è %.3f' % (mu,ch_0))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -151,6 +151,43 @@ pylab.ylabel('channel')
 
 
 pylab.title('Assorbimento Rame')
+pylab.plot(y1,f1(y1,*popt), color='green', label="fit")
+pylab.grid()
+
+
+pylab.show()
+## Fit Alluminio
+k=1.51 #spessore alluminio piccolo singolo in cm
+h=2.01
+spessoriAl=np.array([0,k,2*k,3*k,3*k+h])
+popt, pcov= curve_fit(f1, spessoriAl, mu_Al, (0.,0.),sigma_Al,absolute_sigma=False)
+DOF=len(spessoriAl)-3
+chi2_1 = sum(((f1(spessoriAl,*popt)-mu_Al)/sigma_Al)**2)
+dmu,dch_0= np.sqrt(pcov.diagonal())
+chi2_1redux=chi2_1/DOF
+
+mu=popt[0]
+ch_0=popt[1]
+print(*popt)
+
+print(pcov)
+
+pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
+print('il coefficiente di assorbimento di Al è %.2f, la costante moltiplicativa è %.2f' % (mu,ch_0))
+print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
+print('il chi2 ridotto è=%.3f '% (chi2_1redux))
+print('il pvalue è=%.3f'% (pvalue))
+
+pylab.figure('Assorbimento Alluminio') 
+
+
+pylab.errorbar( spessoriAl, mu_Al, sigma_Al , fmt= '.', ecolor= 'magenta')
+
+pylab.xlabel('width')
+pylab.ylabel('channel')
+
+
+pylab.title('Assorbimento Alluminio')
 pylab.plot(y1,f1(y1,*popt), color='green', label="fit")
 pylab.grid()
 
