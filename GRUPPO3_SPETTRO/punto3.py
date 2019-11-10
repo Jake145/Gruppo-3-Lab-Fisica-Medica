@@ -193,3 +193,6 @@ pylab.grid()
 
 
 pylab.show()
+
+##Appunto per rimuovere outlier
+#quello che si può fare è mettere le ordinate degli outlier uguali a zero, fare un ciclo for (purtroppo) che pone a zero le ascisse corrispondenti agli indici degli elementi delle ordinate uguali a zero e poi con una mask eliminare gli elementi uguali a zero
