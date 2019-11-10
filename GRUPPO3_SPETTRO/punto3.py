@@ -13,7 +13,7 @@ fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 
 
 
-mu_Cu=np.array([933.72,931.77,931.150,930.70,930.76,929.70])#vettori dei valori che ho ottenuto 
+mu_Cu=np.array([933.72,931.77,931.15,930.70,930.76,929.70])#vettori dei valori che ho ottenuto 
 sigma_Cu=np.array([28.12,28.82,28.92,28.33,29.00,29.33])    #sui vari file
 mu_Al=np.array([927.59,930.60,928.24,927.59,926.62])
 sigma_Al=np.array([27.59,27.96,28.24,29.37,30.75])
@@ -110,9 +110,11 @@ pylab.show()
 
 
 ##Fit Rame da completare
-y1=np.linspace(0,3000,1000)    #genero una ascissa a caso per il fit
-energy,counts=pylab.loadtxt('punto1data.txt',unpack=True) 
- #errore a caso, usa la fwhm dal fit gaussiano
+y1=np.linspace(-20,20,1000)    #genero una ascissa a caso per il fit
+w=2.41 #spessore moneta rame singolo in cm
+spessori=np.array([0,w,2*w,3*w,4*w,5*w])
+
+ 
 def f1(x,mu,ch_0):
 
     y=ch_0*np.exp(-mu*x)
@@ -121,9 +123,9 @@ def f1(x,mu,ch_0):
      
 
      
-popt, pcov= curve_fit(f1, channels, width, (0.,0.),Ds,absolute_sigma=False)
-DOF=len(width)-2
-chi2_1 = sum(((f1(width,*popt)-channels)/Ds)**2)
+popt, pcov= curve_fit(f1, spessori, mu_Cu, (0.,0.),sigma_Cu,absolute_sigma=False)
+DOF=len(spessori)-3
+chi2_1 = sum(((f1(spessori,*popt)-mu_Cu)/sigma_Cu)**2)
 dmu,dch_0= np.sqrt(pcov.diagonal())
 chi2_1redux=chi2_1/DOF
 
@@ -138,3 +140,19 @@ print('il coefficiente di assorbimento è %.3f, la costante moltiplicativa è %.
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
+
+pylab.figure('Assorbimento Rame') 
+
+
+pylab.errorbar( spessori, mu_Cu, sigma_Cu , fmt= '.', ecolor= 'magenta')
+
+pylab.xlabel('width')
+pylab.ylabel('channel')
+
+
+pylab.title('Assorbimento Rame')
+pylab.plot(y1,f1(y1,*popt), color='green', label="fit")
+pylab.grid()
+
+
+pylab.show()
