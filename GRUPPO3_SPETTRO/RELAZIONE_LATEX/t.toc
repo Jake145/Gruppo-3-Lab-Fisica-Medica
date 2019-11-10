@@ -1,0 +1,12 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {section}{\numberline {1}Linearit\'a, risoluzione energetica e calibrazione}{1}
+\contentsline {subsection}{\numberline {1.1}Risoluzione energetica}{1}
+\contentsline {subsection}{\numberline {1.2}Linearit\'a e calibrazione}{1}
+\contentsline {section}{\numberline {2}Verifica di 1/$r^2$}{1}
+\contentsline {section}{\numberline {3}Calcolo di $\mu $/$\rho $ di Cu e di Al}{1}
+\contentsline {subsection}{\numberline {3.1}$\mu $ del Cu}{1}
+\contentsline {subsection}{\numberline {3.2}$\mu $ del Al}{1}
+\contentsline {section}{\numberline {4}Stima dell'efficienza intrinseca di picco}{1}
+\contentsline {subsection}{\numberline {4.1}Calcolo dell'attivit\'a delle sorgenti}{1}
+\contentsline {subsection}{\numberline {4.2}Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}{1}
