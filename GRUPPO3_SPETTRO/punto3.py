@@ -1,51 +1,118 @@
 
-##Non ho ancora fatto nulla 
-
-
 import numpy as np
 import scipy
 import matplotlib.pyplot as plt
+import pylab
+from scipy.optimize import curve_fit
+from scipy import stats
 
-x=np.linspace(0,2048,2048)
-y=np.loadtxt('inverserootlawCs676mmtext.txt')
-fondo=np.loadtxt('fondotext.txt')
+
+x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
+y=np.loadtxt('mucalcCs300s400mm4Altext.txt') #carica il txt delle acquisizioni
+fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 
 
-plt.figure('Cesio a una certa distanza')
+
+mu_Cu=np.array([933.72,931.77,931.150,930.70,930.76,929.70])#vettori dei valori che ho ottenuto 
+sigma_Cu=np.array([28.12,28.82,28.92,28.33,29.00,29.33])    #sui vari file
+mu_Al=np.array([927.59,930.60,928.24,927.59,926.62])
+sigma_Al=np.array([27.59,27.96,28.24,29.37,30.75])
+
+
+print(len(y))
+print(len(x))
+plt.figure('Cesio') #plot per vedere i dati
 plt.plot(x, y, color='blue',marker = 'o')
 plt.xlabel('chn')
 
-z=(y/max(y))-(fondo/max(fondo))
+plt.ylabel('count')
+plt.grid(True)
+plt.show()
 
-z[z<0]=0
-data=z*max(y)
-plt.figure('Cesio senza fondo')
+
+
+plt.figure('fondo') #plot per vedere il fondo normalizzato
+plt.title('fondo')
+plt.plot(x, fondo/max(fondo), color='green',marker = 'o')
+plt.xlabel('chn')
+
+plt.ylabel('count')
+plt.grid(True)
+plt.show()
+
+z=(y/max(y))-(fondo/max(fondo)) #vettore dei dati normalizzati con il fondo sottratto
+
+z[z<0]=0 # una sorta di unit test che elimina eventuali dati negativi
+data=z*max(y) #tolgo la normalizzazione
+plt.figure('Cesio senza fondo')#plot dati senza fondo
+plt.title('Cesio senza fondo')
+
 plt.plot(x, data, color='green',marker = 'o')
 plt.xlabel('chn')
 
 plt.ylabel('count')
 plt.grid(True)
 plt.show()
-data[0:840]=0
-data[1000:2048]=0
-photopeakcount=np.sum(data[data>0])
-print(data[data>0])
-print(photopeakcount)
+##fit gaussiano 
+#la tecnica è la seguente: dal grafico precedente isolo ad occhio il fotopicco e vedo quali sono i dati che non sono nel fotopicco: dall'asse x vedo quali corrispondono e metto quegli elementi del vettore a zero, e poi faccio la stessa cosa agli elementi con gli stessi indici del vettore ordinata. Poi con una mask elimino quegli elementi
+data[0:860]=0 
+data[995:2048]=0
+x[0:860]=0
+x[995:2048]=0
+x=x[x>0]
+data=data[data>0]
+x1=np.linspace(0,2048,2048)
+ds=np.sqrt(data) #errore poissoniano. Forse ho sbagliato la formula?
+n = len(x)  #serve per i gradi di libertà                        
+  
+
+def gaus(x,a,x0,sig):#funzione gaussiana per il fit
+    return a*np.exp(-(x-x0)**2/(2*sig**2))
+
+popt,pcov = curve_fit(gaus,x,data,p0=[100,934,30]) #trova i parametri ottimali (popt) e la matrice di covarianza(pcov).I parametri iniziali li ho stimati ad occhio
+
+DOF=n-4 #gradi di libertà
+chi2_1 = sum(((gaus(x,*popt)-data)/ds)**2) #calcolo chi quadro
+da,dx0,dsig= np.sqrt(pcov.diagonal()) #dalla diagonale della matrice di covarianza trovo le incertezze al quadrato dei parametri ottimali
+chi2_1redux=chi2_1/DOF #chi quadro normalizzato con i gradi di libertà. deve essere più piccolo di 1 ma non eccessivamente!
+
+a=popt[0]#popt è un vettore con i parametri ottimali
+x0=popt[1]
+sig=popt[2]
+print(*popt)
+
+print(pcov)
+
+pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
+print('il fattore moltiplicativo è %.3f, la media è %.2f, la sigma è %.2f' % (a,x0,sig))
+print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
+print('il chi2 ridotto è=%.3f '% (chi2_1redux))
+print('il pvalue è=%.3f'% (pvalue))
+
+##plot 
+pylab.figure('fit gaussiano') #ho usato pylab anziché matplotlib.pyplot. Oramai è così :-)
 
 
-import pylab
-import numpy as np
-import scipy
-from scipy.optimize import curve_fit
-from scipy import stats
+pylab.errorbar( x, data, ds , fmt= '.', ecolor= 'magenta')
 
-sumphotopeak=np.array([89642.86,37152.39,19532.97,12149.04,13953.44,7728.73,5676.84,4271.79,3382.63,2859.33])
-distance=np.array([266,316,366,400,416,476,526,576,626,676])
+pylab.xlabel('channel')
+pylab.ylabel('counts')
 
-##codice vero
+
+pylab.title('gauss fit')
+pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
+pylab.grid()
+
+
+pylab.show()
+
+
+
+
+##Fit Rame da completare
 y1=np.linspace(0,3000,1000)    #genero una ascissa a caso per il fit
 energy,counts=pylab.loadtxt('punto1data.txt',unpack=True) 
-Ds=10 #errore a caso, usa la fwhm dal fit gaussiano
+ #errore a caso, usa la fwhm dal fit gaussiano
 def f1(x,mu,ch_0):
 
     y=ch_0*np.exp(-mu*x)
