@@ -28,6 +28,7 @@ plt.grid(True)
 #plt.show()
 ##fit gaussiano 
 #serve per la sigma, perla tecnica vedi punto1.py
+
 data[0:880]=0 
 data[980:2048]=0
 x[0:880]=0

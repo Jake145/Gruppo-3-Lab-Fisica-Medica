@@ -45,10 +45,12 @@ plt.grid(True)
 plt.show()
 ##fit gaussiano 
 #la tecnica è la seguente: dal grafico precedente isolo ad occhio il fotopicco e vedo quali sono i dati che non sono nel fotopicco: dall'asse x vedo quali corrispondono e metto quegli elementi del vettore a zero, e poi faccio la stessa cosa agli elementi con gli stessi indici del vettore ordinata. Poi con una mask elimino quegli elementi
-data[0:679]=0 
-data[766:2048]=0
-x[0:679]=0
-x[766:2048]=0
+a=685 #estremi della gaussiana
+b=769
+data[0:a]=0 
+data[b:2048]=0
+x[0:a]=0
+x[b:2048]=0
 x=x[x>0]
 data=data[data>0]
 x1=np.linspace(0,2048,2048)
@@ -109,7 +111,7 @@ pylab.show()
 
 y1=np.linspace(0,3000,1000)    #genero una ascissa a caso per il fit
 energy,counts=pylab.loadtxt('punto1data.txt',unpack=True) 
-Ds=10 #errore a caso, usa la fwhm dal fit gaussiano
+Ds=2.56*27 #errore a caso, usa la fwhm dal fit gaussiano
 def f1(x,m,q):
 
     y=m*x+q
@@ -143,7 +145,7 @@ pylab.figure('calibrazione')
 pylab.errorbar( counts, energy, Ds , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('counts')
-pylab.ylabel('energy[u.a]')
+pylab.ylabel('energy[KeV]')
 
 
 pylab.title('calibration')

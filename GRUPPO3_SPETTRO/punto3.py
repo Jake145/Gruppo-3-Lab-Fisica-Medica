@@ -117,7 +117,7 @@ pylab.show()
 
 ##Fit Rame che viene male
 y1=np.linspace(-10,300,1000)    #genero una ascissa a caso per il fit
-w=25 #spessore moneta rame singolo in mm
+w=2.5 #spessore moneta rame singolo in mm
 spessori=np.array([0,w,2*w,3*w,4*w,5*w])
 sigma_Cu=2.56*sigma_Cu
 photopeaksCu=np.array([14035.35,12285.41,10528.31,9070.20,7839.17,6956.78])
@@ -154,7 +154,7 @@ pylab.figure('Assorbimento Rame')
 
 pylab.errorbar( spessori, photopeaksCu, sigma_Cu , fmt= '.', ecolor= 'magenta')
 
-pylab.xlabel('width')
+pylab.xlabel('width[cm]')
 pylab.ylabel('channel')
 
 
@@ -193,7 +193,7 @@ pylab.figure('Assorbimento Alluminio')
 
 pylab.errorbar( spessoriAl, photopeaksAl, sigma_Al , fmt= '.', ecolor= 'magenta')
 
-pylab.xlabel('width')
+pylab.xlabel('width [cm]')
 pylab.ylabel('channel')
 
 
