@@ -7,7 +7,7 @@ from scipy import stats
 
 
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
-y=np.loadtxt('Na880stext.txt') #carica il txt delle acquisizioni
+y=np.loadtxt('Am563stext.txt') #carica il txt delle acquisizioni
 fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 
 
@@ -35,7 +35,7 @@ z=(y/max(y))-(fondo/max(fondo)) #vettore dei dati normalizzati con il fondo sott
 z[z<0]=0 # una sorta di unit test che elimina eventuali dati negativi
 data=z*max(y) #tolgo la normalizzazione
 plt.figure('Cesio senza fondo')#plot dati senza fondo
-plt.title('Cesio senza fondo')
+plt.title('americio senza fondo')
 
 plt.plot(x, data, color='green',marker = 'o')
 plt.xlabel('chn')
@@ -45,8 +45,8 @@ plt.grid(True)
 plt.show()
 ##fit gaussiano 
 #la tecnica è la seguente: dal grafico precedente isolo ad occhio il fotopicco e vedo quali sono i dati che non sono nel fotopicco: dall'asse x vedo quali corrispondono e metto quegli elementi del vettore a zero, e poi faccio la stessa cosa agli elementi con gli stessi indici del vettore ordinata. Poi con una mask elimino quegli elementi
-a=685 #estremi della gaussiana
-b=769
+a=60 #estremi della gaussiana
+b=115
 data[0:a]=0 
 data[b:2048]=0
 x[0:a]=0
@@ -61,7 +61,7 @@ n = len(x)  #serve per i gradi di libertà
 def gaus(x,a,x0,sig):#funzione gaussiana per il fit
     return a*np.exp(-(x-x0)**2/(2*sig**2))
 
-popt,pcov = curve_fit(gaus,x,data,p0=[10,723,30]) #trova i parametri ottimali (popt) e la matrice di covarianza(pcov).I parametri iniziali li ho stimati ad occhio
+popt,pcov = curve_fit(gaus,x,data,p0=[10,93,20]) #trova i parametri ottimali (popt) e la matrice di covarianza(pcov).I parametri iniziali li ho stimati ad occhio
 
 DOF=n-4 #gradi di libertà
 chi2_1 = sum(((gaus(x,*popt)-data)/ds)**2) #calcolo chi quadro
@@ -92,6 +92,7 @@ pylab.ylabel('counts')
 
 
 pylab.title('gauss fit')
+
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
 pylab.grid()
 
