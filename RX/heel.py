@@ -2,11 +2,11 @@ import numpy as np
 from scipy.stats import*
 import pylab
 
-y1=np.linspace(0,10,1000) 
+y1=np.linspace(0,40,1000) 
 
 #hvl 100 kvp
 
-dose,distance=np.loadtxt('hvl100kvp.txt',unpack=True)
+dose,distance=np.loadtxt('heel100kvp.txt',unpack=True)
 rel_I=dose/max(dose)
 ds=0.03*rel_I
 
@@ -17,6 +17,7 @@ SSresid1=sum(pow(yres1,2))
 SStotal1=len(rel_I)*np.var(rel_I)
 rsq1=1-SSresid1/SStotal1
 print('Per il fit lineare il coefficiente del primo grado è %.3f, del termine costante è %.3f, R value è %.3f' % (p1[0],p1[1],rsq1))
+
 
 p2=np.polyfit(distance,rel_I,2)
 yfit2=p2[0]*distance**2+p2[1]*distance +p2[2]
@@ -37,13 +38,13 @@ print('Per il fit cubico il coefficiente del terzo grado è %.3f, del second è 
 pylab.figure('hvl100pvk')
 
 
-pylab.errorbar( distance, rel_I, ds , fmt= '.', ecolor= 'magenta',label='narrow beam data')
+pylab.errorbar( distance, rel_I, ds , fmt= '.', ecolor= 'magenta',)
 
 pylab.xlabel('distance [mm]')
 pylab.ylabel('relative intensity [%]')
 
 
-pylab.title('Intensity vs Distance at 100 kvp')
+pylab.title('Heel effect at 100 kvp')
 
 pylab.plot(y1, np.polyval(p1,y1),'g--',label="linear fit")
 pylab.plot(y1, np.polyval(p2,y1),'b--',label="square fit")
