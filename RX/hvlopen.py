@@ -6,7 +6,7 @@ y1=np.linspace(0,12,1000)
 
 #hvl 100 kvp
 
-dose,distance=np.loadtxt('hvl100kvp.txt',unpack=True)
+dose,distance=np.loadtxt('hvl100kvpopen.txt',unpack=True)
 rel_I=dose/max(dose)
 ds=0.03*rel_I
 
@@ -40,14 +40,14 @@ yres4=rel_I-yfit4
 SSresid4=sum(pow(yres4,2))
 SStotal4=len(rel_I)*np.var(rel_I)
 rsq4=1-SSresid4/SStotal4
-print('Per il fit quartico il coefficiente del quarto grado è %.6f, del terzo è %.3f,del secondo è %.3f, del primo è %.3f, del termine costante è %.3f, R value è %.3f' % (p4[0],p4[1],p4[2],p4[3],p4[4],rsq4))
+print('Per il fit cubico il coefficiente del quarto grado è %.6f, del terzo è %.3f,del secondo è %.3f, del primo è %.3f, del termine costante è %.3f, R value è %.3f' % (p4[0],p4[1],p4[2],p4[3],p4[4],rsq4))
 
 
 
 pylab.figure('hvl100pvk')
 
 
-pylab.errorbar( distance, rel_I, ds , fmt= '.', ecolor= 'magenta',label='narrow beam data')
+pylab.errorbar( distance, rel_I, ds , fmt= '.', ecolor= 'magenta',label='wide beam data')
 
 pylab.xlabel('distance [mm]')
 pylab.ylabel('relative intensity [%]')

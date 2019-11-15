@@ -14,7 +14,7 @@ fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 plt.figure('soidio') #plot per vedere i dati
 plt.plot(x, y, color='blue',marker = 'o')
 plt.xlabel('chn')
-
+plt.title('Americio')
 plt.ylabel('count')
 plt.grid(True)
 plt.show()
@@ -22,7 +22,7 @@ plt.show()
 
 
 plt.figure('fondo') #plot per vedere il fondo normalizzato
-plt.title('fondo')
+plt.title('Fondo')
 plt.plot(x, fondo/max(fondo), color='green',marker = 'o')
 plt.xlabel('chn')
 
@@ -34,8 +34,8 @@ z=(y/max(y))-(fondo/max(fondo)) #vettore dei dati normalizzati con il fondo sott
 
 z[z<0]=0 # una sorta di unit test che elimina eventuali dati negativi
 data=z*max(y) #tolgo la normalizzazione
-plt.figure('Cesio senza fondo')#plot dati senza fondo
-plt.title('americio senza fondo')
+plt.figure('Americio senza fondo')#plot dati senza fondo
+plt.title('Americio senza fondo')
 
 plt.plot(x, data, color='green',marker = 'o')
 plt.xlabel('chn')
@@ -76,7 +76,7 @@ print(*popt)
 print(pcov)
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-print('il fattore moltiplicativo è %.3f, la media è %.2f, la sigma è %.2f' % (a,x0,sig))
+print('FIT GAUSSIANO il fattore moltiplicativo è %.3f, la media è %.2f, la sigma è %.2f' % (a,x0,sig))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -91,7 +91,7 @@ pylab.xlabel('channel')
 pylab.ylabel('counts')
 
 
-pylab.title('gauss fit')
+pylab.title('Fit Gaussiano Fotopicco Am')
 
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
 pylab.grid()
