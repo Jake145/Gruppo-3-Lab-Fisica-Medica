@@ -78,7 +78,7 @@ pylab.show()
 
 
 print(photopeakcount)
-measured_decays=np.array([2473,2120,2066,21104,27685])
+measured_decays=np.array([2066,2120,2473,21104,27685])
 
 A_0=74 #measured in kBq
 d=4.76
@@ -101,14 +101,20 @@ def seconds(x):
     return j
 times=seconds(half_life)
 print(times)
-realdecays=realdecays(seconds(half_life),seconds(15),seconds(15)+15)
+realdecays=realdecays(seconds(half_life),seconds(15),seconds(15)+1000)
 efficiencies=efficiency(measured_decays,realdecays,geo_acceptance)
+print(efficiencies)
+print(len(measured_decays),len(efficiencies))
+print(realdecays)
 
-
-pylab.figure(1)
+pylab.figure(3)
 pylab.title('grafico efficienza')
 pylab.xlabel('conteggi sotto il fotopicco')
+pylab.xscale('log')
+pylab.yscale('log')
 pylab.ylabel('efficienza')
-#pylab.plot(measured_decays,efficiency(seconds(half_life),seconds(15),seconds(15)+15), 'b--')
-#pylab.errorbar(measured_decays,efficiency(seconds(half_life),seconds(15),seconds(15)+15),0,fmt= '.', ecolor= 'red')
+pylab.grid()
+pylab.plot(measured_decays,efficiencies,'b--',marker='o')
+
+
 pylab.show()
