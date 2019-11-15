@@ -6,7 +6,7 @@ y1=np.linspace(0,12,1000)
 
 #hvl 100 kvp
 
-dose,distance=np.loadtxt('hvl100kvpopen.txt',unpack=True)
+dose,distance=np.loadtxt('hvl60open.txt',unpack=True)
 rel_I=dose/max(dose)
 ds=0.03*rel_I
 
@@ -53,7 +53,7 @@ pylab.xlabel('distance [mm]')
 pylab.ylabel('relative intensity [%]')
 
 
-pylab.title('Intensity vs Distance at 100 kvp')
+pylab.title('Intensity vs Distance at 60 kvp')
 
 pylab.plot(y1, np.polyval(p1,y1),'g--',label="linear fit")
 pylab.plot(y1, np.polyval(p2,y1),'b--',label="square fit")
