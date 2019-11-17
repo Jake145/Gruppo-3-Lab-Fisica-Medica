@@ -115,9 +115,9 @@ pylab.show()
 
 
 
-##Fit Rame che viene male
+##Fit Rame 
 y1=np.linspace(-10,300,1000)    #genero una ascissa a caso per il fit
-w=2.5 #spessore moneta rame singolo in mm
+w=0.25 #spessore moneta rame singolo in mm
 spessori=np.array([0,w,2*w,3*w,4*w,5*w])
 sigma_Cu=2.56*sigma_Cu
 photopeaksCu=np.array([14035.35,12285.41,10528.31,9070.20,7839.17,6956.78])

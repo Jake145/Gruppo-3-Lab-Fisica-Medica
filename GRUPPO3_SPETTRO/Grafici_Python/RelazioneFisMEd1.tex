@@ -29,7 +29,7 @@
 \captionsetup{labelformat=empty, textfont=sl}
 \usepackage{placeins}
 \frenchspacing
-\title{Calibrazione strumenti di misura e tipi di segnali}
+\title{Esperienza Laboratorio di Fisica Medica: Spettroscopia}
 \author{Simone Lossano, Lorenzo Marini, Jake Harold Pensavalle}
 \begin{document}
 	\maketitle
@@ -107,7 +107,7 @@ Ponendo vari strati di materiali assorbenti, si possono stimare i $\mu$ dei mate
 \begin{equation}
 A_{fotopicco}=A_{0}e^{-\mu x} + B
 \end{equation}
-Con A_{0} e B parametri liberi.
+Con $A_{0}$ e B parametri liberi.
 
 \begin{center} 
 		
@@ -117,25 +117,47 @@ Con A_{0} e B parametri liberi.
 			\textbf{Materiale}\textbf{Coefficiente di assorbimento }	& \textbf{costante additiva}	& \textbf{$\chi^{2}_{redux}$} & \textbf{pvalue} \\
 			\hline
 			\hline
-			 Cu&$0.058	\pm 0.001$	& $14068.144 \pm 78.833	$			& 1.8 &0.113	\\
-			Al&$0.194 \pm 0.06$ &$10553 \pm 148.143$ &
+			 Cu&$0.575	\pm 0.009$	& $14068.144 \pm 78.833	$			& 1.8 &0.113	\\
+			Al&$0.194 \pm 0.06$ &$10553 \pm 148.143$ & 8.213 & 0.000 \\
 			\hline
 			\hline
 		\end{tabular}
 		\linebreak
 		
 	\end{center}
-	\emph{Tab.1: risultati del fit. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit.} 
-\subsection{$\mu$ del Cu}
-\subsection{$\mu$ del Al}
+	\emph{Tab.2: risultati del fit esponenziale. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit, limitati dal numero di spessori utilizzati.} 
+\subsection{Confronto $\frac{\mu}{\rho}$ tra dati sperimentali e tabulati}
+Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rho}$:
+\begin{center} 
+		
+		\begin{tabular}{lccc}
+			\hline
+			\hline
+			\textbf{Materiale}\textbf{$\frac{\mu}{\rho}_{exp} $}	& \textbf{$\frac{\mu}{\rho}_{theo} $}	 \\
+			\hline
+			\hline
+			 Cu&$0.065 \pm 0.001	$	& $0.0066$			\\
+			Al&$0.072 \pm 0.003$ &$0.068$ \\
+			\hline
+			\hline
+		\end{tabular}
+		\linebreak
+		
+	\end{center}
+	\emph{Tab.3: Confronto tra valori sperimentali e valori attesi. Possiamo notare un buon accordo tra i valori.} 
 
+\section{Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}
+Utilizzando una attività al tempo zero nominale di 78 kBq e usando come tempo di riferimento il giorno 18/02/05, si possono calcolare le attività e si possono calcolare le efficienze utilizzando:
+\begin{equation}
+\epsilon_{int}=\epsilon_{abs}4 \frac{\pi}{\omega}
+\end{equation}
+Dove $\omega$ è l'accettanza geometrica stimata dalla geometria del sistema, ed $\epsilon_{abs}$=$\frac{# eventi rilevati }{# eventi totali}$ dove il numero di eventi totali si stima sapendo l'attività e i tempi di misura.
 
-
-\section{Stima dell'efficienza intrinseca di picco}
-\subsection{Calcolo dell'attivit\'a delle sorgenti}
-\subsection{Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}
-
-
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{efficiency}
+        \caption{Efficienza in funzione dell'energia. Le scarse efficienze per il Co e Na sono dovute alla statistica non ottimale per quei punti}
+        \label{fig:2}
+\end{figure}
 
 
 \end{document}
