@@ -1,5 +1,6 @@
-\contentsline {section}{\numberline {1}Linearit\IeC {\`a}, risoluzione energetica e calibrazione}{3}
-\contentsline {section}{\numberline {2}Verifica di 1/$r^2$}{5}
-\contentsline {section}{\numberline {3}Calcolo di $\mu $/$\rho $ di Cu e di Al}{6}
-\contentsline {subsection}{\numberline {3.1}Confronto $\frac {\mu }{\rho }$ tra dati sperimentali e tabulati}{6}
-\contentsline {section}{\numberline {4}Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}{7}
+\contentsline {section}{\numberline {1}Linearit\IeC {\`a}, risoluzione energetica e calibrazione}{3}{section.1}
+\contentsline {section}{\numberline {2}Verifica di 1/$r^2$}{5}{section.2}
+\contentsline {section}{\numberline {3}Calcolo di $\mu $/$\rho $ di Cu e di Al}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Confronto $\frac {\mu }{\rho }$ tra dati sperimentali e tabulati}{6}{subsection.3.1}
+\contentsline {section}{\numberline {4}Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}{7}{section.4}
+\contentsline {section}{\numberline {5}Referenze}{7}{section.5}
