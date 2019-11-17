@@ -144,7 +144,7 @@ print(*popt)
 print(pcov)
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
-print('il coefficiente di assorbimento del rame è %.3f, la costante moltiplicativa è %.3f' % (mu,ch_0))
+print('il coefficiente di assorbimento del rame è %.3f pm %.3f, la costante moltiplicativa è %.3f pm %.3f' % (mu,dmu,ch_0,dch_0))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -155,7 +155,7 @@ pylab.figure('Assorbimento Rame')
 pylab.errorbar( spessori, photopeaksCu, sigma_Cu , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('width[cm]')
-pylab.ylabel('channel')
+pylab.ylabel('Photopeak Area')
 
 
 pylab.title('Assorbimento Rame')
@@ -183,7 +183,7 @@ print(*popt)
 print(pcov)
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
-print('il coefficiente di assorbimento di Al è %.2f, la costante moltiplicativa è %.2f' % (mu,ch_0))
+print('il coefficiente di assorbimento di Al è %.3f pm %.3f, la costante moltiplicativa è %.3f pm %.3f' % (mu,dmu,ch_0,dch_0))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -194,7 +194,7 @@ pylab.figure('Assorbimento Alluminio')
 pylab.errorbar( spessoriAl, photopeaksAl, sigma_Al , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('width [cm]')
-pylab.ylabel('channel')
+pylab.ylabel('Photpeak Area')
 
 
 pylab.title('Assorbimento Alluminio')

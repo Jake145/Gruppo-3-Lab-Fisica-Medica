@@ -135,7 +135,7 @@ print(*popt)
 print(pcov)
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
-print('il coefficiente angolare è %.3f, la intercetta è %.3f' % (m,q))
+print('il coefficiente angolare è %.3f pm %.3f, la intercetta è %.3f pm %.3f' % (m,dm,q,dq))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -146,7 +146,7 @@ pylab.figure('calibrazione')
 
 pylab.errorbar( counts, energy, Ds , fmt= '.', ecolor= 'magenta')
 
-pylab.xlabel('counts')
+pylab.xlabel('Chn')
 pylab.ylabel('energy[KeV]')
 
 

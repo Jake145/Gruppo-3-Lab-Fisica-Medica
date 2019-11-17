@@ -1,0 +1,86 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\pdfpagewidth
+\paperwidth
+\pdfpageheight
+\paperheight
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{verbatim}
+\newcommand*{\unit}[1]{\ensuremath{\mathrm{\,#1}}}
+\usepackage{amsthm}
+\usepackage{epsfig}
+\usepackage{fancyhdr} 
+\usepackage{amsmath,amssymb}
+\usepackage{amscd} 
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx,color,listings}
+\usepackage{hologo}
+\frenchspacing 
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{rotating}
+\usepackage{caption}
+\captionsetup{labelformat=empty, textfont=sl}
+\usepackage{placeins}
+\frenchspacing
+\title{Calibrazione strumenti di misura e tipi di segnali}
+\author{Simone Lossano, Lorenzo Marini, Jake Harold Pensavalle}
+\begin{document}
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Linearit\'a, risoluzione energetica e calibrazione}
+In questa sezione abbiamo presto manualità con la strumentazione acquisendo vari spettri di decadimento di varie sorgenti radioattive. Lo scopo di questa prima parte dell'esperienza è di trovare una relazione tra energia e numero del canale per poter calibrare il rivelatore. 
+Si riportano i vari spettri di decadimento e la calibrazione
+\begin{figure}[H]%
+    \centering
+    \subfloat[]{{\includegraphics[width=6cm]{20ms2khz} }}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{60ms250hz} }}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{gauss100ms4khz}}}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{200ms500hz}}}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{500ms1khz}}}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{gauss1s125hz}}}%
+   \caption{grafici degli spettri con il fondo, col fondo eliminato e fit gaussiani dei picchi}%
+    \label{fig:1}%
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width=1\textwidth]{20ms}
+        \caption{Grafico fit 20ms con grafico dei residui}
+        \label{fig:1}
+\end{figure}
+
+
+\subsection{Linearit\'a e calibrazione}
+
+
+\section{Verifica di 1/$r^2$}
+
+
+\section{Calcolo di $\mu$/$\rho$ di Cu e di Al}
+\subsection{$\mu$ del Cu}
+\subsection{$\mu$ del Al}
+
+
+
+\section{Stima dell'efficienza intrinseca di picco}
+\subsection{Calcolo dell'attivit\'a delle sorgenti}
+\subsection{Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}
+
+
+
+
+\end{document}
