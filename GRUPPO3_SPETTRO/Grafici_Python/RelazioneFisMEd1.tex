@@ -39,8 +39,9 @@
 	\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Linearità, risoluzione energetica e calibrazione}
-In questa sezione abbiamo presto manualità con la strumentazione acquisendo vari spettri di decadimento di varie sorgenti radioattive. Lo scopo di questa prima parte dell'esperienza è di trovare una relazione tra energia e numero del canale per poter calibrare il rivelatore. 
-Si riportano i vari spettri di decadimento e la calibrazione. Come funzione di fit per la calibrazione si è utilizzata una funzione lineare con parametri riportati in tabella:
+Nella prima parte di questa esperienza, abbiamo preso dimistichezza con la strumentazione, andando ad acquisire lo spettro delle sorgenti radioattive alla distanza fissata di 476 mm dal rivelatore.
+Prima di tutto si verifica la linearità di riposta del rivelatore, registrando un certo numero di spettri e andando a controllare che i picchi siano all'energie aspettate e che rispettino una legge lineare. 
+Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale trovando una relazione che fornisce CHN(E) e, tramite la relazione inversa E(CHN), troviamo la scala del multicanale calibrata in energia. La calibrazione viene eseguita tramite una funzione di fit lineare i cui parametri sono riportati nella tabella sottostante:
 
 	\begin{center} 
 		
@@ -78,7 +79,7 @@ Si riportano i vari spettri di decadimento e la calibrazione. Come funzione di f
     \subfloat[]{{\includegraphics[width=5cm]{fit_gaussiano_cobalto_secondo_picc} }}%
     \qquad
     \subfloat[]{{\includegraphics[width=5cm]{fit_gaussiano_Na}}}%
-   \caption{Grafici degli spettri eliminando opportunamente il fondo e fit gaussiani dei picchi. Del Cobalto si riportano entrambi i picchi mentre per il sodio la statistica non è sufficiente per distinguere il secondo picco con il metodo del fit gaussiano}%
+   \caption{Grafici degli spettri eliminando opportunamente il fondo e fit gaussiani dei picchi. In particolare, si riconoscono nello spettro del Cs137 l' X-Ray Photopeak e il picco di Backscatter. Del Co60 si distinguono entrambi i picchi mentre per il Na22 la statistica non è sufficiente per distinguere il secondo picco con il metodo del fit gaussiano. In generale i risultati ottenuti per questi ultimi due elementi possono essere migliorati tramite acquisizioni più lunghe e sottraendo il continuum oltre al fondo acquisito.}%
     \label{fig:1}%
 \end{figure}
 
