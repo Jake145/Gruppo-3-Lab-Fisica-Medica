@@ -75,18 +75,18 @@ pylab.grid()
 pylab.show()
 
 
-
+##fotopicchi
 
 print(photopeakcount)
-measured_decays=np.array([2066,2120,2473,21104,27685])
-
+measured_decays=np.array([27685,2066,21104,2120,2473])
+## efficienza
 A_0=74 #measured in kBq
 d=4.76
 a=5.94
 solid_angle=2*np.pi*(1-d/(d**2+a**2))
 geo_acceptance=4*np.pi/solid_angle
-half_life=np.array([2.6,5.27,5.27,30.7,432.2]) #measured in years
-
+half_life=np.array([432.2,30.7,2.6,5.27,5.27]) #measured in years
+energy=np.array([60,511,662,1332,1774])
 
 def realdecays(tau,t1,t2):
     y=A_0*tau*(np.exp(t2/tau)-np.exp(t1/tau))
@@ -108,13 +108,13 @@ print(len(measured_decays),len(efficiencies))
 print(realdecays)
 
 pylab.figure(3)
-pylab.title('grafico efficienza')
-pylab.xlabel('conteggi sotto il fotopicco')
+pylab.title('Grafico Efficienza')
+pylab.xlabel('Energia [kev]')
 pylab.xscale('log')
 pylab.yscale('log')
 pylab.ylabel('efficienza')
 pylab.grid()
-pylab.plot(measured_decays,efficiencies,'b--',marker='o')
+pylab.plot(energy,efficiencies,'b--',marker='o')
 
 
 pylab.show()
