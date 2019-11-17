@@ -39,7 +39,7 @@
 	\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Linearità, risoluzione energetica e calibrazione}
-Nella prima parte di questa esperienza, abbiamo preso dimistichezza con la strumentazione, andando ad acquisire lo spettro delle sorgenti radioattive alla distanza fissata di 476 mm dal rivelatore.
+Nella prima parte di questa esperienza, abbiamo preso dimistichezza con la strumentazione, andando ad acquisire lo spettro delle sorgenti radioattive alla distanza fissata di $476 \pm 1 mm$ sulla scala millimetrata alla base del setup, mentre la superficie del rivelatore si trova a $66 \pm 1 mm$.
 Prima di tutto si verifica la linearità di riposta del rivelatore, registrando un certo numero di spettri e andando a controllare che i picchi siano all'energie aspettate e che rispettino una legge lineare. 
 Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale trovando una relazione che fornisce CHN(E) e, tramite la relazione inversa E(CHN), troviamo la scala del multicanale calibrata in energia. La calibrazione viene eseguita tramite una funzione di fit lineare i cui parametri sono riportati nella tabella sottostante:
 
@@ -79,7 +79,7 @@ Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale tro
     \subfloat[]{{\includegraphics[width=5cm]{fit_gaussiano_cobalto_secondo_picc} }}%
     \qquad
     \subfloat[]{{\includegraphics[width=5cm]{fit_gaussiano_Na}}}%
-   \caption{Grafici degli spettri eliminando opportunamente il fondo e fit gaussiani dei picchi. In particolare, si riconoscono nello spettro del Cs137 l' X-Ray Photopeak e il picco di Backscatter. Del Co60 si distinguono entrambi i picchi mentre per il Na22 la statistica non è sufficiente per distinguere il secondo picco con il metodo del fit gaussiano. In generale i risultati ottenuti per questi ultimi due elementi possono essere migliorati tramite acquisizioni più lunghe e sottraendo il continuum oltre al fondo acquisito.}%
+   \caption{Grafici degli spettri a cui è stato sottratto opportunamente il fondo e fit gaussiani dei picchi. In particolare, si riconoscono nello spettro del Cs137 l' X-Ray Photopeak e il picco di backscatter. Del Co60 si distinguono entrambi i picchi mentre per il Na22 la statistica non è sufficiente per distinguere il secondo picco con il metodo del fit gaussiano. In generale i risultati ottenuti per questi ultimi due elementi possono essere migliorati tramite acquisizioni più lunghe e sottraendo il continuum oltre al fondo acquisito.}%
     \label{fig:1}%
 \end{figure}
 
@@ -94,7 +94,7 @@ Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale tro
 
 
 \section{Verifica di 1/$r^2$}
-In questa sezione si verifica l'andamento dell'energia (dipendente dall'area sotto il fotopicco) in funzione della distanza. Si sono eliminati gli outlier corrispondenti ai punti più vicini al rivelatore. Come aspettato stando troppo vicino al rivelatore vi sono fenomeni di pile-up che rendono invalide tali acquisizioni. Come modello si è utilizzato \begin{equation}
+In questa sezione si verifica l'andamento del rate dei conteggi in funzione della distanza della sorgente dal rivelatore. Per il calcolo dei conteggi ed il fit è stata considerata l'area sotto il fotopicco in quanto corrispondente al numero totale dei conteggi sotto al picco. Si sono eliminati gli outlier corrispondenti alle distanze più piccole tra sorgente e rivelatore, poichè, come aspettato, stando troppo vicino a quest'ultimo, vi sono fenomeni di pile-up che rendono invalide tali acquisizioni. Come modello si è utilizzato \begin{equation}
 A_{fotopicco}=\frac{C}{r^{2}}+B
 \end{equation}
 Con A e B parametri stimati dal fit.
@@ -105,7 +105,7 @@ Con A e B parametri stimati dal fit.
 \end{figure}
 
 \section{Calcolo di $\mu$/$\rho$ di Cu e di Al}
-Ponendo vari strati di materiali assorbenti, si possono stimare i $\mu$ dei materiali. La funzione di fit utilizzata è:
+Si voglioni studiare i $\mu$ di attenuazione di rame e alluminio. La misura viene fatta con una sorgente di Cs137 (in quanto presenta un unico fotopicco ed ha un'attività sufficiente per ottenere un buon numero di acquisizioni), frapponendo vari spessori dei materiali. La misura viene fatta per il Cu e successivamente con Al, la sorgente è stata posta ad una distanza di $400  \pm 1mm$. Per la misura del $\mu$ del Cu, i dischi sono stati posti su un supporto collimatore (il più possibile vicino alla sorgente) e la prima acquisizione è stata fatta con la sola presenza del supporto senza spessori.  La funzione di fit utilizzata è:
 \begin{equation}
 A_{fotopicco}=A_{0}e^{-\mu x} + B
 \end{equation}
@@ -149,7 +149,7 @@ Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rh
 	\emph{Tab.3: Confronto tra valori sperimentali e valori attesi. Possiamo notare un buon accordo tra i valori.} 
 
 \section{Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}
-Utilizzando una attività al tempo zero nominale di 78 kBq e usando come tempo di riferimento il giorno 18/02/05, si possono calcolare le attività e si possono calcolare le efficienze utilizzando:
+Utilizzando una attività al tempo zero nominale di 74 kBq e usando come tempo di riferimento il giorno 18/02/05 (t= 14.72 yr), si possono calcolare le attività e si possono calcolare le efficienze utilizzando:
 \begin{equation}
 \epsilon_{int}=\epsilon_{abs}4 \frac{\pi}{\omega}
 \end{equation}
@@ -157,7 +157,7 @@ Dove $\omega$ è l'accettanza geometrica stimata dalla geometria del sistema, ed
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{efficiency}
-        \caption{Efficienza in funzione dell'energia. Le scarse efficienze per il Co e Na sono dovute alla statistica non ottimale per quei punti}
+        \caption{Efficienza in funzione dell'energia. Le scarse efficienze per il Co e Na sono dovute alla statistica non ottimale per quei punti. Per un migliore confronto con il plot di riferimento sul manuale del rivelatore, si rimanda ad un'acquisizione dati sufficiente per tali sorgenti.}
         \label{fig:2}
 \end{figure}
 \section{Referenze}

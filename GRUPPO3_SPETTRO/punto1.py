@@ -7,14 +7,14 @@ from scipy import stats
 
 
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
-y=np.loadtxt('Co1046text.txt') #carica il txt delle acquisizioni
+y=np.loadtxt('cesio_839stext.txt') #carica il txt delle acquisizioni
 fondo=np.loadtxt('fondotext.txt') #carica il txt del fondo
 
 
-plt.figure('soidio') #plot per vedere i dati
+plt.figure('cesio') #plot per vedere i dati
 plt.plot(x, y, color='blue',marker = 'o')
 plt.xlabel('chn')
-plt.title('Cobalto')
+plt.title('Cesio')
 plt.ylabel('count')
 plt.grid(True)
 plt.show()
@@ -35,7 +35,7 @@ z=(y/max(y))-(fondo/max(fondo)) #vettore dei dati normalizzati con il fondo sott
 z[z<0]=0 # una sorta di unit test che elimina eventuali dati negativi
 data=z*max(y) #tolgo la normalizzazione
 plt.figure('Americio senza fondo')#plot dati senza fondo
-plt.title('Cobalto senza fondo')
+plt.title('Cesio senza fondo')
 
 plt.plot(x, data, color='green',marker = 'o')
 plt.xlabel('chn')
@@ -92,7 +92,7 @@ pylab.xlabel('channel')
 pylab.ylabel('counts')
 
 
-pylab.title('Fit Gaussiano Fotopicco Co')
+pylab.title('Fit Gaussiano Fotopicco Cs')
 
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
 pylab.grid()
