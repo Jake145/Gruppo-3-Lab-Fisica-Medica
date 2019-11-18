@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Riproducibilit\IeC {\`a} della radiazione emessa dal tubo}{3}{section.1}
+\contentsline {section}{\numberline {2}Andamento della dose in aria in funzione di diversi parametri}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Linearit\IeC {\`a} Dose in aria in funzione della corrente anodica}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Linearit\IeC {\`a} Dose in aria in funzione della tempo di esposizione}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Linearit\IeC {\`a} Dose in aria in funzione della differenza di potenziale tra gli elettrodi}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Linearit\'a Dose in aria in funzione della distanza fuoco-camera a ionizzazione}{6}{subsection.2.4}
+\contentsline {section}{\numberline {3}Calcolo degli spessori emivalenti (HVL)}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Confronto coefficienti di assorbimento: Aspettati Vs Sperimentali }{13}{subsection.3.1}
+\contentsline {section}{\numberline {4}Effetto Heel}{14}{section.4}
+\contentsline {section}{\numberline {5}Referenze}{14}{section.5}
