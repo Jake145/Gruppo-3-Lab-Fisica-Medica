@@ -183,10 +183,10 @@ Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rh
 		\begin{tabular}{lccc}
 			\hline
 			\hline
-			\textbf{Materiale}\textbf{$\frac{\mu}{\rho}_{exp} $}	& \textbf{$\frac{\mu}{\rho}_{theo} $}	 \\
+			\textbf{Materiale}&\textbf{$\frac{\mu}{\rho}_{exp} [\frac{cm^{2}}{gr}] $}	& \textbf{$\frac{\mu}{\rho}_{theo}[\frac{cm^{2}}{gr}] $}	 \\
 			\hline
 			\hline
-			 Cu&$0.065 \pm 0.001	$	& $0.0066$			\\
+			 Cu&$0.065 \pm 0.001	$	& $0.066$			\\
 			Al&$0.072 \pm 0.003$ &$0.068$ \\
 			\hline
 			\hline
