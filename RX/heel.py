@@ -48,7 +48,7 @@ pylab.title('Heel effect at 100 kvp')
 
 pylab.plot(y1, np.polyval(p1,y1),'g--',label="linear fit")
 pylab.plot(y1, np.polyval(p2,y1),'b--',label="square fit")
-pylab.plot(y1, np.polyval(p3,y1),'r--',label="cubic fit")
+pylab.plot(y1, np.polyval(p3,y1),'r-',label="cubic fit")
 pylab.legend()
 pylab.grid()
 

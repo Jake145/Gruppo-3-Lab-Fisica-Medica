@@ -348,7 +348,7 @@ Avendo trovato la funzione che meglio descrive i dati sperimentali si può stima
 		\begin{tabular}{lccccc}
 			\hline
 			\hline
-			\textbf{Apertura Fascio} &\textbf{kVp}	& \textbf{HVL [cm]}&\textbf{$\frac{\mu}{\rho}_{exp}[\frac{cm^{2}}{gr}]$}&textbf{$\frac{\mu}{\rho}_{exp}[\frac{cm^{2}}{gr}]$} 	 \\
+			\textbf{Apertura Fascio} &\textbf{kVp}	& \textbf{HVL [cm]}&\textbf{$\frac{\mu}{\rho}_{exp}[\frac{cm^{2}}{gr}]$}&textbf{$\frac{\mu}{\rho}_{Theo}[\frac{cm^{2}}{gr}]$} 	 \\
 			\hline
 			\hline
 			Stretto	& 100 &	$0,388 \pm 0.001$ &$0.622 \pm 0.001$&0.569 \\
