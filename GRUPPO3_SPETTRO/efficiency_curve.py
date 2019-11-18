@@ -99,6 +99,9 @@ def efficiency(x,y,geo):
 def seconds(x):
     j=365*24*60*60*x
     return j
+def activities(tau,t):
+    return A_0*np.exp(-t/tau)
+    
 times=seconds(half_life)
 print(times)
 realdecays=realdecays(seconds(half_life),seconds(15),seconds(15)+1000)
@@ -118,3 +121,5 @@ pylab.plot(energy,efficiencies,'b--',marker='o')
 
 
 pylab.show()
+print('Le attività calcolate sono ')
+print((activities(seconds(half_life),seconds(15))))

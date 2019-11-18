@@ -39,9 +39,29 @@
 	\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Linearità, risoluzione energetica e calibrazione}
-Nella prima parte di questa esperienza, abbiamo preso dimistichezza con la strumentazione, andando ad acquisire lo spettro delle sorgenti radioattive alla distanza fissata di $476 \pm 1 mm$ sulla scala millimetrata alla base del setup, mentre la superficie del rivelatore si trova a $66 \pm 1 mm$.
+Nella prima parte di questa esperienza, abbiamo preso dimestichezza con la strumentazione, andando ad acquisire lo spettro delle sorgenti radioattive alla distanza fissata di $476 \pm 1 mm$ sulla scala millimetrata alla base del setup, mentre la superficie del rivelatore si trova a $66 \pm 1 mm$.
 Prima di tutto si verifica la linearità di riposta del rivelatore, registrando un certo numero di spettri e andando a controllare che i picchi siano all'energie aspettate e che rispettino una legge lineare. 
-Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale trovando una relazione che fornisce CHN(E) e, tramite la relazione inversa E(CHN), troviamo la scala del multicanale calibrata in energia. La calibrazione viene eseguita tramite una funzione di fit lineare i cui parametri sono riportati nella tabella sottostante:
+Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale trovando una relazione che fornisce CHN(E) e, tramite la relazione inversa E(CHN), troviamo la scala del multicanale calibrata in energia.
+\begin{center} 
+		
+		\begin{tabular}{lcc}
+			\hline
+			\hline
+			\textbf{Isotopo}	& \textbf{Energia dei Fotopicchi [KeV]} 	 \\
+			\hline
+			\hline
+			Am241	&60 	\\
+			Na22	&511,1274\\
+			Cs137	&662 \\
+			Co60	&1174,1323\\
+			
+			\hline
+			\hline
+		\end{tabular}
+		\linebreak
+		\emph{Tab.1: Energie dei fotopicchi dei vari isotopi.} 
+	\end{center}
+La calibrazione viene eseguita tramite una funzione di fit lineare i cui parametri sono riportati nella tabella (2):
 
 	\begin{center} 
 		
@@ -59,7 +79,7 @@ Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale tro
 		\linebreak
 		
 	\end{center}
-	\emph{Tab.1: risultati del fit. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit.} 
+	\emph{Tab.2: risultati del fit. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit.} 
 \begin{figure}[H]%
     \centering
     \subfloat[]{{\includegraphics[width=5cm]{americio_senza_fondo} }}%
@@ -82,7 +102,26 @@ Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale tro
    \caption{Grafici degli spettri a cui è stato sottratto opportunamente il fondo e fit gaussiani dei picchi. In particolare, si riconoscono nello spettro del Cs137 l' X-Ray Photopeak e il picco di backscatter. Del Co60 si distinguono entrambi i picchi mentre per il Na22 la statistica non è sufficiente per distinguere il secondo picco con il metodo del fit gaussiano. In generale i risultati ottenuti per questi ultimi due elementi possono essere migliorati tramite acquisizioni più lunghe e sottraendo il continuum oltre al fondo acquisito.}%
     \label{fig:1}%
 \end{figure}
-
+Dai fit gaussiani si può ricavare la risoluzione energetica, usando la FWHM.
+\begin{center} 
+		
+		\begin{tabular}{lcc}
+			\hline
+			\hline
+			\textbf{Isotopo}	& \textbf{Risoluzione energetica [KeV]} 	 \\
+			\hline
+			\hline
+			Am241	&26.496	\\
+			Na22	&61.450\\
+			Cs137	&70.730 \\
+			Co60	&78.069,85.875\\
+			
+			\hline
+			\hline
+		\end{tabular}
+		\linebreak
+		\emph{Tab.3:Risoluzione energetica dei vari isotopi.} 
+	\end{center}
 \begin{figure}[!h]
 \includegraphics[width=1\textwidth]{calibrazione}
         \caption{Calibrazione del rivelatore. Il punto corrispondente al secondo picco del sodio è stato stimato visivamente nello spettro}
@@ -90,7 +129,7 @@ Note le energie delle sorgenti, andiamo a calibrare la scala del multicanale tro
 \end{figure}
 
 
-
+\pagebreak
 
 
 \section{Verifica di 1/$r^2$}
@@ -127,7 +166,16 @@ Con $A_{0}$ e B parametri liberi.
 		\linebreak
 		
 	\end{center}
-	\emph{Tab.2: risultati del fit esponenziale. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit, limitati dal numero di spessori utilizzati.} 
+	\emph{Tab.4: risultati del fit esponenziale. Il valore non ottimale del chi quadro è dovuto al fatto che si sono usati pochi punti per il fit, limitati dal numero di spessori utilizzati.} 
+\begin{figure}[H]%
+    \centering
+    \subfloat[]{{\includegraphics[width=6cm]{assorbimento_rame} }}%
+    \qquad
+    \subfloat[]{{\includegraphics[width=6cm]{assorbimento_alluminio} }}%
+    
+   \caption{Grafici assorbimento del rame e dell'alluminio.}%
+    \label{fig:1}%
+\end{figure}
 \subsection{Confronto $\frac{\mu}{\rho}$ tra dati sperimentali e tabulati}
 Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rho}$:
 \begin{center} 
@@ -135,10 +183,10 @@ Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rh
 		\begin{tabular}{lccc}
 			\hline
 			\hline
-			\textbf{Materiale}\textbf{$\frac{\mu}{\rho}_{exp} $}	& \textbf{$\frac{\mu}{\rho}_{theo} $}	 \\
+			\textbf{Materiale}&\textbf{$\frac{\mu}{\rho}_{exp} [\frac{cm^{2}}{gr}] $}	& \textbf{$\frac{\mu}{\rho}_{theo}[\frac{cm^{2}}{gr}] $}	 \\
 			\hline
 			\hline
-			 Cu&$0.065 \pm 0.001	$	& $0.0066$			\\
+			 Cu&$0.065 \pm 0.001	$	& $0.066$			\\
 			Al&$0.072 \pm 0.003$ &$0.068$ \\
 			\hline
 			\hline
@@ -146,7 +194,7 @@ Conoscendo la densità del materiale si può stimare il rapporto $\frac{\mu}{\rh
 		\linebreak
 		
 	\end{center}
-	\emph{Tab.3: Confronto tra valori sperimentali e valori attesi. Possiamo notare un buon accordo tra i valori.} 
+	\emph{Tab.5: Confronto tra valori sperimentali e valori attesi. Possiamo notare un buon accordo tra i valori.} 
 
 \section{Calcolo dell'efficienza intrinseca di picco in funzione dell'energia}
 Utilizzando una attività al tempo zero nominale di 74 kBq e usando come tempo di riferimento il giorno 18/02/05 (t= 14.72 yr), si possono calcolare le attività e si possono calcolare le efficienze utilizzando:
@@ -154,7 +202,25 @@ Utilizzando una attività al tempo zero nominale di 74 kBq e usando come tempo d
 \epsilon_{int}=\epsilon_{abs}4 \frac{\pi}{\omega}
 \end{equation}
 Dove $\omega$ è l'accettanza geometrica stimata dalla geometria del sistema, ed $\epsilon_{abs}$=$\frac{# eventi rilevati }{# eventi totali}$ dove il numero di eventi totali si stima sapendo l'attività e i tempi di misura.
-
+\begin{center} 
+		
+		\begin{tabular}{lcc}
+			\hline
+			\hline
+			\textbf{Isotopo}	& \textbf{Attività [KBq]} 	 \\
+			\hline
+			\hline
+			Am241	&71.478 	\\
+			Na22	&0.23\\
+			Cs137	&45.39\\
+			Co60	&4.30\\
+			
+			\hline
+			\hline
+		\end{tabular}
+		\linebreak
+		\emph{Tab.6: Attività dei vari isotopi.} 
+	\end{center}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{efficiency}
         \caption{Efficienza in funzione dell'energia. Le scarse efficienze per il Co e Na sono dovute alla statistica non ottimale per quei punti. Per un migliore confronto con il plot di riferimento sul manuale del rivelatore, si rimanda ad un'acquisizione dati sufficiente per tali sorgenti.}
