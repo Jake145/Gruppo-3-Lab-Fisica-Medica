@@ -54,7 +54,7 @@ In questa prima sezione si prende manualità con lo strumento facendo una verifi
 			\hline
 			40	&0.005&9.783&9.789&0.010&0.247 	\\
 			60	&0.020&30.820&30.880&0.038&0.289\\
-			80	&0.150&53.970&54.420&0.743 \\
+			80	&0.150&53.970&54.420&0.743&0.867 \\
 			90	&0.030&67.790&67.880&0.068&0.247\\
 			
 			\hline
@@ -111,7 +111,7 @@ Dall' \textbf{interpolazione} si vede che i dati sono fittati meglio da una funz
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Linearità Dose in aria in funzione della tempo di esposizione}
-Dall' \textbf{interpolazione} si vede che i dati sono fittati meglio da una funzione lineare, grazie al valore più prossimo a 1 di $R^{2}$. Una migliore analisi futura può essere condotta eliminando gli outlier.
+Dall' \textbf{interpolazione} si vede che i dati sono fittati meglio da una funzione lineare, grazie al valore più prossimo a 1 di $R^{2}$. Anche qui una migliore analisi futura può essere condotta eliminando gli outlier.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{dosevstime.png}
@@ -143,7 +143,7 @@ Dall' \textbf{interpolazione} si vede che i dati sono fittati meglio da una funz
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{dosevsvolts.png}
-\caption{Dose in funzione ddella differenza di potenziale tra gli elettrodi.}
+\caption{Dose in funzione della differenza di potenziale tra gli elettrodi.}
 \end{figure}
 
 \begin{center} 
@@ -165,7 +165,7 @@ Dall' \textbf{interpolazione} si vede che i dati sono fittati meglio da una funz
 		\emph{Tab.4: risultati fit lineare e quadratico dei punti acquisiti per la Dose in funzione della differenza di potenziale tra gli elettrodi.} 
 	\end{center} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Linearit\'a Dose in aria in funzione della distanza fuoco-camera a ionizzazione}
+\subsection{Linearità Dose in aria in funzione della distanza fuoco-camera a ionizzazione}
 Come modello si è utilizzato \begin{equation}
 Dose=A\frac{C}{r^{2}}+B
 \end{equation}
@@ -207,7 +207,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.5: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.5: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 
 
@@ -234,7 +234,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.6: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.6: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 
 
@@ -260,7 +260,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.7: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.7: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 
 
@@ -286,7 +286,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.8: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.8: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 
 \begin{figure}[H]
@@ -311,7 +311,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.9: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.9: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 
 
@@ -339,7 +339,7 @@ Si riportano il grafico, il modello e il confronto tra valori attesi e valori sp
 			\hline
 		\end{tabular}
 		\linebreak
-		\emph{Tab.10: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione(proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
+		\emph{Tab.10: risultati fit lineare, cubico e quartico  dei punti acquisiti per la intensità di radiazione (proporzionale alla dose) in funzione dello spessore . Si vede dal valore di $R^{2}$ che il fit quartico descrive meglio i dati} 
 	\end{center} 
 \subsection{Confronto coefficienti di assorbimento: Aspettati Vs Sperimentali }
 Avendo trovato la funzione che meglio descrive i dati sperimentali si può stimare HVL di ogni acquisizione, con incertezza associata alla lettura del valore sul display di Python, e calcolare il coefficiente di assorbimento con la formula (2) e confrontarlo col valore tabulato.
