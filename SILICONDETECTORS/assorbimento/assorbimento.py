@@ -5,7 +5,7 @@ import pylab
 from scipy.optimize import curve_fit
 from scipy import stats
 
-'''
+
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
 y=np.loadtxt('Am10Cutext.txt') #carica il txt delle acquisizioni
 
@@ -37,14 +37,22 @@ x[0:a]=-1
 x[b:2048]=-1
 x=x[x>=0]
 data=data[data>=0]
+for i in range(0,len(data)-1):
+    if data[i] > 0:
+         data=data
+         x=x
+    else :
+        data=np.delete(data,i)
+        x=np.delete(x,i)
 
-
-photopeakcount=np.sum(data[data>0])
-
+photopeakcount=np.sum(data[data>=0])
 
 
 x1=np.linspace(0,2048,2048)
-ds=np.sqrt(data) #errore poissoniano. Forse ho sbagliato la formula?
+ds=np.sqrt(data) 
+
+
+
 n = len(x)  #serve per i gradi di libertà                        
   
 
@@ -88,7 +96,7 @@ pylab.grid()
 
 pylab.show()
 
-'''
+
 
 
 ##Fit Rame 

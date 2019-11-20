@@ -24,16 +24,22 @@ plt.ylabel('count')
 plt.grid(True)
 plt.show()
 ##fit gaussiano 
-
-a=60
-b=110
-mean=90
-data[0:a]=0 
-data[b:2048]=0
-x[0:a]=0
-x[b:2048]=0
-x=x[x>0]
-data=data[data>0]
+a=199 #estremi della gaussiana
+b=210
+mean=200
+data[0:a]=-1
+data[b:2048]=-1
+x[0:a]=-1
+x[b:2048]=-1
+x=x[x>=0]
+data=data[data>=0]
+for i in range(0,len(data)-1):
+    if data[i] > 0:
+         data=data
+         x=x
+    else :
+        data=np.delete(data,i)
+        x=np.delete(x,i)
 photopeakcount=np.sum(data[data>0])
 print('area sotto il fotopicco è %.3f '%(photopeakcount))
 x1=np.linspace(0,2048,2048)

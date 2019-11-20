@@ -28,13 +28,22 @@ plt.grid(True)
 #plt.show()
 ##fit gaussiano 
 #serve per la sigma, perla tecnica vedi punto1.py
-
-data[0:880]=0 
-data[980:2048]=0
-x[0:880]=0
-x[980:2048]=0
-x=x[x>0]
-data=data[data>0]
+a=199 #estremi della gaussiana
+b=210
+mean=200
+data[0:a]=-1
+data[b:2048]=-1
+x[0:a]=-1
+x[b:2048]=-1
+x=x[x>=0]
+data=data[data>=0]
+for i in range(0,len(data)-1):
+    if data[i] > 0:
+         data=data
+         x=x
+    else :
+        data=np.delete(data,i)
+        x=np.delete(x,i)
 x1=np.linspace(0,2048,2048)
 ds=np.sqrt(data) #errore poissoniano. 
 n = len(x)  #serve per i gradi di libertà                        

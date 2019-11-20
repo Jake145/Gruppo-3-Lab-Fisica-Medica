@@ -43,18 +43,25 @@ plt.xlabel('chn')
 plt.ylabel('count')
 plt.grid(True)
 plt.show()
-'''
+
 ##fit gaussiano 
 #la tecnica è la seguente: dal grafico precedente isolo ad occhio il fotopicco e vedo quali sono i dati che non sono nel fotopicco: dall'asse x vedo quali corrispondono e metto quegli elementi del vettore a zero, e poi faccio la stessa cosa agli elementi con gli stessi indici del vettore ordinata. Poi con una mask elimino quegli elementi
-a=1767 #estremi della gaussiana
-b=1883
-mean=1823
-data[0:a]=0 
-data[b:2048]=0
-x[0:a]=0
-x[b:2048]=0
-x=x[x>0]
-data=data[data>0]
+a=199 #estremi della gaussiana
+b=210
+mean=200
+data[0:a]=-1
+data[b:2048]=-1
+x[0:a]=-1
+x[b:2048]=-1
+x=x[x>=0]
+data=data[data>=0]
+for i in range(0,len(data)-1):
+    if data[i] > 0:
+         data=data
+         x=x
+    else :
+        data=np.delete(data,i)
+        x=np.delete(x,i)
 x1=np.linspace(0,2048,2048)
 ds=np.sqrt(data) #errore poissoniano. 
 n = len(x)  #serve per i gradi di libertà                        
@@ -106,7 +113,7 @@ pylab.show()
 
 
 
-'''
+
 
 
 
