@@ -92,8 +92,8 @@ pylab.show()
 
 
 ##Fit Rame 
-y1=np.linspace(-10,10000,1000)    #genero una ascissa a caso per il fit
-w=900 #spessore moneta rame singolo in mum
+y1=np.linspace(-0,1,1000)    #genero una ascissa a caso per il fit
+w=0.09 #spessore moneta rame singolo in mum
 spessori=np.array([0,w,2*w,3*w,4*w,5*w,6*w,7*w,8*w,9*w,10*w])
 sigma=np.array([8.24,5.38,4.68,4.38,4.11,4.19,4.39,3.90,4.40,5.09,2.36])
 sigma_Cu=2.56*sigma
@@ -122,7 +122,7 @@ q=popt[2]
 
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
-print('il coefficiente di assorbimento del rame è %.6f pm %.6f, la costante moltiplicativa è %.3f pm %.3f e il valore costante è %.3f pm %.3f'  % (mu,dmu,ch_0,dch_0,q,dq))
+print('il coefficiente di assorbimento del rame è %.3f pm %.3f, la costante moltiplicativa è %.3f pm %.3f e il valore costante è %.3f pm %.3f'  % (mu,dmu,ch_0,dch_0,q,dq))
 print('il chi2 è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto è=%.3f '% (chi2_1redux))
 print('il pvalue è=%.3f'% (pvalue))
@@ -132,7 +132,7 @@ pylab.figure('Assorbimento Rame')
 
 pylab.errorbar( spessori, photopeaksCu, sigma_Cu , fmt= '.', ecolor= 'magenta')
 
-pylab.xlabel('width [micrometers]')
+pylab.xlabel('width [cm]')
 pylab.ylabel('Photopeak Area')
 
 
