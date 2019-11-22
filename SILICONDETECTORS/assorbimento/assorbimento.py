@@ -105,8 +105,8 @@ w=0.09 #spessore moneta rame singolo in mum
 spessori=np.array([0,w,2*w,3*w,4*w,5*w,6*w,7*w,8*w,9*w,10*w])
 sigma=np.array([8.24,5.38,4.68,4.38,4.11,4.19,4.39,3.90,4.40,5.09,2.36])
 sigma_Cu=2.56*sigma
-photopeaksCu=np.array([47420,28430,15615,8016,4038,1959,942,439,220,109,46])
-
+#photopeaksCu=np.array([47420,28430,15615,8016,4038,1959,942,439,220,109,46])
+photopeaksCu=np.array([83313,27259,14953,7842,3967,1889,904,446,236,113,66])
  
 def f1(x,mu,ch_0,q):
 
