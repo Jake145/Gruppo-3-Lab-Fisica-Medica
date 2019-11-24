@@ -107,9 +107,17 @@ pylab.show()
 
 
 '''
+tension=np.array([1.04,2.16,2.67,3.04,4.24]) #in mv
+capacity=1e-12 #in farad
+Ee=3.6*1e-3 #in kev
+e=1.6*1e-19 #in coulomb
 
+def energymvfrommv(x):
+    return capacity*x*0.001*Ee/e
 
+energymvmv=energymvfrommv(tension)
 
+print(energymvmv)
 ##calibrazione
 
 y1=np.linspace(0,3000,1000)    #genero una ascissa a caso per il fit

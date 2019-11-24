@@ -7,7 +7,7 @@ from scipy import stats
 
 
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
-y=np.loadtxt('Am10Cutext.txt') #carica il txt delle acquisizioni
+y=np.loadtxt('Am0Cutext.txt') #carica il txt delle acquisizioni
 
 
 
@@ -28,8 +28,8 @@ plt.show()
 ##fit gaussiano 
 #la tecnica è la seguente: dal grafico precedente isolo ad occhio il fotopicco e vedo quali sono i dati che non sono nel fotopicco: dall'asse x vedo quali corrispondono e metto quegli elementi del vettore a zero, e poi faccio la stessa cosa agli elementi con gli stessi indici del vettore ordinata. Poi con una mask elimino quegli elementi
 data=y
-a=199
-b=210
+a=160
+b=250
 mean=200
 data[0:a]=-1
 data[b:2048]=-1
@@ -37,13 +37,14 @@ x[0:a]=-1
 x[b:2048]=-1
 x=x[x>=0]
 data=data[data>=0]
-for i in range(0,len(data)-1):
-    if data[i] > 0:
-         data=data
-         x=x
-    else :
-        data=np.delete(data,i)
-        x=np.delete(x,i)
+print(len(data),len(x))
+for i in range(len(data)):
+    if data[i] == 0:
+         
+         x[i]=0
+
+data=data[data>0]
+x=x[x>0]
 
 photopeakcount=np.sum(data[data>=0])
 
@@ -150,3 +151,4 @@ pylab.grid()
 
 
 pylab.show()
+
