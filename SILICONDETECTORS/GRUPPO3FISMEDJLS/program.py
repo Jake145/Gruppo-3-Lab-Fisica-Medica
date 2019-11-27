@@ -76,7 +76,7 @@ pylab.savefig('calibration_test_signals.png')
 pylab.show()
 pylab.close()
 ##RISOLUZIONE ENERGETICA VS GAIN 
-energres=fwhm*chn/energymvmv
+energres=fwhm/energymvmv
 y1=np.linspace(0,50,1000)
 p1=np.polyfit(gain,energres,1)
 yfit1=p1[0]*gain+p1[1]
@@ -141,9 +141,9 @@ print(energres)
 
 y1=np.linspace(0,30,1000) 
 
-#hvl 100 kvp
 
-cap,fwhm=np.loadtxt('capacita.txt',unpack=True)
+
+cap,fwhm=np.loadtxt('1capacita.txt',unpack=True)
 fwhm=fwhm/energymvmvfrommv(4.16)
 
 ds=0.1*fwhm
@@ -154,7 +154,7 @@ yres1=fwhm-yfit1
 SSresid1=sum(pow(yres1,2))
 SStotal1=len(fwhm)*np.var(fwhm)
 rsq1=1-SSresid1/SStotal1
-print('Per il fit lineare di RESOLUTIO VS CAPACITY il coefficiente del primo grado è %.3f, del termine costante è %.3f, R value è %.3f' % (p1[0],p1[1],rsq1))
+print('Per il fit lineare di RESOLUTION VS CAPACITY il coefficiente del primo grado è %.3f, del termine costante è %.3f, R value è %.3f' % (p1[0],p1[1],rsq1))
 
 p2=np.polyfit(cap,fwhm,2)
 yfit2=p2[0]*cap**2+p2[1]*cap +p2[2]
@@ -203,6 +203,15 @@ pylab.savefig('resvvscapacity')
 
 pylab.show()
 pylab.close()
+## trova la capacità incognita
+#Calcola la fwhm
+fwhminc=1.84
+fwhminc=fwhminc/energymvmvfrommv(4.16)
+def incognitcapacity(x):
+    return (-p2[1]+np.sqrt(p2[1]**2+4*p2[0]*(x-p2[2])))/(2*p2[0])
+capacity=incognitcapacity(fwhminc)
+print('LA CAPACITà INCOGNITA è : %7.f'%(capacity))
+
 ## questa parte serve per la parte di FWHM e Xmedio Vs TENSIONE  per AMERICIO
 xmedio=[]
 sigma=[]
@@ -862,12 +871,12 @@ pylab.close()
 
 ##Discriminatore
 
-filenames = glob.glob('*Discriminatore.txt')
+filenames = glob.glob('Discriminatore*.txt')
 
 for f in filenames:
     print(f)
     signal,counts = np.loadtxt(fname=f, unpack=True)
-    dc=np.sqrt((np.sqrt(counts)**2+(0.1*counts)**2))
+    dc=np.sqrt(counts)
 
     y1=np.linspace(0,250,1000)   
 
