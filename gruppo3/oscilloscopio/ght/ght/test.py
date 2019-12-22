@@ -7,7 +7,7 @@ import os
 import shutil
 
 
-
+maxindexes=[]
 filenames = glob.glob('C*.txt')
 for f in filenames:
     print(f)
@@ -26,15 +26,21 @@ newfiles=glob.glob('new_acquisition_0*.txt')
 for f in newfiles:
     print(f)
     data=np.loadtxt(f,unpack=True)
+    os.remove(f)
+    
+    maxindex=np.argmax(data )
+    maxindexes.append(maxindex)
     
 
-    n, bins, patches = plt.hist(data, len(data),facecolor='g',alpha=0.75)
-    #plt.xlabel('Smarts')
-    #plt.ylabel('Probability')
-    #plt.title('Histogram of %s'%f.replace('new_aquisition.txt',''))
-    #plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
-    #plt.xlim(40, 160)
-    #plt.ylim(0, 0.03)
-    #plt.grid(True)
-    #plt.savefig('test.png')
-    os.remove(f)
+data=np.abs(maxindexes)
+print(data)
+
+n, bins, patches = plt.hist(data, range(min(data),max(data)),facecolor='g',alpha=0.75)
+plt.xlabel('number of cells excited')
+plt.ylabel('Amplitude of waveform ')
+plt.title('Histogram of %s'%f.replace('new_aquisition.txt',''))
+#plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+#plt.xlim(40, 160)
+#plt.ylim(0, 0.03)
+plt.grid(True)
+plt.show()

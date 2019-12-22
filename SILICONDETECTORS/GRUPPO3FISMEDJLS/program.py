@@ -210,7 +210,7 @@ fwhminc=fwhminc/energymvmvfrommv(4.16)
 def incognitcapacity(x):
     return (-p2[1]+np.sqrt(p2[1]**2+4*p2[0]*(x-p2[2])))/(2*p2[0])
 capacity=incognitcapacity(fwhminc)
-print('LA CAPACITà INCOGNITA è : %7.f'%(capacity))
+print('LA CAPACITà INCOGNITA è : %.3f'%(capacity))
 
 ## questa parte serve per la parte di FWHM e Xmedio Vs TENSIONE  per AMERICIO
 xmedio=[]
@@ -316,7 +316,7 @@ resolution=fwhm/xmedio
 print('le fwhm sono:')
 print(fwhm)
 print('le risoluzioni energetiche  sono:')
-print(resolution/60)
+print(resolution)
 
 ## Questa parte serve per il fit di FWHM vs Tensione e Xmedio vs Tensione
 
