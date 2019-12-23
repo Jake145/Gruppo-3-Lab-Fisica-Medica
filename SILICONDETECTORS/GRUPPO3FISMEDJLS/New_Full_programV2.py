@@ -30,7 +30,7 @@ for f in filenames:
     plt.xlabel('chn')
     plt.title('Segnale test con %s'%f.replace('.txt',''))
     plt.ylabel('count')
-    #plt.xlim(0,250)
+    plt.xlim(0,250)
     plt.grid(True)
     plt.show()
     plt.close()
@@ -92,7 +92,7 @@ for f in filenames:
 
     pylab.xlabel('channel')
     pylab.ylabel('counts')
-    #pylab.xlim(150,250)
+    pylab.xlim(0,500)
 
     pylab.title('gauss fit con %s'%f.replace('.txt',''))
     pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -179,7 +179,7 @@ pylab.errorbar( x, data, ds , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('channel')
 pylab.ylabel('counts')
-    #pylab.xlim(150,250)
+pylab.xlim(0,500)
 
 pylab.title('gauss fit con %s'%f.replace('.txt',''))
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -202,7 +202,7 @@ print(fwhm)
 print('le risoluzioni energetiche  sono:')
 print(resolution)
 
-##
+##CALIBRAZIONE MILLIVOT VERSUS CANALE
 #chn=np.array([85.58,176.57,305.20,342.69])
 #fwhm=np.array([1.69,1.69,1.66,1.73])
 
@@ -393,7 +393,7 @@ for f in filenames:
     plt.xlabel('chn')
     plt.title('Segnale test con %s'%f.replace('.txt',''))
     plt.ylabel('count')
-    #plt.xlim(0,250)
+    plt.xlim(0,500)
     plt.grid(True)
     plt.show()
     plt.close()
@@ -455,7 +455,7 @@ for f in filenames:
 
     pylab.xlabel('channel')
     pylab.ylabel('counts')
-    #pylab.xlim(150,250)
+    pylab.xlim(0,500)
 
     pylab.title('gauss fit con %s'%f.replace('.txt',''))
     pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -612,7 +612,7 @@ pylab.errorbar( x, data, ds , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('channel')
 pylab.ylabel('counts')
-    #pylab.xlim(150,250)
+pylab.xlim(0,500)
 
 pylab.title('gauss fit con %s'%f.replace('.txt',''))
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -720,7 +720,7 @@ for f in filenames:
 
     pylab.xlabel('channel')
     pylab.ylabel('counts')
-    pylab.xlim(150,250)
+    pylab.xlim(0,500)
 
     pylab.title('gauss fit con %s'%f.replace('.txt',''))
     pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
