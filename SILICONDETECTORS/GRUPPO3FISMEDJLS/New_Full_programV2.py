@@ -231,9 +231,9 @@ def f1(x,m,q):
 
 
 
-popt, pcov= curve_fit(f1, np.abs(chn), tension, (0.,0.),fwhm,absolute_sigma=False)
+popt, pcov= curve_fit(f1, np.abs(chn)-11, tension, (0.,0.),fwhm,absolute_sigma=False)
 DOF=len(chn)-3
-chi2_1 = sum(((f1(np.abs(chn),*popt)-np.abs(tension))/np.abs(fwhm))**2)
+chi2_1 = sum(((f1(np.abs(chn)-11,*popt)-np.abs(tension))/np.abs(fwhm))**2)
 dm,dq= np.sqrt(pcov.diagonal())
 chi2_1redux=chi2_1/DOF
 
@@ -248,12 +248,12 @@ print('il coefficiente angolare per la calibrazione del segnale test MILLIVOLT V
 print('il chi2 per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=%.3f '% (chi2_1redux))
 print('il pvalue per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=%.3f'% (pvalue))
-print('la funzione per la calibrazione  MILLIVOLT VS CHANNEL dei segnali test è ENERGY = %.2f * CHANNEL + %.2f -11'%(m,q))
+print('la funzione per la calibrazione  MILLIVOLT VS CHANNEL dei segnali test è ENERGY = %.2f * CHANNEL + %.2f '%(m,q))
 ##plot
 pylab.figure('calibrazioneMVvsCHN')
 
 
-pylab.errorbar( chn, tension, 0 , fmt= '.', ecolor= 'magenta')
+pylab.errorbar( np.abs(chn)-11, tension, 0 , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('Chn')
 pylab.ylabel('Tension[mv]')
@@ -268,9 +268,9 @@ pylab.savefig('calibration_test_signals.png')
 pylab.show()
 pylab.close()
 ##calibration for the corresponding energy of test signal
-popt, pcov= curve_fit(f1, chn, energymvmv, (0.,0.),fwhm,absolute_sigma=False)
+popt, pcov= curve_fit(f1, np.abs(chn)-11, energymvmv, (0.,0.),fwhm,absolute_sigma=False)
 DOF=len(chn)-3
-chi2_1 = sum(((f1(chn,*popt)-energymvmv)/fwhm)**2)
+chi2_1 = sum(((f1(np.abs(chn)-11,*popt)-energymvmv)/fwhm)**2)
 dm,dq= np.sqrt(pcov.diagonal())
 chi2_1redux=chi2_1/DOF
 
@@ -285,12 +285,12 @@ print('il coefficiente angolare per la calibrazione del segnale ENERGY VS CHANNE
 print('il chi2 per la calibrazione del segnale test è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto per la calibrazione ENERGY VS CHANNEL del segnale test è=%.3f '% (chi2_1redux))
 print('il pvalue per la calibrazione ENERGY VS CHANNEL del segnale test è=%.3f'% (pvalue))
-print('la funzione per la calibrazione ENERGY VS CHANNEL dei segnali test è ENERGY = %.2f * CHANNEL + %.2f -11'%(m,q))
+print('la funzione per la calibrazione ENERGY VS CHANNEL dei segnali test è ENERGY = %.2f * CHANNEL + %.2f '%(m,q))
 
 pylab.figure('calibrazione EvsCHN')
 
 
-pylab.errorbar( chn, energymvmv, fwhm , fmt= '.', ecolor= 'magenta')
+pylab.errorbar( np.abs(chn)-11, energymvmv, fwhm , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('Chn')
 pylab.ylabel('Energy [KeV]')
