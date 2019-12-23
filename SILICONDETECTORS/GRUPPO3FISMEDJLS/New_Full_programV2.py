@@ -441,11 +441,11 @@ for f in filenames:
     sig=popt[2]
 
     pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-    #print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
-    #print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
-   # print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
-   # print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
-   # print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
+    print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
+    print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
+    print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
+    print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
+    print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
 
 ##plot
     pylab.figure('fit gaussiano con %s'%f.replace('.txt',''))
@@ -541,6 +541,7 @@ pylab.show()
 pylab.close()
 ## trova la capacità incognita
 #Calcola la fwhm
+print('questi risultati sul fit gaussiano riguardano la capacità incognita')
 f= 'incognitacapaicta.txt'
 y=np.loadtxt(fname=f, delimiter=',',unpack=True)
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
@@ -598,11 +599,11 @@ x0=popt[1]
 sig=popt[2]
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-#print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
-#print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
-#print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
-#print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
-#print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
+print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
+print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
+print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
+print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
+print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
 
 ##plot
 pylab.figure('fit gaussiano con %s'%f.replace('.txt',''))
