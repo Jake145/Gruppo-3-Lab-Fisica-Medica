@@ -274,9 +274,9 @@ pylab.savefig('calibration_test_signals.png')
 pylab.show()
 pylab.close()
 ##calibration for the corresponding energy of test signal
-popt, pcov= curve_fit(f1, np.abs(chn)-11, energymvmv, (0.,0.),fwhm,absolute_sigma=False)
+popt, pcov= curve_fit(f1, np.abs(chn)-11, energymvmv, (0.,0.),resolution*energymvmv,absolute_sigma=False)
 DOF=len(chn)-3
-chi2_1 = sum(((f1(np.abs(chn)-11,*popt)-energymvmv)/fwhm)**2)
+chi2_1 = sum(((f1(np.abs(chn)-11,*popt)-energymvmv)/resolution*energymvmv)**2)
 dm,dq= np.sqrt(pcov.diagonal())
 chi2_1redux=chi2_1/DOF
 
@@ -296,7 +296,7 @@ print('la funzione per la calibrazione ENERGY VS CHANNEL dei segnali test è ENE
 pylab.figure('calibrazione EvsCHN')
 
 
-pylab.errorbar( np.abs(chn)-11, energymvmv, fwhm , fmt= '.', ecolor= 'magenta')
+pylab.errorbar( np.abs(chn)-11, energymvmv, resolution*energymvmv , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('Chn')
 pylab.ylabel('Energy [KeV]')
@@ -509,7 +509,7 @@ for i in range(len(chn)):
     print('Per il segnale con %.3f abbiamo il canale medio %.3f +- %.3f abbiamo la fwhm %.3f +- %.3f e una risoluzione energetica %.3f +- %.3f '%(cap[i],chn[i],dchn[i],fwhm[i],dfwhm[i],resolution[i],propagateerrorfwhm(chn[i],dchn[i],fwhm[i],dfwhm[i])))
 
 fwhm=resolution
-ds=0.1*fwhm
+ds=propagateerrorfwhm(chn,dchn,fwhm,dfwhm)
 
 p1=np.polyfit(cap,fwhm,1)
 yfit1=p1[0]*cap+p1[1]
