@@ -14,7 +14,9 @@ print('le tensioni sono')
 print(tension)
 gain=np.array([43,38,33.5,32.5]) #in db
 chn=[]
+dchn=[]
 sigma=[]
+dsigma=[]
 photopeaks=[]
 
 filenames = glob.glob('Calibratione*.txt')
@@ -78,11 +80,11 @@ for f in filenames:
     sig=popt[2]
 
     pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-    #print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
-    #print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
-   # print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
-   # print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
-   # print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
+    print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
+    print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
+    print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
+    print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
+    print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
 
 ##plot
     pylab.figure('fit gaussiano con %s'%f.replace('.txt',''))
@@ -105,8 +107,8 @@ for f in filenames:
     chn.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)
-
-
+    dchn.append(dx0)
+    dsigma.append(dsig)
 
 f= 'ECalibrationes416mv120v2.txt'
 y=np.loadtxt(fname=f, delimiter=',',unpack=True)
@@ -165,11 +167,11 @@ x0=popt[1]
 sig=popt[2]
 
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-#print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
-#print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
-#print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
-#print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
-#print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
+print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
+print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
+print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
+print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
+print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
 
 ##plot
 pylab.figure('fit gaussiano con %s'%f.replace('.txt',''))
@@ -191,16 +193,20 @@ plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
 plt.close()
 chn.append(x0)
 sigma.append(sig)
+dsigma.append(dsig)
 photopeaks.append(photopeakcount)
-
+dchn.append(dx0)
 fwhm=2.35*np.abs(sigma)
+dfwhm=2.35*np.abs(dsigma)
 resolution=np.abs(fwhm)/np.abs(chn)
-print('i canali medi sono:')
-print(chn)
-print('le fwhm sono:')
-print(fwhm)
-print('le risoluzioni energetiche  sono:')
-print(resolution)
+def propagateerrorfwhm(chn,dchn,fwhm,dfwhm):
+    return np.sqrt(((1/chn)*dfwhm)**2+((fwhm/chn**2)*dchn)**2)
+print('PER I SEGNALI TEST I SEGUENTI VALORI CON INCERTEZZE:')
+for i in range(len(chn)):
+    print('Per il segnale %.3f abbiamo il canale medio %.3f +- %.3f abbiamo la fwhm %.3f +- %.3f e una risoluzione energetica %.3f +- %.3f '%(tension[i],chn[i],dchn[i],fwhm[i],dfwhm[i],resolution[i],propagateerrorfwhm(chn[i],dchn[i],fwhm[i],dfwhm[i])))
+
+
+
 
 ##CALIBRAZIONE MILLIVOT VERSUS CANALE
 #chn=np.array([85.58,176.57,305.20,342.69])
@@ -209,17 +215,17 @@ print(resolution)
 capacity=1e-12 #in farad
 Ee=3.6*1e-3 #in kev
 e=1.6*1e-19 #in coulomb
-print('le tensioni sono')
-print(tension)
+
 def energymvmvfrommv(x):
     return capacity*x*0.001*Ee/e
-print('le energie predette sono:')
 
 energymvmv=energymvmvfrommv(tension)
+denergymvmv= 0.01/tension * energymvmv
+for i in range(len(tension)):
+    print('PER LA TENSIONE %.3f HO UNA ENERGIA DI %3.f +- %.3f e UNA ATTENUAZIONE DI %.3f '%(tension[i],energymvmv[i],denergymvmv[i],gain[i]))
 
-print(energymvmv)
-print('le attenuazioni sono:')
-print(gain)
+
+
 
 y1=np.linspace(0,3000,1000)
 
@@ -304,6 +310,16 @@ pylab.ylim(0,102)
 pylab.savefig('calibration_test_signals_energy.png')
 pylab.show()
 pylab.close()
+###CALCOLO INCERTEZZE SULL'ENERGIA
+
+print('QUESTA PARTE RIGUARDA IL CALCOLO DELLE INCERTEZZE SULL ENERGIA DELLLA CALIBRAZIONE CON I SEGNALI TEST')
+
+def calcoloincertezzaparte1(x):
+    return np.sqrt((np.abs(m)*x)**2 +(x*dm)**2+dsig**2)
+dE=calcoloincertezzaparte1(np.abs(dchn))
+for i in range(len(chn)):
+    print('per il canale %.3f incertezza sulla relativa energia è %.3f'%(chn[i],dE[i]))
+
 ###Questa parte riguarda la risoluzine vs attenuazione
 
 ##RISOLUZIONE ENERGETICA VS GAIN
@@ -370,8 +386,7 @@ pylab.savefig('resvsgain.png')
 
 pylab.show()
 pylab.close()
-print('le risoluzioni energetiche dei segnali test sono:')
-print(energres)
+
 ##FWHM VS CAPACITY
 
 ###fit gaussiani per trovare le fwhm delle capacità
@@ -379,7 +394,8 @@ print(energres)
 chn=[]
 sigma=[]
 photopeaks=[]
-
+dchn=[]
+dsigma=[]
 filenames = glob.glob('capacita*.txt')
 
 for f in filenames:
@@ -467,6 +483,8 @@ for f in filenames:
     plt.close()
     chn.append(x0)
     sigma.append(sig)
+    dchn.append(dx0)
+    dsigma.append(dsig)
     photopeaks.append(photopeakcount)
 
 
@@ -480,8 +498,17 @@ y1=np.linspace(0,30,1000)
 
 cap,shit=np.loadtxt('1capacita.txt',unpack=True)
 fwhm=2.35*np.abs(sigma)
-fwhm=fwhm/energymvmvfrommv(4.16)
+resolution=fwhm/chn
+dfwhm=2.35*np.abs(dsigma)
+chn=np.abs(chn)
+dchn=np.abs(dchn)
+def propagateerrorfwhm(chn,dchn,fwhm,dfwhm):
+    return np.sqrt(((1/chn)*dfwhm)**2+((fwhm/chn**2)*dchn)**2)
+print('PER Il SEGNALE DA 4.16mv HO I SEGUENTI VALORI CON INCERTEZZE:')
+for i in range(len(chn)):
+    print('Per il segnale con %.3f abbiamo il canale medio %.3f +- %.3f abbiamo la fwhm %.3f +- %.3f e una risoluzione energetica %.3f +- %.3f '%(cap[i],chn[i],dchn[i],fwhm[i],dfwhm[i],resolution[i],propagateerrorfwhm(chn[i],dchn[i],fwhm[i],dfwhm[i])))
 
+fwhm=resolution
 ds=0.1*fwhm
 
 p1=np.polyfit(cap,fwhm,1)
@@ -628,18 +655,22 @@ plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
 
 
 fwhminc=2.35*np.abs(sig)
-fwhminc=fwhminc/energymvmvfrommv(4.16)
+fwhminc=fwhminc/x0
 def incognitcapacity(x):
     return (-p2[1]+np.sqrt(p2[1]**2+4*p2[0]*(x-p2[2])))/(2*p2[0])
 capacity=incognitcapacity(fwhminc)
-print('LA CAPACITà INCOGNITA è : %.3f'%(capacity))
+dcapacity=dsig*2.35/fwhminc * capacity
+print('LA CAPACITà INCOGNITA è : %.3f +- %.3f'%(capacity,dcapacity))
 
 
 
 ## questa parte serve per la parte di FWHM e Xmedio Vs TENSIONE  per AMERICIO
 xmedio=[]
+dxmedio=[]
 sigma=[]
 photopeaks=[]
+dsigma=[]
+dxmedio=[]
 tension=np.array([4,9,11,12])
 filenames = glob.glob('??V.txt')
 
@@ -734,13 +765,24 @@ for f in filenames:
     xmedio.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)
+    dxmedio.append(dx0)
+    dsigma.append(dsig)
+
 
 fwhm=2.35*np.abs(sigma)
 resolution=fwhm/xmedio
-print('le fwhm sono:')
-print(fwhm)
-print('le risoluzioni energetiche  sono:')
-print(resolution)
+xmedio=np.abs(xmedio)
+dxmedio=np.abs(dxmedio)
+dfwhm=2.35*np.abs(dsigma)
+
+def propagateerrorfwhm(chn,dchn,fwhm,dfwhm):
+    return np.sqrt(((1/chn)*dfwhm)**2+((fwhm/chn**2)*dchn)**2)
+print('PER I SEGNALI con AMERICIO A VARIE TENSIONI I SEGUENTI VALORI CON INCERTEZZE:')
+for i in range(len(chn)):
+    print('Per il segnale %s abbiamo il canale medio %.3f +- %.3f abbiamo la fwhm %.3f +- %.3f e una risoluzione energetica %.3f +- %.3f '%(filenames[i],xmedio[i],dxmedio[i],fwhm[i],dfwhm[i],resolution[i],propagateerrorfwhm(xmedio[i],dxmedio[i],fwhm[i],dfwhm[i])))
+
+
+
 
 ## Questa parte serve per il fit di FWHM vs Tensione e Xmedio vs Tensione
 
@@ -867,9 +909,10 @@ pylab.close()
 ##QUESTA PARTE E' PER LA CALIBRAZIONE ENERGETICA DEGLI ISOTOPI
 
 filenames = glob.glob('calibrationAmericio*.txt')
-xmedio.clear()
-sigma.clear()
-
+xmedio=[]
+sigma=[]
+dxmedio=[]
+dsigma=[]
 for f in filenames:
     print(filenames)
     y = np.loadtxt(fname=f, delimiter=',',unpack=True)
@@ -955,8 +998,8 @@ for f in filenames:
     plt.close()
     xmedio.append(x0)
     sigma.append(sig)
-
-
+    dxmedio.append(dx0)
+    dsigma.append(dsig)
 
 ##qui il fit gaussiano col cadmio
 y = np.loadtxt('calibrationCadmio.txt',unpack=True)
@@ -1040,7 +1083,8 @@ pylab.show()
 pylab.close()
 xmedio.append(x0)
 sigma.append(sig)
-
+dxmedio.append(dx0)
+dsigma.append(dsig)
 ##fit gaussiano per il picco del gadolinio
 y = np.loadtxt('calibrationAmericioGDpure.txt',unpack=True)
 x=np.linspace(0,2048,2048) #crea il vettore del numero dei canali
@@ -1113,6 +1157,8 @@ pylab.show()
 pylab.close()
 xmedio.append(x0)
 sigma.append(sig)
+dxmedio.append(dx0)
+dsigma.append(dsig)
 ##calibrazione energetica isotopi
 del xmedio[1:3]
 del sigma[1:3]
@@ -1152,11 +1198,23 @@ print('la funzione di calibrazione è ENERGIA= %.2f * CANALE + %.2f - 15'%(p1[0]
 def enrgeticcalibration(x):
     return p1[0]*x+p1[0]-15
 
+
+###CALCOLO INCERTEZZE SULL ENERGIA PER CALIBRAZIONE CON SORGENTI
+
+
+print('QUESTA PARTE RIGUARDA IL CALCOLO DELLE INCERTEZZE SULL ENERGIA DELLLA CALIBRAZIONE CON I SEGNALI DELLA SORGENTE')
+xmedio=np.abs(xmedio)
+def calcoloincertezzaparte1(x):
+    return np.sqrt((np.abs(m)*x)**2 +(x*dm)**2+dsig**2)
+dE=calcoloincertezzaparte1(np.abs(dxmedio))
+for i in range(len(xmedio)):
+    print('per il canale %.3f incertezza sulla relativa energia è %.3f'%(xmedio[i],dE[i]))
+
 ##QUESTA PARTE RIGUARDA L'ASSORBIMENTO DEL RAME NB:automatizzato così fa un'approssimazione forzata, in questo caso è più preciso analizzare singolarmente gli spettri e cambiare l'intervallo a mano
 filenames = glob.glob('Am*.txt')
-xmedio.clear()
-sigma.clear()
-photopeaks.clear()
+xmedio=[]
+sigma=[]
+photopeaks=[]
 for f in filenames:
     print(f)
     x=np.linspace(0,2048,2048)
@@ -1242,11 +1300,11 @@ for f in filenames:
     photopeaks.append(photopeakcount)
 
 fwhm=2.35*np.abs(sigma)
-print(len(fwhm),len(photopeaks))
+#print(len(fwhm),len(photopeaks))
 sigma_Cu=np.sqrt(fwhm**2 + np.sqrt(np.abs(photopeaks)**2))
 
 y1=np.linspace(-0,1,1000)    #genero una ascissa a caso per il fit
-w=0.09 #spessore moneta rame singolo in mum
+w=0.06 #spessore moneta rame singolo in cm
 spessori=np.array([0,10*w,w,2*w,3*w,4*w,5*w,6*w,7*w,8*w,9*w]) #glob me li ordina così
 
 def f1(x,mu,ch_0,q):
@@ -1360,13 +1418,13 @@ for f in filenames:
     a=popt[0]#popt è un vettore con i parametri ottimali
     x0=popt[1]
     sig=popt[2]
-
+    print('per i vari materiali con lamericio')
     pvalue=1 - stats.chi2.cdf(chi2_1, DOF)#pvalue, deve essere maggiore di 0.005
-    #print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
-    #print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
-   # print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
-   # print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
-   # print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
+    print('il fattore moltiplicativo per %s è %.3f, la media è %.2f, la sigma è %.2f' % (f.replace('.txt',''),a,x0,sig))
+    print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('.txt',''),chi2_1, DOF))
+    print('il chi2 ridotto per %s è=%.3f '% (f.replace('.txt',''),chi2_1redux))
+    print('il pvalue per %s è=%.3f'% (f.replace('.txt',''),pvalue))
+    print('Area sotto il fotopicco per %s è : %.3f'%(f.replace('.txt',''),photopeakcount))
 
 ##plot
     pylab.figure('fit gaussiano con %s'%f.replace('.txt',''))
@@ -1433,7 +1491,11 @@ for f in filenames:
     A1=popt[2]
     A2=popt[3]
 
+    def derivative(x):
+        return ((popt[2]-popt[1])/popt[1])*(1/(1+np.exp((x-popt[0])/popt[1])))
 
+    def xmaxy():
+        return popt[1]*np.log(np.abs((popt[2]-popt[3]))/(np.abs((np.max(y)/2)-popt[3])))+popt[0]
 
 
     pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
@@ -1441,7 +1503,8 @@ for f in filenames:
     print('il chi2 per %s è=%.3f, i DOF sono=%.3f' % (f.replace('Discriminatore.txt',''),chi2_1, DOF))
     print('il chi2 ridotto per %s è=%.3f '% (f.replace('Discriminatore.txt',''),chi2_1redux))
     print('il pvalue per %s è=%.3f'% (f.replace('Discriminatore.txt',''),pvalue))
-
+    print('il valore dellcascissa a metà conteggio è %.3f'%(xmaxy()))
+    print('il valore della derivata calcolata nell ascissa a metà conteggio è %.3f'%(derivative(xmaxy())))
     pylab.figure('Discriminatore con %s'%(f.replace('Discriminatore.txt','')))
 
 
@@ -1457,7 +1520,7 @@ for f in filenames:
 
     pylab.savefig('discriminatore_%s.png'%f.replace('Discriminatore.txt',''))
     pylab.show()
-    pylab.close()
+    #pylab.close()
 
 ##ULTIMO GIORNO
 x=np.array([133.6,140.0,150.3,161.4,171.5,181.3,195.6,156.1,166.2])
@@ -1474,13 +1537,23 @@ sigma=popt[1]
 A1=popt[2]
 A2=popt[3]
 
+
+def derivative(x):
+    return ((popt[2]-popt[1])/popt[1])*(1/(1+np.exp((x-popt[0])/popt[1])))
+
+def xmaxy():
+    return popt[1]*np.log((popt[2]-popt[3])/((np.max(y)/2)-popt[3]))+popt[0]
+
+
+
 resolution=2.35*sigma/mu
 print('la risoluzione energetica per il discriminatore con segnale da 20 Kev è %.3f'%(resolution))
 pvalue=1 - stats.chi2.cdf(chi2_1, DOF)
 print('la media per il segnale da 20 kev col discriminatore è %.3f pm %.3f, la sigma è %.3f pm %.3f , Ampiezza superiore è %.3f pm %.3f , Ampiezza2 è %.3f pm %.3f'  % (mu,dmu,sigma,dsigma,A1,dA1,A2,dA2))
 print('il chi2 per il segnale da 20 kev col discriminatore è=%.3f, i DOF sono=%.3f' % (chi2_1, DOF))
 print('il chi2 ridotto per il segnale da 20 kev col discriminatore  è=%.3f '% (chi2_1redux))
-
+print('il valore dellcascissa a metà conteggio è %.3f'%(xmaxy()))
+print('il valore della derivata calcolata nell ascissa a metà conteggio è %.3f'%(derivative(xmaxy())))
 pylab.figure('Discriminatore segnale da 20 KeV')
 
 

@@ -1,0 +1,335 @@
+Running script: "C:\Users\JakeHarold\Desktop\workplace\Gruppo-3-Lab-Fisica-Medica\SILICONDETECTORS\GRUPPO3FISMEDJLS\New_Full_programV2.py"
+le tensioni sono
+[1.04 2.16 3.68 4.16]
+Calibratione104mv120v2.txt
+Note on using QApplication.exec_():
+The GUI event loop is already running in the pyzo kernel, and exec_()
+does not block. In most cases your app should run fine without the need
+for modifications. For clarity, this is what the pyzo kernel does:
+- Prevent deletion of objects in the local scope of functions leading to exec_()
+- Prevent system exit right after the exec_() call
+il fattore moltiplicativo per Calibratione104mv120v2 è 3193.324, la media è 85.59, la sigma è 3.49
+il chi2 per Calibratione104mv120v2 è=27.156, i DOF sono=22.000
+il chi2 ridotto per Calibratione104mv120v2 è=1.234 
+il pvalue per Calibratione104mv120v2 è=0.205
+Area sotto il fotopicco per Calibratione104mv120v2 è : 27822.000
+Calibratione216mv120v2.txt
+il fattore moltiplicativo per Calibratione216mv120v2 è 3118.340, la media è 186.71, la sigma è -3.54
+il chi2 per Calibratione216mv120v2 è=28.455, i DOF sono=25.000
+il chi2 ridotto per Calibratione216mv120v2 è=1.138 
+il pvalue per Calibratione216mv120v2 è=0.287
+Area sotto il fotopicco per Calibratione216mv120v2 è : 27670.000
+Calibratione368mv120v2.txt
+il fattore moltiplicativo per Calibratione368mv120v2 è 3208.108, la media è 305.38, la sigma è -3.45
+il chi2 per Calibratione368mv120v2 è=36.536, i DOF sono=26.000
+il chi2 ridotto per Calibratione368mv120v2 è=1.405 
+il pvalue per Calibratione368mv120v2 è=0.082
+Area sotto il fotopicco per Calibratione368mv120v2 è : 27772.000
+il fattore moltiplicativo per ECalibrationes416mv120v2 è 3172.140, la media è 342.87, la sigma è 3.49
+il chi2 per ECalibrationes416mv120v2 è=27.484, i DOF sono=23.000
+il chi2 ridotto per ECalibrationes416mv120v2 è=1.195 
+il pvalue per ECalibrationes416mv120v2 è=0.236
+Area sotto il fotopicco per ECalibrationes416mv120v2 è : 27749.000
+PER I SEGNALI TEST I SEGUENTI VALORI CON INCERTEZZE:
+Per il segnale 1.040 abbiamo il canale medio 85.595 +- 0.018 abbiamo la fwhm 8.190 +- 0.042 e una risoluzione energetica 0.096 +- 0.000 
+Per il segnale 2.160 abbiamo il canale medio 186.707 +- 0.024 abbiamo la fwhm 8.322 +- 0.057 e una risoluzione energetica 0.045 +- 0.000 
+Per il segnale 3.680 abbiamo il canale medio 305.381 +- 0.023 abbiamo la fwhm 8.100 +- 0.054 e una risoluzione energetica 0.027 +- 0.000 
+Per il segnale 4.160 abbiamo il canale medio 342.867 +- 0.022 abbiamo la fwhm 8.193 +- 0.051 e una risoluzione energetica 0.024 +- 0.000 
+PER LA TENSIONE 1.040 HO UNA ENERGIA DI  23 +- 0.225 e UNA ATTENUAZIONE DI 43.000 
+PER LA TENSIONE 2.160 HO UNA ENERGIA DI  49 +- 0.225 e UNA ATTENUAZIONE DI 38.000 
+PER LA TENSIONE 3.680 HO UNA ENERGIA DI  83 +- 0.225 e UNA ATTENUAZIONE DI 33.500 
+PER LA TENSIONE 4.160 HO UNA ENERGIA DI  94 +- 0.225 e UNA ATTENUAZIONE DI 32.500 
+0.012190580642074036 0.08915453851297947
+[[ 8.81070781e-08 -1.93731435e-05]
+ [-1.93731435e-05  5.16964492e-03]]
+il coefficiente angolare per la calibrazione del segnale test MILLIVOLT VS CHANNEL è 0.012 pm 0.000, la intercetta è 0.089 pm 0.072
+il chi2 per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=0.000, i DOF sono=1.000
+il chi2 ridotto per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=0.000 
+il pvalue per la calibrazione  MILLIVOLT VS CHANNEL del segnale test è=0.992
+la funzione per la calibrazione  MILLIVOLT VS CHANNEL dei segnali test è ENERGY = 0.01 * CHANNEL + 0.09 
+0.2742880641872801 2.0059771912430957
+[[ 4.46042001e-05 -9.80765272e-03]
+ [-9.80765272e-03  2.61713269e+00]]
+il coefficiente angolare per la calibrazione del segnale ENERGY VS CHANNEL test è 0.274 pm 0.007, la intercetta è 2.006 pm 1.618
+il chi2 per la calibrazione del segnale test è=0.055, i DOF sono=1.000
+il chi2 ridotto per la calibrazione ENERGY VS CHANNEL del segnale test è=0.055 
+il pvalue per la calibrazione ENERGY VS CHANNEL del segnale test è=0.815
+la funzione per la calibrazione ENERGY VS CHANNEL dei segnali test è ENERGY = 0.27 * CHANNEL + 2.01 
+QUESTA PARTE RIGUARDA IL CALCOLO DELLE INCERTEZZE SULL ENERGIA DELLLA CALIBRAZIONE CON I SEGNALI TEST
+per il canale 85.595 incertezza sulla relativa energia è 0.022
+per il canale 186.707 incertezza sulla relativa energia è 0.023
+per il canale 305.381 incertezza sulla relativa energia è 0.022
+per il canale 342.867 incertezza sulla relativa energia è 0.022
+Per il fit lineare per la risoluzione vs gain il coefficiente del primo grado è 0.007, del termine costante è -0.200, R value è 0.942
+Per il fit quadratico per la risoluzione vs gain il coefficiente del secondo grado è 0.001,del primo è -0.040, del termine costante è 0.663, R value è 1.000
+Per il fit cubico per la risoluzione vs gain il coefficiente del terzo grado è 0.000, del second è -0.004,del primo è 0.124, del termine costante è -1.374, R value è 1.000
+C:\Program Files (x86)\pyzo\source\pyzo\pyzokernel\interpreter.py:966: RankWarning: Polyfit may be poorly conditioned
+  exec(code, self.locals)
+Per il fit quartico per la risoluzione vs gain il coefficiente del quarto grado è 0.000000, del terzo è -0.000,del secondo è -0.000, del primo è 0.037, del termine costante è -0.588, R value è 1.000
+capacita12_4pf.txt
+il fattore moltiplicativo per capacita12_4pf è 2955.591, la media è 345.81, la sigma è -3.73
+il chi2 per capacita12_4pf è=38.532, i DOF sono=33.000
+il chi2 ridotto per capacita12_4pf è=1.168 
+il pvalue per capacita12_4pf è=0.233
+Area sotto il fotopicco per capacita12_4pf è : 27690.000
+capacita18_6pf.txt
+il fattore moltiplicativo per capacita18_6pf è 2859.559, la media è 345.49, la sigma è -3.87
+il chi2 per capacita18_6pf è=27.722, i DOF sono=29.000
+il chi2 ridotto per capacita18_6pf è=0.956 
+il pvalue per capacita18_6pf è=0.533
+Area sotto il fotopicco per capacita18_6pf è : 27699.000
+capacita27_1pf416mv.txt
+il fattore moltiplicativo per capacita27_1pf416mv è 2615.848, la media è 344.64, la sigma è -4.23
+il chi2 per capacita27_1pf416mv è=36.023, i DOF sono=29.000
+il chi2 ridotto per capacita27_1pf416mv è=1.242 
+il pvalue per capacita27_1pf416mv è=0.173
+Area sotto il fotopicco per capacita27_1pf416mv è : 27666.000
+capacita6_9pf.txt
+il fattore moltiplicativo per capacita6_9pf è 3053.396, la media è 344.20, la sigma è -3.62
+il chi2 per capacita6_9pf è=29.675, i DOF sono=26.000
+il chi2 ridotto per capacita6_9pf è=1.141 
+il pvalue per capacita6_9pf è=0.281
+Area sotto il fotopicco per capacita6_9pf è : 27714.000
+PER Il SEGNALE DA 4.16mv HO I SEGUENTI VALORI CON INCERTEZZE:
+Per il segnale con 12.400 abbiamo il canale medio 345.810 +- 0.020 abbiamo la fwhm 8.771 +- 0.047 e una risoluzione energetica 0.025 +- 0.000 
+Per il segnale con 18.600 abbiamo il canale medio 345.494 +- 0.021 abbiamo la fwhm 9.086 +- 0.049 e una risoluzione energetica 0.026 +- 0.000 
+Per il segnale con 27.100 abbiamo il canale medio 344.639 +- 0.028 abbiamo la fwhm 9.929 +- 0.066 e una risoluzione energetica 0.029 +- 0.000 
+Per il segnale con 6.900 abbiamo il canale medio 344.202 +- 0.023 abbiamo la fwhm 8.502 +- 0.055 e una risoluzione energetica 0.025 +- 0.000 
+Per il fit lineare di RESOLUTION VS CAPACITY il coefficiente del primo grado è 0.000, del termine costante è 0.023, R value è 0.955
+Per il fit quadratico di RESOLUTIO VS CAPACITY il coefficiente del secondo grado è 0.000,del primo è -0.000, del termine costante è 0.025, R value è 0.998
+Per il fit cubico il di RESOLUTIO VS CAPACITY coefficiente del terzo grado è 0.000, del second è -0.000,del primo è 0.000, del termine costante è 0.024, R value è 1.000
+C:\Program Files (x86)\pyzo\source\pyzo\pyzokernel\interpreter.py:966: RankWarning: Polyfit may be poorly conditioned
+  exec(code, self.locals)
+Per il fit quartico di RESOLUTIO VS CAPACITY il coefficiente del quarto grado è 0.000000, del terzo è 0.000,del secondo è -0.000, del primo è 0.000, del termine costante è 0.024, R value è 1.000
+questi risultati sul fit gaussiano riguardano la capacità incognita
+il fattore moltiplicativo per incognitacapaicta è 2960.887, la media è 346.18, la sigma è -3.74
+il chi2 per incognitacapaicta è=24.361, i DOF sono=24.000
+il chi2 ridotto per incognitacapaicta è=1.015 
+il pvalue per incognitacapaicta è=0.441
+Area sotto il fotopicco per incognitacapaicta è : 27697.000
+LA CAPACITà INCOGNITA è : 13.339 +- 21.661
+04V.txt
+il fattore moltiplicativo per 04V è 2268.644, la media è 197.59, la sigma è -9.73
+il chi2 per 04V è=883.183, i DOF sono=56.000
+il chi2 ridotto per 04V è=15.771 
+il pvalue per 04V è=0.000
+Area sotto il fotopicco per 04V è : 54399.000
+09V.txt
+il fattore moltiplicativo per 09V è 4203.465, la media è 197.81, la sigma è -8.76
+il chi2 per 09V è=1208.523, i DOF sono=56.000
+il chi2 ridotto per 09V è=21.581 
+il pvalue per 09V è=0.000
+Area sotto il fotopicco per 09V è : 92288.000
+11V.txt
+il fattore moltiplicativo per 11V è 4453.304, la media è 198.88, la sigma è -8.33
+il chi2 per 11V è=1681.045, i DOF sono=56.000
+il chi2 ridotto per 11V è=30.019 
+il pvalue per 11V è=0.000
+Area sotto il fotopicco per 11V è : 94133.000
+12V.txt
+il fattore moltiplicativo per 12V è 4537.395, la media è 199.15, la sigma è -8.17
+il chi2 per 12V è=1839.972, i DOF sono=56.000
+il chi2 ridotto per 12V è=32.857 
+il pvalue per 12V è=0.000
+Area sotto il fotopicco per 12V è : 94495.000
+PER I SEGNALI con AMERICIO A VARIE TENSIONI I SEGUENTI VALORI CON INCERTEZZE:
+Per il segnale 04V.txt abbiamo il canale medio 197.594 +- 0.160 abbiamo la fwhm 22.868 +- 0.398 e una risoluzione energetica 0.116 +- 0.002 
+Per il segnale 09V.txt abbiamo il canale medio 197.813 +- 0.087 abbiamo la fwhm 20.594 +- 0.210 e una risoluzione energetica 0.104 +- 0.001 
+Per il segnale 11V.txt abbiamo il canale medio 198.884 +- 0.097 abbiamo la fwhm 19.566 +- 0.231 e una risoluzione energetica 0.098 +- 0.001 
+Per il segnale 12V.txt abbiamo il canale medio 199.155 +- 0.102 abbiamo la fwhm 19.203 +- 0.242 e una risoluzione energetica 0.096 +- 0.001 
+Per il fit lineare di Xmedio vs Tensione il coefficiente del primo grado è 0.191, del termine costante è 196.641, R value è 0.782
+Per il fit quadratico di Xmedio vs Tensione il coefficiente del secondo grado è 0.049,del primo è -0.575, del termine costante è 199.100, R value è 0.972
+Per il fit cubico di Xmedio vs Tensione il coefficiente del terzo grado è -0.020, del second è 0.546,del primo è -4.418, del termine costante è 207.798, R value è 1.000
+C:\Program Files (x86)\pyzo\source\pyzo\pyzokernel\interpreter.py:966: RankWarning: Polyfit may be poorly conditioned
+  exec(code, self.locals)
+Per il fit quartico di Xmedio vs Tensione il coefficiente del quarto grado è -0.001176, del terzo è 0.023,del secondo è -0.003, del primo è -1.427, del termine costante è 202.210, R value è 1.000
+Per il fit lineare di fwhm vs Tensione il coefficiente del primo grado è -0.463, del termine costante è 24.726, R value è 0.999
+Per il fit quadratico di fwhm vs Tensione il coefficiente del secondo grado è -0.001,del primo è -0.454, del termine costante è 24.697, R value è 0.999
+Per il fit cubico di fwhm vs Tensione il coefficiente del terzo grado è 0.007, del second è -0.186,del primo è 0.976, del termine costante è 21.461, R value è 1.000
+C:\Program Files (x86)\pyzo\source\pyzo\pyzokernel\interpreter.py:966: RankWarning: Polyfit may be poorly conditioned
+  exec(code, self.locals)
+Per il fit quartico di fwhm vs Tensione il coefficiente del quarto grado è 0.000289, del terzo è -0.003,del secondo è -0.050, del primo è 0.240, del termine costante è 22.836, R value è 1.000
+['calibrationAmericio.txt', 'calibrationAmericioGDimpure.txt', 'calibrationAmericioGDpure.txt']
+il fattore moltiplicativo per calibrationAmericio è 4537.395, la media è 199.15, la sigma è -8.17
+il chi2 per calibrationAmericio è=1839.972, i DOF sono=56.000
+il chi2 ridotto per calibrationAmericio è=32.857 
+il pvalue per calibrationAmericio è=0.000
+Area sotto il fotopicco per calibrationAmericio è : 94495.000
+['calibrationAmericio.txt', 'calibrationAmericioGDimpure.txt', 'calibrationAmericioGDpure.txt']
+il fattore moltiplicativo per calibrationAmericioGDimpure è 3631.444, la media è 201.68, la sigma è -5.33
+il chi2 per calibrationAmericioGDimpure è=2015.898, i DOF sono=56.000
+il chi2 ridotto per calibrationAmericioGDimpure è=35.998 
+il pvalue per calibrationAmericioGDimpure è=0.000
+Area sotto il fotopicco per calibrationAmericioGDimpure è : 50862.000
+['calibrationAmericio.txt', 'calibrationAmericioGDimpure.txt', 'calibrationAmericioGDpure.txt']
+il fattore moltiplicativo per calibrationAmericioGDpure è 3188.868, la media è 202.03, la sigma è 4.99
+il chi2 per calibrationAmericioGDpure è=1665.283, i DOF sono=56.000
+il chi2 ridotto per calibrationAmericioGDpure è=29.737 
+il pvalue per calibrationAmericioGDpure è=0.000
+Area sotto il fotopicco per calibrationAmericioGDpure è : 41801.000
+il fattore moltiplicativo per Cadmio è 229.168, la media è 75.13, la sigma è -4.58
+il chi2 per Cadmio è=33.396, i DOF sono=16.000
+il chi2 ridotto per Cadmio è=2.087 
+il pvalue per Cadmio è=0.007
+Area sotto il fotopicco per Cadmio è : 2557.000
+il fattore moltiplicativo per GADOLINIO è 3188.868, la media è 202.03, la sigma è 4.99
+il chi2 per GADOLINIO è=1820.282, i DOF sono=105.000
+il chi2 ridotto per GADOLINIO è=17.336 
+il pvalue per GADOLINIO è=0.000
+Area sotto il fotopicco per GADOLINIO è : 41956.000
+Per il fit lineare per la calibrazione energetica degli isotopi il coefficiente del primo grado è 0.229, del termine costante è 5.041, R value è 0.759
+la funzione di calibrazione è ENERGIA= 0.23 * CANALE + 5.04 - 15
+QUESTA PARTE RIGUARDA IL CALCOLO DELLE INCERTEZZE SULL ENERGIA DELLLA CALIBRAZIONE CON I SEGNALI DELLA SORGENTE
+per il canale 199.155 incertezza sulla relativa energia è 0.047
+per il canale 75.125 incertezza sulla relativa energia è 0.042
+per il canale 202.029 incertezza sulla relativa energia è 0.041
+Am0Cutext.txt
+il fattore moltiplicativo per Am0Cu spessori di Rame è 4535.688, la media è 199.13, la sigma è 8.18
+il chi2 per Am0Cu spessori di Rame è=1178.368, i DOF sono=40.000
+il chi2 ridotto per Am0Cu spessori di Rame è=29.459 
+il pvalue per Am0Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am0Cu spessori di Rame è : 93840.000
+Am10Cutext.txt
+il fattore moltiplicativo per Am10Cu spessori di Rame è 6.233, la media è 203.05, la sigma è -4.71
+il chi2 per Am10Cu spessori di Rame è=21.391, i DOF sono=20.000
+il chi2 ridotto per Am10Cu spessori di Rame è=1.070 
+il pvalue per Am10Cut spessori di Rame è=0.374
+Area sotto il fotopicco per Am10Cu spessori di Rame è : 71.000
+Am1Cutext.txt
+il fattore moltiplicativo per Am1Cu spessori di Rame è 1995.802, la media è 201.46, la sigma è -5.38
+il chi2 per Am1Cu spessori di Rame è=1043.213, i DOF sono=40.000
+il chi2 ridotto per Am1Cu spessori di Rame è=26.080 
+il pvalue per Am1Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am1Cu spessori di Rame è : 28123.000
+Am2Cutext.txt
+il fattore moltiplicativo per Am2Cu spessori di Rame è 1275.472, la media è 202.38, la sigma è -4.68
+il chi2 per Am2Cu spessori di Rame è=505.606, i DOF sono=40.000
+il chi2 ridotto per Am2Cu spessori di Rame è=12.640 
+il pvalue per Am2Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am2Cu spessori di Rame è : 15529.000
+Am3Cutext.txt
+il fattore moltiplicativo per Am3Cu spessori di Rame è 710.280, la media è 202.83, la sigma è -4.38
+il chi2 per Am3Cu spessori di Rame è=222.881, i DOF sono=40.000
+il chi2 ridotto per Am3Cu spessori di Rame è=5.572 
+il pvalue per Am3Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am3Cu spessori di Rame è : 8053.000
+Am4Cutext.txt
+il fattore moltiplicativo per Am4Cu spessori di Rame è 380.426, la media è 202.97, la sigma è -4.11
+il chi2 per Am4Cu spessori di Rame è=131.774, i DOF sono=40.000
+il chi2 ridotto per Am4Cu spessori di Rame è=3.294 
+il pvalue per Am4Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am4Cu spessori di Rame è : 4055.000
+Am5Cutext.txt
+il fattore moltiplicativo per Am5Cu spessori di Rame è 186.784, la media è 203.16, la sigma è -4.19
+il chi2 per Am5Cu spessori di Rame è=80.343, i DOF sono=39.000
+il chi2 ridotto per Am5Cu spessori di Rame è=2.060 
+il pvalue per Am5Cut spessori di Rame è=0.000
+Area sotto il fotopicco per Am5Cu spessori di Rame è : 2005.000
+Am6Cutext.txt
+il fattore moltiplicativo per Am6Cu spessori di Rame è 85.687, la media è 202.81, la sigma è -4.39
+il chi2 per Am6Cu spessori di Rame è=58.469, i DOF sono=32.000
+il chi2 ridotto per Am6Cu spessori di Rame è=1.827 
+il pvalue per Am6Cut spessori di Rame è=0.003
+Area sotto il fotopicco per Am6Cu spessori di Rame è : 967.000
+Am7Cutext.txt
+il fattore moltiplicativo per Am7Cu spessori di Rame è 47.562, la media è 203.51, la sigma è 3.86
+il chi2 per Am7Cu spessori di Rame è=29.273, i DOF sono=29.000
+il chi2 ridotto per Am7Cu spessori di Rame è=1.009 
+il pvalue per Am7Cut spessori di Rame è=0.451
+Area sotto il fotopicco per Am7Cu spessori di Rame è : 479.000
+Am8Cutext.txt
+il fattore moltiplicativo per Am8Cu spessori di Rame è 21.902, la media è 203.21, la sigma è -4.44
+il chi2 per Am8Cu spessori di Rame è=23.073, i DOF sono=25.000
+il chi2 ridotto per Am8Cu spessori di Rame è=0.923 
+il pvalue per Am8Cut spessori di Rame è=0.573
+Area sotto il fotopicco per Am8Cu spessori di Rame è : 250.000
+Am9Cutext.txt
+il fattore moltiplicativo per Am9Cu spessori di Rame è 9.980, la media è 203.28, la sigma è -5.24
+il chi2 per Am9Cu spessori di Rame è=24.395, i DOF sono=22.000
+il chi2 ridotto per Am9Cu spessori di Rame è=1.109 
+il pvalue per Am9Cut spessori di Rame è=0.327
+Area sotto il fotopicco per Am9Cu spessori di Rame è : 127.000
+il coefficiente di assorbimento del rame è 14.518 pm 1.104, la costante moltiplicativa è 85695.467 pm 6292.261 e il valore costante è 192.055 pm 195.813
+il chi2 è=4056.769, i DOF sono=7.000
+il chi2 ridotto è=579.538 
+il pvalue è=0.000
+muvarie100mumolibdeno.txt
+per i vari materiali con lamericio
+il fattore moltiplicativo per muvarie100mumolibdeno è 4246.966, la media è 200.79, la sigma è 6.28
+il chi2 per muvarie100mumolibdeno è=7269.173, i DOF sono=305.000
+il chi2 ridotto per muvarie100mumolibdeno è=23.833 
+il pvalue per muvarie100mumolibdeno è=0.000
+Area sotto il fotopicco per muvarie100mumolibdeno è : 74515.000
+muvarie125mustagno.txt
+per i vari materiali con lamericio
+il fattore moltiplicativo per muvarie125mustagno è 3881.779, la media è 201.39, la sigma è 5.50
+il chi2 per muvarie125mustagno è=5536.843, i DOF sono=298.000
+il chi2 ridotto per muvarie125mustagno è=18.580 
+il pvalue per muvarie125mustagno è=0.000
+Area sotto il fotopicco per muvarie125mustagno è : 59351.000
+muvarie20munickel.txt
+per i vari materiali con lamericio
+il fattore moltiplicativo per muvarie20munickel è 1.000, la media è 252.93, la sigma è 1263220.42
+il chi2 per muvarie20munickel è=0.000, i DOF sono=2.000
+il chi2 ridotto per muvarie20munickel è=0.000 
+il pvalue per muvarie20munickel è=1.000
+Area sotto il fotopicco per muvarie20munickel è : 6.000
+muvarie50mumolibdeno.txt
+per i vari materiali con lamericio
+il fattore moltiplicativo per muvarie50mumolibdeno è 4466.238, la media è 200.09, la sigma è 7.05
+il chi2 per muvarie50mumolibdeno è=7819.274, i DOF sono=297.000
+il chi2 ridotto per muvarie50mumolibdeno è=26.328 
+il pvalue per muvarie50mumolibdeno è=0.000
+Area sotto il fotopicco per muvarie50mumolibdeno è : 87285.000
+muvarie50mustagno.txt
+per i vari materiali con lamericio
+il fattore moltiplicativo per muvarie50mustagno è 2470.285, la media è 202.40, la sigma è 4.74
+il chi2 per muvarie50mustagno è=2427.022, i DOF sono=248.000
+il chi2 ridotto per muvarie50mustagno è=9.786 
+il pvalue per muvarie50mustagno è=0.000
+Area sotto il fotopicco per muvarie50mustagno è : 31931.000
+I COEFFICIENTI DI ASSORBIMENTO DEI VARI METERIALI SONO:
+[0.00230591 0.00366498 0.00144825 0.02156028]
+I COEFFICIENTI DIVISI PER LA DENSITA SONO IN gr/cm^2:
+[0.00022387 0.00050205 0.00014061 0.00295346]
+Discriminatore0c.txt
+la media per Discriminatore0c.txt è 165.202 pm 0.756, la sigma è 5.545 pm 0.413 , Ampiezza superiore è 5223.317 pm 180.066 , Ampiezza2 è -38.375 pm 16.885
+il chi2 per Discriminatore0c.txt è=194.835, i DOF sono=11.000
+il chi2 ridotto per Discriminatore0c.txt è=17.712 
+il pvalue per Discriminatore0c.txt è=0.000
+il valore dellcascissa a metà conteggio è 173.020
+il valore della derivata calcolata nell ascissa a metà conteggio è 184.642
+Discriminatore124C.txt
+la media per Discriminatore124C.txt è 169.949 pm 0.681, la sigma è 5.438 pm 0.492 , Ampiezza superiore è 5115.217 pm 150.899 , Ampiezza2 è -61.404 pm 29.567
+il chi2 per Discriminatore124C.txt è=115.551, i DOF sono=8.000
+il chi2 ridotto per Discriminatore124C.txt è=14.444 
+il pvalue per Discriminatore124C.txt è=0.000
+il valore dellcascissa a metà conteggio è 177.433
+il valore della derivata calcolata nell ascissa a metà conteggio è 189.460
+Discriminatore186C.txt
+la media per Discriminatore186C.txt è 168.253 pm 0.551, la sigma è 5.386 pm 0.383 , Ampiezza superiore è 5172.252 pm 139.748 , Ampiezza2 è -47.347 pm 21.292
+il chi2 per Discriminatore186C.txt è=107.752, i DOF sono=9.000
+il chi2 ridotto per Discriminatore186C.txt è=11.972 
+il pvalue per Discriminatore186C.txt è=0.000
+il valore dellcascissa a metà conteggio è 175.767
+il valore della derivata calcolata nell ascissa a metà conteggio è 190.514
+DISCRIMINATORE20KEV.txt
+la media per DISCRIMINATORE20KEV.txt è 155.792 pm 1.004, la sigma è -8.458 pm 0.916 , Ampiezza superiore è -12.194 pm 8.377 , Ampiezza2 è 341.633 pm 8.124
+il chi2 per DISCRIMINATORE20KEV.txt è=14.178, i DOF sono=13.000
+il chi2 ridotto per DISCRIMINATORE20KEV.txt è=1.091 
+il pvalue per DISCRIMINATORE20KEV.txt è=0.361
+il valore dellcascissa a metà conteggio è 163.730
+il valore della derivata calcolata nell ascissa a metà conteggio è 0.317
+Discriminatore271C.txt
+la media per Discriminatore271C.txt è 169.078 pm 0.355, la sigma è -6.013 pm 0.288 , Ampiezza superiore è -51.253 pm 14.621 , Ampiezza2 è 5158.255 pm 84.989
+il chi2 per Discriminatore271C.txt è=13.129, i DOF sono=5.000
+il chi2 ridotto per Discriminatore271C.txt è=2.626 
+il pvalue per Discriminatore271C.txt è=0.022
+il valore dellcascissa a metà conteggio è 167.356
+il valore della derivata calcolata nell ascissa a metà conteggio è 3.227
+la risoluzione energetica per il discriminatore con segnale da 20 Kev è -0.084
+la media per il segnale da 20 kev col discriminatore è 163.046 pm 0.936, la sigma è -5.810 pm 0.558 , Ampiezza superiore è -179.949 pm 103.051 , Ampiezza2 è 50923.834 pm 2314.167
+il chi2 per il segnale da 20 kev col discriminatore è=1077.709, i DOF sono=5.000
+il chi2 ridotto per il segnale da 20 kev col discriminatore  è=215.542 
+il valore dellcascissa a metà conteggio è 159.011
+il valore della derivata calcolata nell ascissa a metà conteggio è 9.982
