@@ -1,10 +1,11 @@
-\contentsline {section}{\numberline {1}Calibrazione segnali test}{2}{section.1}
-\contentsline {section}{\numberline {2}Risoluzione energetica in funzione delle capacit\'a e valutazione del rumore del sistema}{7}{section.2}
-\contentsline {section}{\numberline {3}Studio dello spettro di sorgenti radioattive $\gamma $.}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Americio}{9}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Cadmio}{20}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Calibrazione delle sorgenti e studio dello spettro con spessori.}{21}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Attenuazione in un materiale}{23}{subsection.3.4}
-\contentsline {section}{\numberline {4}Giunzione in polarit\IeC {\`a} inversa}{26}{section.4}
-\contentsline {subsection}{\numberline {4.1}Conteggi al variare della tensione di soglia.}{27}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Calibrazione con rilevatore}{33}{subsection.4.2}
+\contentsline {section}{\numberline {1}Obiettivi}{2}{section.1}
+\contentsline {section}{\numberline {2}Strumentazione}{2}{section.2}
+\contentsline {section}{\numberline {3}Calibrazione segnali test}{2}{section.3}
+\contentsline {section}{\numberline {4}Risoluzione energetica in funzione delle capacit\'a e valutazione del rumore del sistema}{8}{section.4}
+\contentsline {section}{\numberline {5}Studio dello spettro di sorgenti radioattive $\gamma $.}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Americio}{10}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Cadmio}{21}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Calibrazione delle sorgenti e studio dello spettro con spessori.}{22}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Attenuazione in un materiale}{24}{subsection.5.4}
+\contentsline {section}{\numberline {6}Giunzione in polarit\IeC {\`a} inversa}{30}{section.6}
+\contentsline {subsection}{\numberline {6.1}Conteggi al variare della tensione di soglia.}{31}{subsection.6.1}

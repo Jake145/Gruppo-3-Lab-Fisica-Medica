@@ -35,7 +35,7 @@ for f in filenames:
     plt.xlim(0,250)
     plt.grid(True)
     plt.show()
-    plt.close()
+    #plt.close()
     data=y
     a=74
     b=360
@@ -94,7 +94,7 @@ for f in filenames:
 
     pylab.xlabel('channel')
     pylab.ylabel('counts')
-    pylab.xlim(0,500)
+    pylab.xlim(300,400)
 
     pylab.title('gauss fit con %s'%f.replace('.txt',''))
     pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -103,7 +103,7 @@ for f in filenames:
 
     pylab.show()
     plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
-    plt.close()
+    #plt.close()
     chn.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)
@@ -119,9 +119,10 @@ plt.plot(x, y, color='blue',marker = 'o')
 plt.xlabel('chn')
 plt.title('Segnale test con %s'%f.replace('.txt',''))
 plt.ylabel('count')
-#plt.xlim(0,250)
+plt.xlim(0,500)
 plt.grid(True)
 plt.show()
+plt.savefig('Visualecon_%s.png'%f.replace('.txt',''))
 plt.close()
 data=y
 a=74
@@ -181,7 +182,7 @@ pylab.errorbar( x, data, ds , fmt= '.', ecolor= 'magenta')
 
 pylab.xlabel('channel')
 pylab.ylabel('counts')
-pylab.xlim(0,500)
+pylab.xlim(300,400)
 
 pylab.title('gauss fit con %s'%f.replace('.txt',''))
 pylab.plot(x1,gaus(x1,*popt), color='green', label="fit")
@@ -761,7 +762,7 @@ for f in filenames:
 
     pylab.show()
     plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
-    plt.close()
+    #plt.close()
     xmedio.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)

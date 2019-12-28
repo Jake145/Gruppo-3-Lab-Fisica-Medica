@@ -36,7 +36,26 @@
 	\maketitle
 	\tableofcontents
 	\newpage
-	
+	\section{Obiettivi}
+L’obiettivo dell’esperienza è descrivere le caratteristiche di un rivelatore a semiconduttore (Silicio)in spettroscopia $\Gamma$. Analizziamo le proprietà del sistema in diverse circostanze e sottoponendolo a diverse sorgenti di radiazione. L'esperienza è divisa in due parti in cui il setup per l'analisi viene cambiato.
+	\section{Strumentazione}
+Il sistema di analisi è costituito da diversi strumenti collegati tra loro:
+\begin{itemize}
+\item rivelatore a semiconduttore (diodo al Silicio);
+\item generatore di impulsi, che utilizzeremo nella prima fase per produrre impulsi da inviare al
+preamplificatore che simulano la risposta del rivelatore;
+\item preamplificatore, con capacità intrinseca di \emph{1pF};
+\item attenuatori, collegati al preamplificatore, per attenuare con accuratezza il segnale test;
+\item amplificatore;
+\item oscilloscopio;
+\item scheda digitale multicanale;
+\item computer;
+\item sorgenti radiattive di 241-Am (\emph{Americio}) e 109-Cd(\emph{Cadmio});
+\item diversi spessori di rame da \emph{600 $\mu m$};
+\item spessori di elementi diversi (Molibdeno, Gadolinio, Stagno, Nickel).
+\item un discriminatore contatore di impulsi;
+
+\end{itemize}	
 	\section{Calibrazione segnali test}
 Vogliamo anzitutto generare dei segnali per simulare lo spettro delle sorgenti radioattive che andremo ad analizzare, così da poter calibrare gli strumenti per le successive acquisizioni con rivelatore. Vengono così creati impulsi tramite il generatore di onde ed osservati attraverso un oscilloscopio multicanale. Infine, lo spettro simulato viene acquisito ed analizzato con un software ("\textbf{MAESTRO}") tramite una DC collegata all'oscilloscopio.  Tramite degli attenuatori modifichiamo le ampiezze dei segnali test, ottenendo le misure riportate nella tabella seguente, al fine di ottenere una calibrazione dell'oscilloscopio multicanale. Vogliamo cos\'i poter stimare i canali corrispondenti alle energie dei fotopicchi dell'Am-241 e del Cd-109 (60 keV, 22 keV). 
 	\newline
@@ -44,7 +63,7 @@ Vogliamo anzitutto generare dei segnali per simulare lo spettro delle sorgenti r
 	Come zero della scala del multicanale si imposta il \textbf{channel (Chn) 11}. I segnali test vengono inviati ad un condensatore test da C $\simeq$ 1 pF (in Si $E_{e-h}$ = 3.6 eV). Il tempo di acquisizione è di \textbf{120s}. Riportiamo a titolo d'esempio lo spettro del segnale simulato alla tensione di \emph{4.16 mV} e il relativo fit gaussiano del picco.
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{Visuale_a_ECalibrationes416mv120v2}
+\includegraphics[width=1\textwidth]{Visualecon_ECalibrationes416mv120v2}
         \caption{Fig. 1: Spettro ottenuto tramite il segnale simulato a 4.16 mV.  }
         \label{fig:1}
 \end{figure}
@@ -445,20 +464,29 @@ Riportiamo i valori dei picchi osservati tramite MAESTRO e successivamente quell
  
 
 \begin{figure}[H]
-	\includegraphics[width=0.5\textwidth]{Visuale_a_Am0Cu}
+	\includegraphics[width=1\textwidth]{gauss_fit_con_Am0Cutext}
         \caption{Fig. 20: Fit Gaussiano del picco senza spessori.}
-        \label{fig:20}      
-	\includegraphics[width=0.5\textwidth]{Visuale_a_Am3Cu}
+        \end{figure}
+        \label{fig:20} 
+        \begin{figure}
+        
+            
+	\includegraphics[width=1\textwidth]{gauss_fit_con_Am3Cutext}
         \caption{Fig. 21: Fit Gaussiano del picco con 3 spessori}
         \label{fig:21}
+        
+
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=0.5\textwidth]{Visuale_a_Am7Cu}
+	\includegraphics[width=1\textwidth]{gauss_fit_con_Am7Cutext}
         \caption{Fig. 22: Fit Gaussiano del picco con 7 spessori}
         \label{fig:22}
+	\end{figure} 
+	\begin{figure}
 	
-	\includegraphics[width=0.5\textwidth]{Visuale_a_Am10Cu}
+	
+	\includegraphics[width=1\textwidth]{gauss_fit_con_Am10Cutext}
         \caption{Fig. 23: Fit Gaussiano del picco con 10 spessori}
         \label{fig:23}        
 \end{figure}  
@@ -681,11 +709,13 @@ f(x)_{18.6 pF}= -12.20 + \frac{341.63+12.20}{1+e^{\frac{x-175.76}{190.51}}}
 f(x)_{27.1}= -51.25 + \frac{5158+51.25}{1+e^{\frac{x-167.35}{3.23}}}
 \end{equation}
 \newpage
+
+
+\begin{comment}
 \subsection{Calibrazione con rilevatore}
 Vogliamo ottenere una calibrazione del setup con delle sorgenti radioattive. Abbiamo sempre a disposizione la sorgente di Americio e Cadmio, la prima inutilizzabile a tale scopo perchè, come detto precedentemente, non abbiamo di 400 mV di soglia. Lavoriamo sempre alla tensione di 12V sul rivelatore, scegliamo come tempo di acquisizione \textbf{100 s}.\\
 
 Facciamo anzitutto una misura senza sorgente per valutare il rumore del sistema, poi una tramite il segnale simulato a 22.6 KeV con il generatore d'onde, con ampiezza $\Delta V = 1.50 mV$ e 46dB di attenuazione.\\
-
 \begin{table}[H]
 	
 		\begin{tabular}{lcc}
@@ -777,7 +807,7 @@ Vogliamo un ulteriore picco per per poter avere almeno 3 punti per la calibrazio
 	\textbf{QUI VANNO INSERITI I DATI DEL DISCRIMINATORE CON IL SEGNALE SIMULATO A 30 KEV, QUINDI IL GRAFICO PER IL FIT DELLA CALIBRAZIONE E L'ESPRESSIONE DELLA RETTA DI CALIBRAZIONE.}
 
 
-
+\end{comment}
   
 
 

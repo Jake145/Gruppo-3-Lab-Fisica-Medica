@@ -36,7 +36,26 @@
 	\maketitle
 	\tableofcontents
 	\newpage
-	
+	\section{Obiettivi}
+L’obiettivo dell’esperienza è descrivere le caratteristiche di un rivelatore a semiconduttore (Silicio)in spettroscopia $\Gamma$. Analizziamo le proprietà del sistema in diverse circostanze e sottoponendolo a diverse sorgenti di radiazione. L'esperienza è divisa in due parti in cui il setup per l'analisi viene cambiato.
+	\section{Strumentazione}
+Il sistema di analisi è costituito da diversi strumenti collegati tra loro:
+\begin{itemize}
+\item rivelatore a semiconduttore (diodo al Silicio);
+\item generatore di impulsi, che utilizzeremo nella prima fase per produrre impulsi da inviare al
+preamplificatore che simulano la risposta del rivelatore;
+\item preamplificatore, con capacità intrinseca di \emph{1pF};
+\item attenuatori, collegati al preamplificatore, per attenuare con accuratezza il segnale test;
+\item amplificatore;
+\item oscilloscopio;
+\item scheda digitale multicanale;
+\item computer;
+\item sorgenti radiattive di 241-Am (\emph{Americio}) e 109-Cd(\emph{Cadmio});
+\item diversi spessori di rame da \emph{600 $\mu m$};
+\item spessori di elementi diversi (Molibdeno, Gadolinio, Stagno, Nickel).
+\item un discriminatore contatore di impulsi;
+
+\end{itemize}	
 	\section{Calibrazione segnali test}
 Vogliamo anzitutto generare dei segnali per simulare lo spettro delle sorgenti radioattive che andremo ad analizzare, così da poter calibrare gli strumenti per le successive acquisizioni con rivelatore. Vengono così creati impulsi tramite il generatore di onde ed osservati attraverso un oscilloscopio multicanale. Infine, lo spettro simulato viene acquisito ed analizzato con un software ("\textbf{MAESTRO}") tramite una DC collegata all'oscilloscopio.  Tramite degli attenuatori modifichiamo le ampiezze dei segnali test, ottenendo le misure riportate nella tabella seguente, al fine di ottenere una calibrazione dell'oscilloscopio multicanale. Vogliamo cos\'i poter stimare i canali corrispondenti alle energie dei fotopicchi dell'Am-241 e del Cd-109 (60 keV, 22 keV). 
 	\newline
@@ -44,7 +63,7 @@ Vogliamo anzitutto generare dei segnali per simulare lo spettro delle sorgenti r
 	Come zero della scala del multicanale si imposta il \textbf{channel (Chn) 11}. I segnali test vengono inviati ad un condensatore test da C $\simeq$ 1 pF (in Si $E_{e-h}$ = 3.6 eV). Il tempo di acquisizione è di \textbf{120s}. Riportiamo a titolo d'esempio lo spettro del segnale simulato alla tensione di \emph{4.16 mV} e il relativo fit gaussiano del picco.
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{Visuale_a_ECalibrationes416mv120v2}
+\includegraphics[width=1\textwidth]{Visualecon_ECalibrationes416mv120v2}
         \caption{Fig. 1: Spettro ottenuto tramite il segnale simulato a 4.16 mV.  }
         \label{fig:1}
 \end{figure}
@@ -646,7 +665,7 @@ Viene fatta una prima misura a vuoto, poi inseriamo le capacità studiate preced
 I dati raccolti ci consentono di fare un fit dei dati tramite una funzione sigmoide, da cui possiamo ricavare così i valori $A_{1}$, $A_{2}$, m ed s. In Fig. 21,22,23,24 presentiamo i fit e le relative funzioni ricavate.
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{discriminatore}
+\includegraphics[width=1\textwidth]{discriminatore_0C}
         \caption{Fig. 25: Conteggi al variare della tensione di soglia, rilevatore senza capacità..}
         \label{fig:25}
 \end{figure}
@@ -655,7 +674,7 @@ f(x)_{vuoto}= -61.40 + \frac{5115.21+61.40}{1+e^{\frac{x-173.02}{184.65}}}
 \end{equation}
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{discriminatore12_4}
+\includegraphics[width=1\textwidth]{discriminatore_124C}
         \caption{Fig. 26: Conteggi al variare della tensione di soglia, C=12.4 pF.}
         \label{fig:26}
 \end{figure}
@@ -664,7 +683,7 @@ f(x)_{12.4 pF}= -47.35 + \frac{5172.25+47.35}{1+e^{\frac{x-177.43}{189.46}}}
 \end{equation}
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{discriminatore18_6}
+\includegraphics[width=1\textwidth]{discriminatore_186C}
         \caption{Fig. 27: Conteggi al variare della tensione di soglia, C=18.6 pF.}
         \label{fig:27}
 \end{figure}
@@ -673,7 +692,7 @@ f(x)_{18.6 pF}= -12.20 + \frac{341.63+12.20}{1+e^{\frac{x-175.76}{190.51}}}
 \end{equation}
 
 \begin{figure}[H]
-\includegraphics[width=1\textwidth]{discriminatore27_1}
+\includegraphics[width=1\textwidth]{discriminatore_271C}
         \caption{Fig. 28: Conteggi al variare della tensione di soglia, C=27.1 pF.}
         \label{fig:28}
 \end{figure}
