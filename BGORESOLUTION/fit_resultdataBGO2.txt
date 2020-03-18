@@ -1,0 +1,25 @@
+[[Model]]
+    Model(skewed_gaussian)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 45
+    # data points      = 127
+    # variables        = 4
+    chi-square         = 0.00575521
+    reduced chi-square = 4.6790e-05
+    Akaike info crit   = -1262.23319
+    Bayesian info crit = -1250.85644
+[[Variables]]
+    amplitude:  0.46139687 +/- 0.00203008 (0.44%) (init = 0.6144201)
+    center:     3.48428179 +/- 0.00614336 (0.18%) (init = 3.160505)
+    sigma:      0.54700405 +/- 0.00754644 (1.38%) (init = 0.410035)
+    gamma:     -1.69026027 +/- 0.06560994 (3.88%) (init = 0)
+    height:     0.33650706 +/- 0.00410352 (1.22%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    fwhm:       1.28809608 +/- 0.01777052 (1.38%) == '2.3548200*sigma'
+[[Correlations]] (unreported correlations are < 0.100)
+    C(center, sigma)     =  0.943
+    C(center, gamma)     = -0.938
+    C(sigma, gamma)      = -0.929
+    C(amplitude, sigma)  =  0.502
+    C(amplitude, center) =  0.395
+    C(amplitude, gamma)  = -0.298
