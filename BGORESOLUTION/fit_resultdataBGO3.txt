@@ -2,35 +2,35 @@
     (Model(expgaussian) + Model(linear))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 177
-    # data points      = 64
+    # function evals   = 61
+    # data points      = 36
     # variables        = 6
-    chi-square         = 0.00244194
-    reduced chi-square = 4.2102e-05
-    Akaike info crit   = -639.126030
-    Bayesian info crit = -626.172731
+    chi-square         = 4.8075e-04
+    reduced chi-square = 1.6025e-05
+    Akaike info crit   = -392.052597
+    Bayesian info crit = -382.551483
 [[Variables]]
-    amplitude:  0.35865342 +/- 0.01567095 (4.37%) (init = 0.6174673)
-    center:     4.65088118 +/- 0.10013278 (2.15%) (init = 4.636921)
-    sigma:      0.62001199 +/- 0.01998206 (3.22%) (init = 0.7714037)
-    gamma:      19.9999989 +/- 40.6740780 (203.37%) (init = 1)
-    height:     0.22930054 +/- 0.00579439 (2.53%) == 'amplitude*gamma/2*exp(gamma**2*sigma**2/2)*erfc(gamma*sigma/sqrt(2))'
-    fwhm:       1.46001664 +/- 0.04705416 (3.22%) == '2.3548200*sigma'
-    slope:     -0.01417074 +/- 0.00204445 (14.43%) (init = -0.05996241)
-    intercept:  0.10195103 +/- 0.01472830 (14.45%) (init = 0.4419924)
+    amplitude:  0.34712560 +/- 0.03132555 (9.02%) (init = 0.4545759)
+    center:     4.48216241 +/- 0.10414029 (2.32%) (init = 4.671985)
+    sigma:      0.54660761 +/- 0.03873157 (7.09%) (init = 0.6662123)
+    gamma:      3.04069663 +/- 1.74673789 (57.45%) (init = 1)
+    height:     0.20268236 +/- 0.01099023 (5.42%) == 'amplitude*gamma/2*exp(gamma**2*sigma**2/2)*erfc(gamma*sigma/sqrt(2))'
+    fwhm:       1.28716254 +/- 0.09120588 (7.09%) == '2.3548200*sigma'
+    slope:     -0.03267458 +/- 0.00841473 (25.75%) (init = -0.02483669)
+    intercept:  0.19571292 +/- 0.03310834 (16.92%) (init = 0.2891818)
 [[Correlations]] (unreported correlations are < 0.100)
-    C(slope, intercept)     = -0.996
-    C(center, gamma)        =  0.995
-    C(amplitude, intercept) = -0.962
-    C(amplitude, slope)     =  0.942
-    C(amplitude, sigma)     =  0.830
-    C(sigma, intercept)     = -0.796
-    C(sigma, slope)         =  0.778
-    C(sigma, gamma)         =  0.623
-    C(center, sigma)        =  0.572
-    C(gamma, intercept)     = -0.190
-    C(gamma, slope)         =  0.188
-    C(amplitude, gamma)     =  0.172
-    C(center, intercept)    = -0.120
-    C(center, slope)        =  0.117
-    C(amplitude, center)    =  0.105
+    C(center, gamma)        =  0.997
+    C(slope, intercept)     = -0.990
+    C(gamma, slope)         =  0.979
+    C(center, slope)        =  0.963
+    C(gamma, intercept)     = -0.960
+    C(center, intercept)    = -0.941
+    C(sigma, intercept)     = -0.941
+    C(sigma, gamma)         =  0.932
+    C(center, sigma)        =  0.928
+    C(sigma, slope)         =  0.912
+    C(amplitude, gamma)     = -0.910
+    C(amplitude, center)    = -0.909
+    C(amplitude, slope)     = -0.892
+    C(amplitude, intercept) =  0.820
+    C(amplitude, sigma)     = -0.704

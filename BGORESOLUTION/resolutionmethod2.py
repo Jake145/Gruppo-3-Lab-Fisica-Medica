@@ -30,10 +30,10 @@ for i in range(len(filenames)):
         b=4.7
     if i==1:
         a=2.29
-        b=5
+        b=4
     if i==2:
         a=3.5
-        b=8
+        b=6
     if i==3:
         a=2.28
         b=2.7
