@@ -1,0 +1,36 @@
+[[Model]]
+    (Model(expgaussian) + Model(linear))
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 123
+    # data points      = 27
+    # variables        = 6
+    chi-square         = 9.0727e-04
+    reduced chi-square = 4.3204e-05
+    Akaike info crit   = -266.124387
+    Bayesian info crit = -258.349366
+[[Variables]]
+    amplitude:  0.25702208 +/- 0.00521991 (2.03%) (init = 0.3235052)
+    center:     3.24873924 +/- 0.02187139 (0.67%) (init = 3.312981)
+    sigma:      0.19939453 +/- 0.00818484 (4.10%) (init = 0.2165099)
+    gamma:      12.9634419 +/- 4.77253565 (36.82%) (init = 1)
+    height:     0.45832629 +/- 0.01559953 (3.40%) == 'amplitude*gamma/2*exp(gamma**2*sigma**2/2)*erfc(gamma*sigma/sqrt(2))'
+    fwhm:       0.46953823 +/- 0.01927382 (4.10%) == '2.3548200*sigma'
+    slope:     -0.04482320 +/- 0.01088731 (24.29%) (init = -0.1806202)
+    intercept:  0.18294244 +/- 0.03786255 (20.70%) (init = 0.8624497)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(center, gamma)        =  0.996
+    C(slope, intercept)     = -0.993
+    C(sigma, gamma)         =  0.933
+    C(center, sigma)        =  0.918
+    C(sigma, slope)         =  0.872
+    C(sigma, intercept)     = -0.866
+    C(gamma, slope)         =  0.828
+    C(center, slope)        =  0.788
+    C(gamma, intercept)     = -0.787
+    C(center, intercept)    = -0.743
+    C(amplitude, center)    = -0.249
+    C(amplitude, intercept) = -0.244
+    C(amplitude, gamma)     = -0.214
+    C(amplitude, slope)     =  0.136
+    C(amplitude, sigma)     =  0.120

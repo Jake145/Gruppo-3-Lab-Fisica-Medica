@@ -38,26 +38,17 @@ for i in range(len(files)):
 
     bin_centers = bin_borders[:-1] + np.diff(bin_borders) / 2
     if i<6:
-        name=f.replace('.F18.csv','')
+        name=f.replace('.F18.csv','F18')
         np.savetxt('data%s.txt'%(name),data)
-        c=[bin_heights,bin_borders,bin_centers]
-        with open(os.path.join('/Users/JakeHarold/Desktop/workplace/Gruppo-3-Lab-Fisica-Medica\BGORESOLUTION','histdata%s.txt'%(name)), "w") as file:
-            for x in zip(*c):
-                file.write("{0}\t{1}\t{2}\n".format(*x))
+
     elif i==6 or i<9:
-        name=f.replace('.Tc99m.csv','')
+        name=f.replace('.Tc99m.csv','Tc99m')
         np.savetxt('data%s.txt'%(name),data)
-        c=[bin_heights,bin_borders,bin_centers]
-        with open(os.path.join('/Users/JakeHarold/Desktop/workplace/Gruppo-3-Lab-Fisica-Medica\BGORESOLUTION','histdata%s.txt'%(name)), "w") as file:
-            for x in zip(*c):
-                file.write("{0}\t{1}\t{2}\n".format(*x))
+
     elif i==9 or i==10:
-        name=f.replace('.Ba133.csv','')
+        name=f.replace('.Ba133.csv','Ba133')
         np.savetxt('data%s.txt'%(name),data)
-        c=[bin_heights,bin_borders,bin_centers]
-        with open(os.path.join('/Users/JakeHarold/Desktop/workplace/Gruppo-3-Lab-Fisica-Medica\BGORESOLUTION','histdata%s.txt'%(name)), "w") as file:
-            for x in zip(*c):
-                file.write("{0}\t{1}\t{2}\n".format(*x))
+
     else:
         pass
 for f in files:

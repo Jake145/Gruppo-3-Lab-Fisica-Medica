@@ -1,0 +1,33 @@
+[[Model]]
+    (Model(skewed_gaussian) + Model(linear))
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 158
+    # data points      = 29
+    # variables        = 6
+    chi-square         = 0.08901142
+    reduced chi-square = 0.00387006
+    Akaike info crit   = -155.802306
+    Bayesian info crit = -147.598531
+[[Variables]]
+    amplitude:  0.73617502 +/- 0.00293032 (0.40%) (init = 0.9858947)
+    center:     1.32809036 +/- 0.00113164 (0.09%) (init = 1.317604)
+    sigma:      0.02411145 +/- 5.2074e-04 (2.16%) (init = 0.02466156)
+    gamma:     -0.60595598 +/- 0.08375446 (13.82%) (init = 0)
+    height:     12.1805761 +/- 0.26452988 (2.17%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    fwhm:       0.05677813 +/- 0.00122625 (2.16%) == '2.3548200*sigma'
+    slope:     -1.42128023 +/- 0.24333633 (17.12%) (init = 17.37012)
+    intercept:  1.99241502 +/- 0.31172006 (15.65%) (init = -18.83362)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(slope, intercept)     = -0.998
+    C(center, gamma)        = -0.998
+    C(center, sigma)        =  0.990
+    C(sigma, gamma)         = -0.987
+    C(gamma, intercept)     =  0.408
+    C(gamma, slope)         = -0.405
+    C(center, intercept)    = -0.383
+    C(center, slope)        =  0.379
+    C(sigma, intercept)     = -0.368
+    C(sigma, slope)         =  0.360
+    C(amplitude, slope)     = -0.358
+    C(amplitude, intercept) =  0.317

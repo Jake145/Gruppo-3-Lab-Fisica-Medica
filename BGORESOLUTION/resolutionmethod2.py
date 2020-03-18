@@ -38,20 +38,27 @@ for i in range(len(filenames)):
         a=2.28
         b=2.7
     if i==4:
-        a=2.2
-        b=4
+        a=2.5
+        b=3
     if i==5:
-        a=2.6
-        b=4
+        a=2.2
+        b=3.1
     if i==6:
-        a=1.25
-        b=1.4
+        a=3.5
+        b=4.6
     if i==7:
-        a=0.98
-        b=1.2
+        a=2.8
+        b=4
     if i==8:
-        a=0.5
-        b=0.7
+        a=1.2
+        b=1.4
+    if i==9:
+        a=0.97
+        b=1.129
+    if i==10:
+        a=0.51
+        b=0.63
+
     else:
         pass
 
@@ -72,10 +79,10 @@ for i in range(len(filenames)):
     y=np.array(newheights)
     x=np.array(newcenters)
 #in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewedù
-    if i<6 and i!=3 or i==8 or i==7:
+    if i<=7 and i!=3 or i==9  or i==10:
         peak=ExponentialGaussianModel()
         text='Exponential Gaussian Fit'
-    elif  i==6  or i>6 and i!=8 and i!=7 or i==3:
+    elif   i>7 or i==3 and i!=9 and i!=10:
         peak=SkewedGaussianModel()
         text='Skewed Gaussian Fit'
     else:
