@@ -1,5 +1,5 @@
 import numpy as np
-from lmfit.models import ExponentialGaussianModel,SkewedGaussianModel
+from lmfit.models import ExponentialGaussianModel,SkewedGaussianModel,LinearModel
 from lmfit import Model
 import os
 import matplotlib.pyplot as plt
@@ -27,31 +27,31 @@ for i in range(len(filenames)):
 #qui definisco gli estremi dei fotopicchi
     if i==0:
         a=2.3
-        b=10
+        b=6
     if i==1:
-        a=2.4
-        b=10
+        a=2.29
+        b=5
     if i==2:
         a=3.5
-        b=10
+        b=8
     if i==3:
-        a=2.3
-        b=4
+        a=2.28
+        b=2.7
     if i==4:
         a=2.2
         b=4
     if i==5:
-        a=2.3
-        b=10
+        a=2.6
+        b=4
     if i==6:
         a=1.25
         b=1.4
     if i==7:
-        a=1
+        a=0.98
         b=1.2
     if i==8:
-        a=0.47
-        b=1.4
+        a=0.5
+        b=0.7
     else:
         pass
 
@@ -71,17 +71,21 @@ for i in range(len(filenames)):
             pass
     y=np.array(newheights)
     x=np.array(newcenters)
-#in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewed
-    if i<6 and i!=1:
-        mod=ExponentialGaussianModel()
+#in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewedù
+    if i<6 and i!=3 or i==8 or i==7:
+        peak=ExponentialGaussianModel()
         text='Exponential Gaussian Fit'
-    elif i==1 or i==6 or i>6:
-        mod=SkewedGaussianModel()
+    elif  i==6 or i>6 and i!=8 and i!=7 or i==3:
+        peak=SkewedGaussianModel()
         text='Skewed Gaussian Fit'
     else:
         print('ERROR')
 #indovina i parametri iniziali
-    pars=mod.guess(y,x=x)
+    noise=LinearModel()
+    mod=peak + noise
+    parspeak=peak.guess(y,x=x)
+    parslinear=noise.guess(y,x=x)
+    pars=parspeak+parslinear
 #fit
     out = mod.fit(y, pars, x=x)
 #ora calcoliamo le risoluzioni
