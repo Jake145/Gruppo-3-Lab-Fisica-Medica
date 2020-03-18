@@ -35,7 +35,7 @@ for f in filenames:
     plt.xlim(0,250)
     plt.grid(True)
     plt.show()
-    #plt.close()
+    plt.close()
     data=y
     a=74
     b=360
@@ -103,7 +103,7 @@ for f in filenames:
 
     pylab.show()
     plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
-    #plt.close()
+    plt.close()
     chn.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)
@@ -762,7 +762,7 @@ for f in filenames:
 
     pylab.show()
     plt.savefig('Fit_Gaussiano_con_%s.png'%f.replace('.txt',''))
-    #plt.close()
+    plt.close()
     xmedio.append(x0)
     sigma.append(sig)
     photopeaks.append(photopeakcount)
@@ -1376,7 +1376,7 @@ for f in filenames:
     plt.grid(True)
     plt.show()
     plt.savefig('Visuale a %s'%f.replace('.txt',''))
-    #plt.close()
+    plt.close()
     data=y
     a=130
     b=500
