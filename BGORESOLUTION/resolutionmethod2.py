@@ -26,8 +26,8 @@ for i in range(len(filenames)):
     data=np.loadtxt(f,unpack=True)
 #qui definisco gli estremi dei fotopicchi
     if i==0:
-        a=2.3
-        b=6
+        a=3
+        b=4.7
     if i==1:
         a=2.29
         b=5
@@ -75,7 +75,7 @@ for i in range(len(filenames)):
     if i<6 and i!=3 or i==8 or i==7:
         peak=ExponentialGaussianModel()
         text='Exponential Gaussian Fit'
-    elif  i==6 or i>6 and i!=8 and i!=7 or i==3:
+    elif  i==6  or i>6 and i!=8 and i!=7 or i==3:
         peak=SkewedGaussianModel()
         text='Skewed Gaussian Fit'
     else:
