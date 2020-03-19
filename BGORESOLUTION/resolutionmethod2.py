@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import glob
 bins=200
 #cancelliamo file vecchi
-crap1=glob.glob('hist*.png')
-for craps in crap1:
+old=glob.glob('hist*.png')
+for oldfile in old:
     try:
-        remove(craps)
+        remove(oldfile)
     except:
         pass
 #iniziamo il tutto caricando i dati
@@ -78,7 +78,7 @@ for i in range(len(filenames)):
             pass
     y=np.array(newheights)
     x=np.array(newcenters)
-#in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewedù
+#in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewed
     if i<=7 and i!=3 or i==9  or i==10:
         peak=ExponentialGaussianModel()
         text='Exponential Gaussian Fit'
@@ -107,6 +107,7 @@ for i in range(len(filenames)):
     plt.title('Histogram Resolution of %s '%f.replace('.txt',''))
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
+    plt.plot([], [], ' ', label='Linear Background')
     plt.plot([], [], ' ', label='Resolution: %.2f'%resolution)
     plt.grid()
     plt.legend()

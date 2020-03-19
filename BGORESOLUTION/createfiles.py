@@ -6,7 +6,7 @@ import urllib.request, zipfile, io
 import os
 import shutil
 import glob
-bins=200
+
 dataurl = 'https://docs.google.com/uc?export=download&id=183pCEe2KtC__kM9RO-hXJqFTc3qUGEsl'
 files=['BGO1.F18.csv', 'BGO2.F18.csv', 'BGO3.F18.csv',
        'LSO1.F18.csv', 'LSO2.F18.csv', 'LSO3.F18.csv',
@@ -17,16 +17,16 @@ for f in files:
         os.remove(f)
     except:
         pass
-crap1=glob.glob('data*.txt')
-for craps in crap1:
+old1=glob.glob('data*.txt')
+for oldfiles in old1:
     try:
-        remove(craps)
+        remove(oldfiles)
     except:
         pass
-crap2=glob.glob('histdata*.txt')
-for crapss in crap2:
+old2=glob.glob('histdata*.txt')
+for oldfiles2 in old2:
     try:
-        remove(crapss)
+        remove(oldfiles2)
     except:
         pass
 zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(dataurl).read())).extractall()
@@ -34,9 +34,7 @@ zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(dataurl).read())).extractall()
 for i in range(len(files)):
     f=files[i]
     data=np.loadtxt(f,unpack=True)
-    bin_heights, bin_borders, _ = plt.hist(data,bins,facecolor='g',ec='black',alpha=0.5,label='histogram')
 
-    bin_centers = bin_borders[:-1] + np.diff(bin_borders) / 2
     if i<6:
         name=f.replace('.F18.csv','F18')
         np.savetxt('data%s.txt'%(name),data)
