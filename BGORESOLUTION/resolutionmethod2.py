@@ -16,6 +16,14 @@ for oldfile in old:
 #iniziamo il tutto caricando i dati
 filenames=glob.glob('data*.txt')
 
+###Ora definiamo la funzione di klein nishina
+
+def kleinnishina(x,A,B):
+    return A*((1+(np.cos(B)**2)/2))*(1/(1+(x**2)*(1-np.cos(B)))**2)*(1+(x*(1-np.cos(B))**2)/(((1+np.cos(B)**2)*(1+x*(1-np.cos(B))))))
+
+
+
+###
 
 
 for i in range(len(filenames)):
@@ -95,7 +103,17 @@ for i in range(len(filenames)):
     mod=peak + noise + tails
     if i!=3 and i!=5:
         parspeak=peak.guess(y,x=x)
+    ###klein
 
+        klein=Model(kleinnishina)
+        mod2=peak + klein
+
+        params = klein.make_params(A=1,B=np.pi)
+        parss=params+parspeak
+        out2=mod2.fit(y,parss,x=x)
+
+
+    ###
     elif i==3 or i==5 :
 
         parspeak1=peak1.guess(y,x=x)
@@ -110,11 +128,18 @@ for i in range(len(filenames)):
     pars=parspeak+parslinear+parstails
 #fit
     out = mod.fit(y, pars, x=x)
+
+
 #ora calcoliamo le risoluzioni
     if i!=3 and i!=5:
         fwhm=out.params['fwhm'].value
         center=out.params['center'].value
         resolution=100*fwhm/center
+        ##Klein resolution
+        fwhmk=out2.params['fwhm'].value
+        centerk=out2.params['center'].value
+        resolutionk=100*fwhmk/centerk
+        ##Klein resolution
     elif i==3 or i==5:
         fwhm1=out.params['peak1fwhm'].value
         fwhm2=out.params['peak2fwhm'].value
@@ -128,6 +153,8 @@ for i in range(len(filenames)):
     with open('fit_result%s.txt'%f.replace('.txt',''), 'w') as fh:
         fh.write(out.fit_report())
 #figura
+
+
     plt.title('Histogram Resolution of %s '%f.replace('.txt',''))
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
@@ -135,13 +162,18 @@ for i in range(len(filenames)):
     if i!=3 and i!=5:
         plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
         plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
+        plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise')
+        plt.plot([], [], ' ', label='Resolution Klein: %.2f percent'%resolutionk)
+
     elif i==3 or i==5:
         plt.plot([], [], ' ', label='Resolution first peak: %.2f percent'%resolution1)
         plt.plot([], [], ' ', label='Center of first Photopeak: %.2f'%center1)
         plt.plot([], [], ' ', label='Resolution Second Photopeak: %.2f percent'%resolution2)
         plt.plot([], [], ' ', label='Center of second Photopeak: %.2f'%center2)
+
+
     plt.grid()
     plt.legend()
     plt.ylabel('frequency')
-    plt.savefig('hist%s.png'%f.replace('.txt',''))
+    plt.savefig('histklein%s.png'%f.replace('.txt',''))
     plt.show()
