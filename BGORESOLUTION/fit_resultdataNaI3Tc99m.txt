@@ -1,36 +1,22 @@
 [[Model]]
-    (Model(expgaussian) + Model(linear))
+    ((Model(gaussian) + Model(linear)) + Model(exponential, prefix='exp'))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 186
+    # function evals   = 16007
     # data points      = 35
-    # variables        = 6
-    chi-square         = 1.13698702
-    reduced chi-square = 0.03920645
-    Akaike info crit   = -107.943819
-    Bayesian info crit = -98.6117308
+    # variables        = 7
+    chi-square         = 1.09843952
+    reduced chi-square = 0.03922998
+    Akaike info crit   = -107.151013
+    Bayesian info crit = -96.2635764
+##  Warning: uncertainties could not be estimated:
 [[Variables]]
-    amplitude:  0.41071483 +/- 0.52911191 (128.83%) (init = 0.3320081)
-    center:     0.54691845 +/- 0.01528160 (2.79%) (init = 0.5646478)
-    sigma:      0.02748348 +/- 0.00731218 (26.61%) (init = 0.03273995)
-    gamma:      19.9999930 +/- 299.381578 (1496.91%) (init = 1)
-    height:     2.78277882 +/- 31.0439048 (1115.57%) == 'amplitude*gamma/2*exp(gamma**2*sigma**2/2)*erfc(gamma*sigma/sqrt(2))'
-    fwhm:       0.06471864 +/- 0.01721887 (26.61%) == '2.3548200*sigma'
-    slope:     -20.9106696 +/- 26.3003198 (125.77%) (init = -9.378334)
-    intercept:  12.1521503 +/- 13.4179487 (110.42%) (init = 8.176145)
-[[Correlations]] (unreported correlations are < 0.100)
-    C(slope, intercept)     = -0.999
-    C(gamma, slope)         = -0.995
-    C(gamma, intercept)     =  0.994
-    C(center, gamma)        = -0.991
-    C(amplitude, gamma)     =  0.990
-    C(amplitude, center)    = -0.988
-    C(amplitude, slope)     = -0.987
-    C(amplitude, intercept) =  0.982
-    C(center, slope)        =  0.976
-    C(center, intercept)    = -0.972
-    C(sigma, intercept)     = -0.849
-    C(sigma, gamma)         = -0.843
-    C(sigma, slope)         =  0.834
-    C(center, sigma)        =  0.805
-    C(amplitude, sigma)     = -0.759
+    amplitude:     6.96703522 (init = 0.3320081)
+    center:        0.56725227 (init = 0.5646478)
+    sigma:         0.07102038 (init = 0.03273995)
+    fwhm:          0.16724020 == '2.3548200*sigma'
+    height:        39.1358819 == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:         2275.16402 (init = -9.378334)
+    intercept:    -2323.84914 (init = 8.176145)
+    expamplitude:  3641.72781 (init = 43.50916)
+    expdecay:      0.43823591 (init = 0.2038191)

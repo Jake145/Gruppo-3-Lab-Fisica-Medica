@@ -40,17 +40,17 @@
 	\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract}
-Lo scopo di questa esperienza è trovare una metodologia che permette di stimare la risoluzione energetica di vari rivelatori a scintillazione in modo da massimizzare l'accordo con il valore predetto dalla simulazione con cui si sono ottenuti i vari spettri. Il metodo più semplice è il fit gaussiano ma non è il migliore. Un modello gaussiano corretto esponenzialmente e con fondo lineare risulta invece massimizzare l'accordo cercato.
+Lo scopo di questa esperienza è trovare una metodologia che permetta di stimare la risoluzione energetica di rivelatori a scintillazione, in modo da massimizzare l'accordo con il valore predetto dalla simulazione con cui si sono ottenuti gli spettri. Il metodo più semplice è il fit gaussiano ma non è il migliore. Un modello gaussiano corretto esponenzialmente e con fondo lineare risulta massimizzare l'accordo cercato.
 \section{Introduzione}
-Avendo a disposizione vari spettri diversi generati con una simulazione si intende trovare il modello che meglio fitti le distribuzioni per poter calcolare la risoluzione energetica con la nota formula:
+Avendo a disposizione spettri generati da simulazioni si intende trovare il modello che meglio fitti le distribuzioni degli spettri, necessario per calcolare le risoluzioni energetiche con la formula:
 \begin{equation}
 Resolution=\frac{FWHM}{\mu}
 \end{equation}
-Dove $\mu$ è il canale centrale della distribuzione. Dalla simulazione si conosce la risoluzione per lo spettro di BGO1F18 che è del $19.6\%$. Dunque intendiamo massimizzare l'accordo con questo e applicare il metodo trovato per tutti gli altri spettri.
+Dove $\mu$ è il canale centrale della distribuzione. Per lo spettro di BGO1F18 si conosce dalla simulazione la risoluzione, pari al $19.6\%$. Applichiamo a tutti gli spettri il modello che massimizza tale accordo.
 \section{Analisi Dati}
-Si procede facendo un istogramma normalizzato degli spettri e dalle prime analisi con modelli semplici, come il modello gaussiano, si nota un mancato accordo con il valore atteso. Ciò è dovuto dalla presenza di fondo della misura, e dal fatto che lo spettro non è gaussiano. Consultando la letteratura fornita si evince che il fondo si può descrivere tramite un modello lineare, mentre lo spettro ha un andamento nelle code meglio descritto da un'esponenziale. Dunque come modello si sceglie una \textbf{gaussiana corretta esponenzialmente} con un fondo descritto da un fattore lineare con la coordinata in ascissa.
+Si procede facendo un istogramma normalizzato degli spettri e dalle prime analisi con modelli semplici, come il modello gaussiano, si nota un mancato accordo con il valore atteso. Ciò è dovuto alla presenza di fondo nella misura, e al fatto che lo spettro non è gaussiano. Consultando la letteratura fornita\footnote{\label{note1}"Introductory to Nuclear Physics", Kenneth S. Krane.} si evince che il fondo si può descrivere tramite un modello lineare, mentre lo spettro ha un andamento nelle code meglio descritto da un'esponenziale. Dunque come modello si sceglie una \textbf{gaussiana corretta esponenzialmente} con un fondo descritto da un fattore lineare funzione del canale ADC.
 \subsection{Analisi con Python}
-L'analisi è stata fatta con \textbf{Python} usando principalmente la libreria \textbf{lmfit}. Questa libreria ha un buon numero di funzioni implementate, di cui si distinguono le funzioni per la gaussiana corretta esponenzialmente \textbf{ExponentialGaussianModel} e il modello lineare \textbf{LinearModel}. Per facilitare la stima dei parametri iniziali e l'algoritmo di fit, per ogni istogramma si isolano i picchi. Di seguito si riporta la parte del codice saliente per il fit. Oltre al modello sopracitato per alcuni spettri risultano meglio fittati da una gaussiana \textbf{Skewed}, anch'essa facente parte della libreria.
+L'analisi è stata fatta con \textbf{Python} usando principalmente la libreria \textbf{lmfit}. Questa libreria ha un buon numero di funzioni implementate, di cui si distinguono le funzioni per la gaussiana corretta esponenzialmente \textbf{ExponentialGaussianModel} e il modello lineare \textbf{LinearModel}. Per facilitare la stima dei parametri iniziali e l'algoritmo di fit, si isolano i picchi per ogni istogramma. Di seguito si riporta la parte del codice saliente per il fit. Oltre al modello sopracitato, alcuni spettri risultano meglio fittati da una gaussiana \textbf{Skewed}, anch'essa facente parte della libreria.
 \begin{lstlisting}[language=Python]
 import numpy as np
 from lmfit.models import ExponentialGaussianModel,SkewedGaussianModel,LinearModel
@@ -86,9 +86,9 @@ import matplotlib.pyplot as plt
     resolution=100*fwhm/center
 ...
 \end{lstlisting}
-Si sono omessi le parti del codice che servono per leggere i dati dai file, isolare il picco e fare i grafici. Il codice per generare i file txt per il fit e il codice per l'analisi dati sono reperibili sul \href{https://github.com/Jake145/Gruppo-3-Lab-Fisica-Medica/tree/master/BGORESOLUTION}{\textbf{repositorio su github.}}
+Si sono omesse le parti del codice che servono per leggere i dati dai file, isolare il picco e fare i grafici. Il codice per generare i file txt per il fit e il codice per l'analisi dati sono reperibili nel \href{https://github.com/Jake145/Gruppo-3-Lab-Fisica-Medica/tree/master/BGORESOLUTION}{\textbf{repositorio su github.}}
 \section{Risultati}
-Utilizzando questo modello si sono ottenuti risultati promettenti per il BGO1F18, infatti si stima una risoluzione energetica del $19.57\%$ in confronto con il $19.6\%$ dato dalla simulazione. Grazie a questi risultati si è proseguito con il fit degli altri spettri con lo stesso modello, sottolineando ancora una volta che per alcuni spettri è risultato un accordo migliore coi dati con una gaussiana skewed. A seguire si riportano i i grafici con le risoluzioni attese.
+Utilizzando questo modello si è ottenuto un risultato di controllo promettente per il BGO1F18, infatti si stima una risoluzione energetica del $19.57\%$ a confronto con il $19.6\%$ dato dalla simulazione, che ha permesso di proseguire con il fit degli altri spettri con lo stesso modello. Si sottolinea che per alcuni spettri c'è un accordo migliore con una gaussiana skewed. A seguire si riportano i i grafici con le risoluzioni attese.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{histdataBGO1F18}

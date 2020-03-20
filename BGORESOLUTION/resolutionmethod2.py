@@ -1,5 +1,5 @@
 import numpy as np
-from lmfit.models import ExponentialGaussianModel,SkewedGaussianModel,LinearModel
+from lmfit.models import GaussianModel,ExponentialModel,LinearModel
 from lmfit import Model
 import os
 import matplotlib.pyplot as plt
@@ -35,13 +35,13 @@ for i in range(len(filenames)):
         a=3.5
         b=6
     if i==3:
-        a=2.28
-        b=2.7
+        a=1.76
+        b=2.8
     if i==4:
         a=2.5
         b=3
     if i==5:
-        a=2.2
+        a=1.75
         b=3.1
     if i==6:
         a=3.5
@@ -79,27 +79,51 @@ for i in range(len(filenames)):
     y=np.array(newheights)
     x=np.array(newcenters)
 #in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewed
-    if i<=7 and i!=3 or i==9  or i==10:
-        peak=ExponentialGaussianModel()
-        text='Exponential Gaussian Fit'
-    elif   i>7 or i==3 and i!=9 and i!=10:
-        peak=SkewedGaussianModel()
-        text='Skewed Gaussian Fit'
-    else:
-        print('ERROR')
+    if i!=3 and i!=5:
+
+        text='Gaussian Model w/ linear background & Expn. Decay'
+        peak=GaussianModel()
+
+    elif i==3 or i==5:
+        text='Double Gaussian Model w/ linear background & Expn. Decay'
+        peak1=GaussianModel(prefix='peak1')
+        peak2=GaussianModel(prefix='peak2')
+        peak=peak1+peak2
 #indovina i parametri iniziali
     noise=LinearModel()
-    mod=peak + noise
-    parspeak=peak.guess(y,x=x)
+    tails=ExponentialModel(prefix='exp')
+    mod=peak + noise + tails
+    if i!=3 and i!=5:
+        parspeak=peak.guess(y,x=x)
+
+    elif i==3 or i==5 :
+
+        parspeak1=peak1.guess(y,x=x)
+        parspeak2=peak2.guess(y,x=x)
+        parspeak=parspeak1+parspeak2
+
+    else:
+        print('ERROR GUESS')
     parslinear=noise.guess(y,x=x)
-    pars=parspeak+parslinear
+
+    parstails=tails.guess(y,x=x)
+    pars=parspeak+parslinear+parstails
 #fit
     out = mod.fit(y, pars, x=x)
 #ora calcoliamo le risoluzioni
-
-    fwhm=out.params['fwhm'].value
-    center=out.params['center'].value
-    resolution=100*fwhm/center
+    if i!=3 and i!=5:
+        fwhm=out.params['fwhm'].value
+        center=out.params['center'].value
+        resolution=100*fwhm/center
+    elif i==3 or i==5:
+        fwhm1=out.params['peak1fwhm'].value
+        fwhm2=out.params['peak2fwhm'].value
+        center1=out.params['peak1center'].value
+        center2=out.params['peak2center'].value
+        resolution1=100*fwhm1/center1
+        resolution2=100*fwhm2/center2
+    else:
+        print('error')
 # salviamo i risultati del fit su un txt
     with open('fit_result%s.txt'%f.replace('.txt',''), 'w') as fh:
         fh.write(out.fit_report())
@@ -108,8 +132,14 @@ for i in range(len(filenames)):
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
     plt.plot([], [], ' ', label='Linear Background')
-    plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
-    plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
+    if i!=3 and i!=5:
+        plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
+        plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
+    elif i==3 or i==5:
+        plt.plot([], [], ' ', label='Resolution first peak: %.2f percent'%resolution1)
+        plt.plot([], [], ' ', label='Center of first Photopeak: %.2f'%center1)
+        plt.plot([], [], ' ', label='Resolution Second Photopeak: %.2f percent'%resolution2)
+        plt.plot([], [], ' ', label='Center of second Photopeak: %.2f'%center2)
     plt.grid()
     plt.legend()
     plt.ylabel('frequency')
