@@ -2,42 +2,36 @@
     ((Model(gaussian) + Model(linear)) + Model(exponential, prefix='exp'))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 3305
-    # data points      = 15
+    # function evals   = 2878
+    # data points      = 25
     # variables        = 7
-    chi-square         = 5.8309e-04
-    reduced chi-square = 7.2886e-05
-    Akaike info crit   = -138.328265
-    Bayesian info crit = -133.371914
+    chi-square         = 0.00179634
+    reduced chi-square = 9.9797e-05
+    Akaike info crit   = -224.521958
+    Bayesian info crit = -215.989828
 [[Variables]]
-    amplitude:     0.01961683 +/- 0.01111343 (56.65%) (init = 0.08290785)
-    center:        2.76889167 +/- 0.00923380 (0.33%) (init = 2.719115)
-    sigma:         0.07335963 +/- 0.01673167 (22.81%) (init = 0.127869)
-    fwhm:          0.17274873 +/- 0.03940007 (22.81%) == '2.3548200*sigma'
-    height:        0.10667970 +/- 0.03738076 (35.04%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
-    slope:        -2.69333133 +/- 8.28590893 (307.65%) (init = -0.08683282)
-    intercept:     9.32316283 +/- 33.6700665 (361.14%) (init = 0.4246109)
-    expamplitude: -97.3540724 +/- 550.878938 (565.85%) (init = 1.692014)
-    expdecay:      0.68291013 +/- 2.01936657 (295.70%) (init = 1.201148)
+    amplitude:     0.05710458 +/- 0.01573281 (27.55%) (init = 0.1032647)
+    center:        2.75868460 +/- 0.00380258 (0.14%) (init = 2.735099)
+    sigma:         0.10784482 +/- 0.01176339 (10.91%) (init = 0.1438527)
+    fwhm:          0.25395513 +/- 0.02770067 (10.91%) == '2.3548200*sigma'
+    height:        0.21124274 +/- 0.03636205 (17.21%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:        -0.14028573 +/- 0.40234193 (286.80%) (init = -0.001814524)
+    intercept:     0.46255044 +/- 1.28877514 (278.62%) (init = 0.1499185)
+    expamplitude: -693.590025 +/- 49443.6848 (7128.66%) (init = 0.4150869)
+    expdecay:      0.23546276 +/- 1.93508439 (821.82%) (init = 2.244534)
 [[Correlations]] (unreported correlations are < 0.100)
     C(slope, intercept)        = -1.000
-    C(expamplitude, expdecay)  =  0.999
-    C(intercept, expdecay)     =  0.997
+    C(expamplitude, expdecay)  =  1.000
+    C(intercept, expdecay)     =  0.996
     C(slope, expdecay)         = -0.996
-    C(intercept, expamplitude) =  0.992
-    C(slope, expamplitude)     = -0.990
+    C(intercept, expamplitude) =  0.995
+    C(slope, expamplitude)     = -0.995
+    C(amplitude, intercept)    = -0.972
+    C(amplitude, slope)        =  0.971
     C(amplitude, sigma)        =  0.968
-    C(center, expamplitude)    = -0.824
-    C(center, expdecay)        = -0.814
-    C(center, intercept)       = -0.794
-    C(center, slope)           =  0.790
-    C(amplitude, slope)        =  0.773
-    C(amplitude, intercept)    = -0.765
-    C(amplitude, expdecay)     = -0.716
-    C(sigma, slope)            =  0.685
-    C(amplitude, expamplitude) = -0.681
-    C(sigma, intercept)        = -0.677
-    C(sigma, expdecay)         = -0.627
-    C(sigma, expamplitude)     = -0.592
-    C(amplitude, center)       =  0.449
-    C(center, sigma)           =  0.384
+    C(amplitude, expdecay)     = -0.960
+    C(amplitude, expamplitude) = -0.957
+    C(sigma, intercept)        = -0.907
+    C(sigma, slope)            =  0.905
+    C(sigma, expdecay)         = -0.891
+    C(sigma, expamplitude)     = -0.888

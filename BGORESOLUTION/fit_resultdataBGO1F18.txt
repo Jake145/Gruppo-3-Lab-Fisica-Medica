@@ -2,42 +2,21 @@
     ((Model(gaussian) + Model(linear)) + Model(exponential, prefix='exp'))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 941
-    # data points      = 33
+    # function evals   = 16005
+    # data points      = 35
     # variables        = 7
-    chi-square         = 8.8874e-04
-    reduced chi-square = 3.4182e-05
-    Akaike info crit   = -333.233152
-    Bayesian info crit = -322.757599
+    chi-square         = 0.00102473
+    reduced chi-square = 3.6597e-05
+    Akaike info crit   = -351.353730
+    Bayesian info crit = -340.466294
+##  Warning: uncertainties could not be estimated:
 [[Variables]]
-    amplitude:     0.42378732 +/- 0.05024855 (11.86%) (init = 0.5488573)
-    center:        3.72998947 +/- 0.00769616 (0.21%) (init = 3.690553)
-    sigma:         0.32724060 +/- 0.01300110 (3.97%) (init = 0.3561031)
-    fwhm:          0.77059271 +/- 0.03061526 (3.97%) == '2.3548200*sigma'
-    height:        0.51664337 +/- 0.04110561 (7.96%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
-    slope:         0.13756794 +/- 0.28355242 (206.12%) (init = -0.1451312)
-    intercept:    -0.74624975 +/- 1.84986510 (247.89%) (init = 0.810309)
-    expamplitude:  4.50085520 +/- 11.2610062 (250.20%) (init = 34.86347)
-    expdecay:      1.24517120 +/- 2.50403676 (201.10%) (init = 0.7204202)
-[[Correlations]] (unreported correlations are < 0.100)
-    C(slope, intercept)        = -0.996
-    C(amplitude, sigma)        =  0.988
-    C(expamplitude, expdecay)  = -0.971
-    C(intercept, expdecay)     = -0.949
-    C(center, expdecay)        =  0.942
-    C(center, expamplitude)    = -0.939
-    C(slope, expdecay)         =  0.919
-    C(center, intercept)       = -0.860
-    C(intercept, expamplitude) =  0.846
-    C(center, slope)           =  0.822
-    C(slope, expamplitude)     = -0.798
-    C(amplitude, expamplitude) =  0.770
-    C(sigma, expamplitude)     =  0.726
-    C(amplitude, center)       = -0.665
-    C(center, sigma)           = -0.636
-    C(amplitude, expdecay)     = -0.600
-    C(sigma, expdecay)         = -0.555
-    C(amplitude, intercept)    =  0.320
-    C(sigma, intercept)        =  0.277
-    C(amplitude, slope)        = -0.239
-    C(sigma, slope)            = -0.199
+    amplitude:     0.40747413 (init = 0.5488573)
+    center:        3.73090486 (init = 3.690553)
+    sigma:         0.32417025 (init = 0.3561031)
+    fwhm:          0.76336258 == '2.3548200*sigma'
+    height:        0.50146078 == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:         2.93614593 (init = -0.09351711)
+    intercept:    -106.923790 (init = 0.5983428)
+    expamplitude:  107.785021 (init = 9.244508)
+    expdecay:      32.1526878 (init = 0.9390972)

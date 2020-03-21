@@ -49,38 +49,38 @@ for i in range(len(filenames)):
     data=np.loadtxt(f,unpack=True)
 #qui definisco gli estremi dei fotopicchi
     if i==0:
-        a=3
+        a=2.9
         b=4.7
     if i==1:
         a=2.29
         b=4
     if i==2:
         a=3.5
-        b=6
+        b=6.4
     if i==3:
         a=1.76
         b=2.8
     if i==4:
-        a=2.5
-        b=3
+        a=2.3
+        b=3.1
     if i==5:
         a=1.75
         b=3.1
     if i==6:
-        a=3.5
+        a=3.2
         b=4.6
     if i==7:
-        a=2.8
+        a=2.6
         b=4
     if i==8:
         a=1.2
         b=1.4
     if i==9:
-        a=0.97
-        b=1.129
+        a=0.9
+        b=1.2
     if i==10:
-        a=0.51
-        b=0.63
+        a=0.481
+        b=0.66
 
     else:
         pass
@@ -207,17 +207,18 @@ for i in range(len(filenames)):
         plt.plot([], [], ' ', label='Center of Photopeak K-N: %.2f'%centerk)
     elif i==3 or i==5:
         plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise \w Exponential decay')
-        plt.plot([], [], ' ', label='Resolution first peak: %.2f percent'%resolution1)
-        plt.plot([], [], ' ', label='Center of first Photopeak: %.2f'%center1)
-        plt.plot([], [], ' ', label='Resolution Second Photopeak: %.2f percent'%resolution2)
-        plt.plot([], [], ' ', label='Center of second Photopeak: %.2f'%center2)
-        plt.plot([], [], ' ', label='Resolution Klein First Peak: %.2f percent'%resolution1k)
-        plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.2f'%center1k)
-        plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.2f percent'%resolution2k)
-        plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.2f'%center2k)
+        plt.plot([], [], ' ', label='Resolution first peak: %.3f percent'%resolution1)
+        plt.plot([], [], ' ', label='Center of first Photopeak: %.3f'%center1)
+        plt.plot([], [], ' ', label='Resolution Second Photopeak: %.3f percent'%resolution2)
+        plt.plot([], [], ' ', label='Center of second Photopeak: %.3f'%center2)
+        plt.plot([], [], ' ', label='Resolution Klein First Peak: %.3f percent'%resolution1k)
+        plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.3f'%center1k)
+        plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.3f percent'%resolution2k)
+        plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.3f'%center2k)
 
     plt.grid()
     plt.legend()
     plt.ylabel('frequency')
-    plt.savefig(pathsavefigure)
+    if i!=3 and i!=5:
+        plt.savefig(pathsavefigure)
     plt.show()

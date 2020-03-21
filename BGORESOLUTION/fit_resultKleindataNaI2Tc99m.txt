@@ -3,26 +3,22 @@
 [[Fit Statistics]]
     # fitting method   = leastsq
     # function evals   = 31
-    # data points      = 25
+    # data points      = 49
     # variables        = 5
-    chi-square         = 0.17766941
-    reduced chi-square = 0.00888347
-    Akaike info crit   = -113.667663
-    Bayesian info crit = -107.573284
+    chi-square         = 0.24186647
+    reduced chi-square = 0.00549697
+    Akaike info crit   = -250.248299
+    Bayesian info crit = -240.789198
 [[Variables]]
-    amplitude:  0.21359821 +/- 0.04971440 (23.27%) (init = 0.1914174)
-    center:     1.05298064 +/- 0.00239648 (0.23%) (init = 1.046572)
-    sigma:      0.04413489 +/- 0.00504234 (11.42%) (init = 0.04003792)
-    fwhm:       0.10392973 +/- 0.01187381 (11.42%) == '2.3548200*sigma'
-    height:     1.93074811 +/- 0.23480183 (12.16%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
-    slope:     -3.54175465 +/- 1.14463413 (32.32%) (init = -2.10399)
-    intercept:  3.94966120 +/- 1.15293593 (29.19%) (init = 3.714287)
+    amplitude:  0.19573348 +/- 0.00541422 (2.77%) (init = 0.31901)
+    center:     1.05082600 +/- 7.8600e-04 (0.07%) (init = 1.043492)
+    sigma:      0.04230584 +/- 9.5876e-04 (2.27%) (init = 0.04927745)
+    fwhm:       0.09962264 +/- 0.00225770 (2.27%) == '2.3548200*sigma'
+    height:     1.84575860 +/- 0.02995474 (1.62%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:     -2.52695269 +/- 0.13877869 (5.49%) (init = -2.427159)
+    intercept:  2.97364605 +/- 0.14670643 (4.93%) (init = 3.517166)
 [[Correlations]] (unreported correlations are < 0.100)
-    C(amplitude, sigma)  =  0.986
-    C(slope, intercept)  = -0.978
-    C(center, slope)     = -0.925
-    C(center, intercept) =  0.912
-    C(amplitude, slope)  = -0.297
-    C(sigma, slope)      = -0.270
-    C(amplitude, center) =  0.241
-    C(center, sigma)     =  0.220
+    C(slope, intercept)  = -0.990
+    C(amplitude, sigma)  =  0.810
+    C(center, slope)     = -0.482
+    C(center, intercept) =  0.477
