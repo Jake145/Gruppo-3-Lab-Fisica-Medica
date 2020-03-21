@@ -1,5 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Abstract}{}% 1
 \BOOKMARK [1][-]{section.2}{Introduzione}{}% 2
 \BOOKMARK [1][-]{section.3}{Analisi Dati}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Analisi con Python}{section.3}% 4
-\BOOKMARK [1][-]{section.4}{Risultati}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{La formula di Klein-Nishina}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Analisi con Python}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Risultati}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Gaussiana con fondo lineare e code gaussiane}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Gaussiana con Klein-Nishina e fondo lineare}{section.4}% 8
