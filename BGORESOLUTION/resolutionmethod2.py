@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 import glob
 bins=200
+
 #cancelliamo file vecchi
 old=glob.glob('hist*.png')
 for oldfile in old:
@@ -18,8 +19,21 @@ filenames=glob.glob('data*.txt')
 
 ###Ora definiamo la funzione di klein nishina
 
-def kleinnishina(x,A,B):
-    return A*((1+(np.cos(B)**2)/2))*(1/(1+(x**2)*(1-np.cos(B)))**2)*(1+(x*(1-np.cos(B))**2)/(((1+np.cos(B)**2)*(1+x*(1-np.cos(B))))))
+m_electron_c2=511 #in Kev
+energy=511 #in Kev
+r_e=8e-30
+
+def ferg(x):
+    return m_electron_c2/energy+1-m_electron_c2/x
+def Utility_1(x):
+    return (1+ferg(x)**2)/2
+def Utility_2(x):
+    return 1/(1+(energy**2)*(1-ferg(x))**2)
+def Utility_3(x):
+    return (energy*(1-ferg(x))**2)/((1+ferg(x)**2)*(1+energy*(1-ferg(x))))
+
+def kleinnishina(x):
+    return r_e*Utility_1(x)*Utility_2(x)*(1+Utility_3(x))
 
 
 
@@ -28,6 +42,7 @@ def kleinnishina(x,A,B):
 
 for i in range(len(filenames)):
     f=filenames[i]
+    pathsavefigure=('/Users/JakeHarold/Desktop/workplace/Gruppo-3-Lab-Fisica-Medica/BGORESOLUTION/latex/histklein%s.png'%f.replace('.txt',''))
 
     print(f)
 
@@ -86,7 +101,8 @@ for i in range(len(filenames)):
             pass
     y=np.array(newheights)
     x=np.array(newcenters)
-#in base allo spettro fitto una gaussiana esponenzialmente corretta o una skewed
+
+#in base allo spettro, identificato da un indice che va da 0 a 10, fitto una gaussiana o una doppia gaussiana
     if i!=3 and i!=5:
 
         text='Gaussian Model w/ linear background & Expn. Decay'
@@ -97,23 +113,15 @@ for i in range(len(filenames)):
         peak1=GaussianModel(prefix='peak1')
         peak2=GaussianModel(prefix='peak2')
         peak=peak1+peak2
-#indovina i parametri iniziali
+
     noise=LinearModel()
+#indovina i parametri iniziali
+##Code Esponenziali
     tails=ExponentialModel(prefix='exp')
     mod=peak + noise + tails
     if i!=3 and i!=5:
         parspeak=peak.guess(y,x=x)
-    ###klein
 
-        klein=Model(kleinnishina)
-        mod2=peak + klein
-
-        params = klein.make_params(A=1,B=np.pi)
-        parss=params+parspeak
-        out2=mod2.fit(y,parss,x=x)
-
-
-    ###
     elif i==3 or i==5 :
 
         parspeak1=peak1.guess(y,x=x)
@@ -126,12 +134,28 @@ for i in range(len(filenames)):
 
     parstails=tails.guess(y,x=x)
     pars=parspeak+parslinear+parstails
-#fit
     out = mod.fit(y, pars, x=x)
+
+    ##klein-Nishina
+
+    klein=Model(kleinnishina)
+    mod2=peak + klein +noise
+    parss=parspeak+parslinear
+    out2=mod2.fit(y,parss,x=x)
+
+
+
+
+
+
+
+
 
 
 #ora calcoliamo le risoluzioni
+###GAUSSIANA SINGOLA
     if i!=3 and i!=5:
+        ##Exponential decay resolution
         fwhm=out.params['fwhm'].value
         center=out.params['center'].value
         resolution=100*fwhm/center
@@ -139,41 +163,56 @@ for i in range(len(filenames)):
         fwhmk=out2.params['fwhm'].value
         centerk=out2.params['center'].value
         resolutionk=100*fwhmk/centerk
-        ##Klein resolution
+###DOPPIA GAUSSIANA
     elif i==3 or i==5:
+        ##
         fwhm1=out.params['peak1fwhm'].value
         fwhm2=out.params['peak2fwhm'].value
         center1=out.params['peak1center'].value
         center2=out.params['peak2center'].value
         resolution1=100*fwhm1/center1
         resolution2=100*fwhm2/center2
+
+        fwhm1k=out2.params['peak1fwhm'].value
+        fwhm2k=out2.params['peak2fwhm'].value
+        center1k=out2.params['peak1center'].value
+        center2k=out2.params['peak2center'].value
+        resolution1k=100*fwhm1k/center1k
+        resolution2k=100*fwhm2k/center2k
+
     else:
         print('error')
 # salviamo i risultati del fit su un txt
     with open('fit_result%s.txt'%f.replace('.txt',''), 'w') as fh:
         fh.write(out.fit_report())
+
+    with open('fit_resultKlein%s.txt'%f.replace('.txt',''), 'w') as fh:
+        fh.write(out2.fit_report())
 #figura
 
 
     plt.title('Histogram Resolution of %s '%f.replace('.txt',''))
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
-    plt.plot([], [], ' ', label='Linear Background')
+
     if i!=3 and i!=5:
         plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
         plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
         plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise')
         plt.plot([], [], ' ', label='Resolution Klein: %.2f percent'%resolutionk)
-
+        plt.plot([], [], ' ', label='Center of Photopeak K-N: %.2f'%centerk)
     elif i==3 or i==5:
         plt.plot([], [], ' ', label='Resolution first peak: %.2f percent'%resolution1)
         plt.plot([], [], ' ', label='Center of first Photopeak: %.2f'%center1)
         plt.plot([], [], ' ', label='Resolution Second Photopeak: %.2f percent'%resolution2)
         plt.plot([], [], ' ', label='Center of second Photopeak: %.2f'%center2)
-
+        #plt.plot([], [], ' ', label='Resolution Klein First Peak: %.2f percent'%resolution1k)
+        #plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.2f'%center1k)
+        #plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.2f percent'%resolution2k)
+        #plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.2f'%center2k)
 
     plt.grid()
     plt.legend()
     plt.ylabel('frequency')
-    plt.savefig('histklein%s.png'%f.replace('.txt',''))
+    plt.savefig(pathsavefigure)
     plt.show()

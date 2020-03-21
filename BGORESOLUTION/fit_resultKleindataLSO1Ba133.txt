@@ -1,0 +1,25 @@
+[[Model]]
+    (((Model(gaussian, prefix='peak1') + Model(gaussian, prefix='peak2')) + Model(kleinnishina)) + Model(linear))
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 78
+    # data points      = 26
+    # variables        = 8
+    chi-square         = 0.10743239
+    reduced chi-square = 0.00596847
+    Akaike info crit   = -126.713743
+    Bayesian info crit = -116.648970
+##  Warning: uncertainties could not be estimated:
+[[Variables]]
+    peak1amplitude:  96.2403995 +/-        nan (nan%) (init = 0.09841736)
+    peak1center:     105.969916 +/-        nan (nan%) (init = 2.473113)
+    peak1sigma:      196.174993 +/-        nan (nan%) (init = 0.1367662)
+    peak1fwhm:       461.956798 +/- 0.00000000 (0.00%) == '2.3548200*peak1sigma'
+    peak1height:     0.19571489 +/- 0.00000000 (0.00%) == '0.3989423*peak1amplitude/max(2.220446049250313e-16, peak1sigma)'
+    peak2amplitude: -78.6958350 +/-        nan (nan%) (init = 0.09841736)
+    peak2center:    -155.874588 +/- 2.7238e+09 (1747432427.59%) (init = 2.473113)
+    peak2sigma:      546.934199 +/-        nan (nan%) (init = 0.1367662)
+    peak2fwhm:       1287.93159 +/- 0.00000000 (0.00%) == '2.3548200*peak2sigma'
+    peak2height:    -0.05740196 +/- 0.00000000 (0.00%) == '0.3989423*peak2amplitude/max(2.220446049250313e-16, peak2sigma)'
+    slope:           0.08572183 +/-        nan (nan%) (init = 0.0862095)
+    intercept:      -0.16186785 +/-        nan (nan%) (init = -0.0478327)
