@@ -198,7 +198,7 @@ for i in range(len(filenames)):
     plt.title('Histogram Resolution of %s '%f.replace('.txt',''))
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
-    plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise')
+
     if i!=3 and i!=5:
         plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
         plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
