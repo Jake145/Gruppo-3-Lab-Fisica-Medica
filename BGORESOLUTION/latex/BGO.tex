@@ -157,12 +157,17 @@ for i in range(len(filenames)):
     pars=parspeak+parslinear+parstails
     out = mod.fit(y, pars, x=x)
 
-    ##klein-Nishina
+       ##klein-Nishina
 
     klein=Model(kleinnishina)
-    mod2=peak + klein +noise
-    parss=parspeak+parslinear
-    out2=mod2.fit(y,parss,x=x)
+    if i!=3 and i!=5:
+        mod2=peak + klein +noise
+        parss=parspeak+parslinear
+        out2=mod2.fit(y,parss,x=x)
+    if i==3 or i==5:
+        mod2=peak + klein +noise + tails
+        parss=parspeak+parslinear+parstails
+        out2=mod2.fit(y,parss,x=x)
 
 #ora calcoliamo le risoluzioni
 ###GAUSSIANA SINGOLA
@@ -207,7 +212,7 @@ Il codice per generare i file txt per il fit e il codice per l'analisi dati sono
 \subsection{Gaussiana con fondo lineare e code gaussiane}
 Utilizzando questo modello si è ottenuto un risultato di controllo promettente per il BGO1F18, infatti si stima una risoluzione energetica del $20.66\%$ a confronto con il $19.6\%$ dato dalla simulazione, che ha permesso di proseguire con il fit degli altri spettri con lo stesso modello. Nel caso del LSO1Ba133 e LSO2Ba133 essendovi due picchi si è utilizzato un modello a doppia gaussiana con riportate le rispettive risoluzioni
 \subsection{Gaussiana con Klein-Nishina e fondo lineare}
-Tra i due modelli questo metodo ha portato un accordo migliore col valore predetto. Infatti per il BGO1F18 si ottiene una risoluzione del $19.56\%$. Data la raffinatezza del modello, infatti risulta essere un passo in avanti rispetto al modello esponenziale, si reputa più probabile che i valori ottenuti con questo modello abbiano un accordo migliore col valore reale. Per il momento si è omessa l'applicazione sui doppi picchi in quanto è necessario migliorare la convergenza.
+Tra i due modelli questo metodo ha portato un accordo migliore col valore predetto. Infatti per il BGO1F18 si ottiene una risoluzione del $19.56\%$. Data la raffinatezza del modello, infatti risulta essere un passo in avanti rispetto al modello esponenziale, si reputa più probabile che i valori ottenuti con questo modello abbiano un accordo migliore col valore reale. Nel caso del doppio picco si è sommato anche il contributo esponenziale per migliorare la convergenza del fit.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{histkleindataBGO1F18}
@@ -225,13 +230,13 @@ Tra i due modelli questo metodo ha portato un accordo migliore col valore predet
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{histdataLSO1Ba133}
+\includegraphics[width=0.75\textwidth]{histkleindataLSO1Ba133}
 \caption{Figura 4: Risultati fit per il LSO1Ba133.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{histdataLSO2Ba133}
+\includegraphics[width=0.75\textwidth]{histkleindataLSO2Ba133}
 \caption{Figura 5: Risultato fit per il LSO2Ba133.}
 \end{figure}
 \begin{figure}[H]

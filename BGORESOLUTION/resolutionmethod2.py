@@ -139,10 +139,14 @@ for i in range(len(filenames)):
     ##klein-Nishina
 
     klein=Model(kleinnishina)
-    mod2=peak + klein +noise
-    parss=parspeak+parslinear
-    out2=mod2.fit(y,parss,x=x)
-
+    if i!=3 and i!=5:
+        mod2=peak + klein +noise
+        parss=parspeak+parslinear
+        out2=mod2.fit(y,parss,x=x)
+    if i==3 or i==5:
+        mod2=peak + klein +noise + tails
+        parss=parspeak+parslinear+parstails
+        out2=mod2.fit(y,parss,x=x)
 
 
 
@@ -194,7 +198,7 @@ for i in range(len(filenames)):
     plt.title('Histogram Resolution of %s '%f.replace('.txt',''))
     plt.xlabel('adc')
     plt.plot(x, out.best_fit, 'r-', label=text)
-
+    plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise')
     if i!=3 and i!=5:
         plt.plot([], [], ' ', label='Resolution: %.2f percent'%resolution)
         plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
@@ -202,14 +206,15 @@ for i in range(len(filenames)):
         plt.plot([], [], ' ', label='Resolution Klein: %.2f percent'%resolutionk)
         plt.plot([], [], ' ', label='Center of Photopeak K-N: %.2f'%centerk)
     elif i==3 or i==5:
+        plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise \w Exponential decay')
         plt.plot([], [], ' ', label='Resolution first peak: %.2f percent'%resolution1)
         plt.plot([], [], ' ', label='Center of first Photopeak: %.2f'%center1)
         plt.plot([], [], ' ', label='Resolution Second Photopeak: %.2f percent'%resolution2)
         plt.plot([], [], ' ', label='Center of second Photopeak: %.2f'%center2)
-        #plt.plot([], [], ' ', label='Resolution Klein First Peak: %.2f percent'%resolution1k)
-        #plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.2f'%center1k)
-        #plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.2f percent'%resolution2k)
-        #plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.2f'%center2k)
+        plt.plot([], [], ' ', label='Resolution Klein First Peak: %.2f percent'%resolution1k)
+        plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.2f'%center1k)
+        plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.2f percent'%resolution2k)
+        plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.2f'%center2k)
 
     plt.grid()
     plt.legend()
