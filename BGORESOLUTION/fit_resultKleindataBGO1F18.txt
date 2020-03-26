@@ -2,29 +2,24 @@
     ((Model(gaussian) + Model(kleinnishina)) + Model(linear))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 31
+    # function evals   = 46
     # data points      = 35
-    # variables        = 5
+    # variables        = 8
     chi-square         = 0.00111323
-    reduced chi-square = 3.7108e-05
-    Akaike info crit   = -352.454275
-    Bayesian info crit = -344.677535
+    reduced chi-square = 4.1231e-05
+    Akaike info crit   = -346.454275
+    Bayesian info crit = -334.011491
+##  Warning: uncertainties could not be estimated:
+    A:          at initial value
+    Z:          at initial value
 [[Variables]]
-    amplitude:  0.36477535 +/- 0.00527266 (1.45%) (init = 0.5488573)
-    center:     3.73009029 +/- 0.00232369 (0.06%) (init = 3.690553)
-    sigma:      0.31159650 +/- 0.00319137 (1.02%) (init = 0.3561031)
-    fwhm:       0.73375366 +/- 0.00751511 (1.02%) == '2.3548200*sigma'
-    height:     0.46702809 +/- 0.00327581 (0.70%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
-    slope:     -0.04739128 +/- 0.00275540 (5.81%) (init = -0.09351711)
-    intercept:  0.21957545 +/- 0.01170090 (5.33%) (init = 0.5983428)
-[[Correlations]] (unreported correlations are < 0.100)
-    C(slope, intercept)     = -0.968
-    C(amplitude, sigma)     =  0.894
-    C(center, slope)        = -0.660
-    C(center, intercept)    =  0.635
-    C(amplitude, intercept) = -0.522
-    C(sigma, intercept)     = -0.448
-    C(amplitude, slope)     =  0.310
-    C(sigma, slope)         =  0.258
-    C(amplitude, center)    = -0.192
-    C(center, sigma)        = -0.160
+    amplitude:  0.36477535 (init = 0.5488573)
+    center:     3.73009029 (init = 3.690553)
+    sigma:      0.31159650 (init = 0.3561031)
+    fwhm:       0.73375366 == '2.3548200*sigma'
+    height:     0.46702809 == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:     -0.04739128 (init = -0.09351711)
+    intercept:  0.21957545 (init = 0.5983428)
+    A:          1.00000000 (init = 1)
+    B:          0.00000000 (init = 0)
+    Z:          1.00000000 (init = 1)

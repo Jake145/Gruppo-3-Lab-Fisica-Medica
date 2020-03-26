@@ -2,25 +2,24 @@
     ((Model(gaussian) + Model(kleinnishina)) + Model(linear))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 25
+    # function evals   = 37
     # data points      = 32
-    # variables        = 5
+    # variables        = 8
     chi-square         = 0.00101442
-    reduced chi-square = 3.7571e-05
-    Akaike info crit   = -321.493581
-    Bayesian info crit = -314.164902
+    reduced chi-square = 4.2267e-05
+    Akaike info crit   = -315.493581
+    Bayesian info crit = -303.767694
+##  Warning: uncertainties could not be estimated:
+    A:          at initial value
+    Z:          at initial value
 [[Variables]]
-    amplitude:  0.25579623 +/- 0.00302458 (1.18%) (init = 0.3235052)
-    center:     3.31943611 +/- 0.00153878 (0.05%) (init = 3.312981)
-    sigma:      0.21127739 +/- 0.00195117 (0.92%) (init = 0.2165099)
-    fwhm:       0.49752023 +/- 0.00459465 (0.92%) == '2.3548200*sigma'
-    height:     0.48300453 +/- 0.00310232 (0.64%) == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
-    slope:     -0.03650428 +/- 0.00326030 (8.93%) (init = -0.004478889)
-    intercept:  0.15582079 +/- 0.01068409 (6.86%) (init = 0.2348086)
-[[Correlations]] (unreported correlations are < 0.100)
-    C(slope, intercept)  = -0.975
-    C(amplitude, sigma)  =  0.842
-    C(center, slope)     = -0.546
-    C(center, intercept) =  0.532
-    C(amplitude, slope)  = -0.148
-    C(sigma, slope)      = -0.120
+    amplitude:  0.25579623 (init = 0.3235052)
+    center:     3.31943611 (init = 3.312981)
+    sigma:      0.21127739 (init = 0.2165099)
+    fwhm:       0.49752023 == '2.3548200*sigma'
+    height:     0.48300453 == '0.3989423*amplitude/max(2.220446049250313e-16, sigma)'
+    slope:     -0.03650428 (init = -0.004478889)
+    intercept:  0.15582079 (init = 0.2348086)
+    A:          1.00000000 (init = 1)
+    B:          0.00000000 (init = 0)
+    Z:          1.00000000 (init = 1)

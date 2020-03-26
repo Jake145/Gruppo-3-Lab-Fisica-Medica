@@ -2,67 +2,31 @@
     ((((Model(gaussian, prefix='peak1') + Model(gaussian, prefix='peak2')) + Model(kleinnishina)) + Model(linear)) + Model(exponential, prefix='exp'))
 [[Fit Statistics]]
     # fitting method   = leastsq
-    # function evals   = 3530
+    # function evals   = 4505
     # data points      = 26
-    # variables        = 10
+    # variables        = 13
     chi-square         = 4.1664e-04
-    reduced chi-square = 2.6040e-05
-    Akaike info crit   = -267.076266
-    Bayesian info crit = -254.495301
+    reduced chi-square = 3.2049e-05
+    Akaike info crit   = -261.076258
+    Bayesian info crit = -244.721003
+##  Warning: uncertainties could not be estimated:
+    A:               at initial value
+    Z:               at initial value
 [[Variables]]
-    peak1amplitude:  0.04054706 +/- 0.07428040 (183.20%) (init = 0.09841736)
-    peak1center:     2.07187106 +/- 0.02467715 (1.19%) (init = 2.473113)
-    peak1sigma:      0.13631608 +/- 0.07333652 (53.80%) (init = 0.1367662)
-    peak1fwhm:       0.32099984 +/- 0.17269431 (53.80%) == '2.3548200*peak1sigma'
-    peak1height:     0.11866492 +/- 0.15385564 (129.66%) == '0.3989423*peak1amplitude/max(2.220446049250313e-16, peak1sigma)'
-    peak2amplitude:  0.07744105 +/- 0.04607534 (59.50%) (init = 0.09841736)
-    peak2center:     2.48920477 +/- 0.01048907 (0.42%) (init = 2.473113)
-    peak2sigma:      0.12023628 +/- 0.01991924 (16.57%) (init = 0.1367662)
-    peak2fwhm:       0.28313480 +/- 0.04690623 (16.57%) == '2.3548200*peak2sigma'
-    peak2height:     0.25694831 +/- 0.11091638 (43.17%) == '0.3989423*peak2amplitude/max(2.220446049250313e-16, peak2sigma)'
-    slope:          -0.08336751 +/- 58.9287868 (70685.56%) (init = 0.0862095)
-    intercept:      -0.06122110 +/- 291.400475 (475980.48%) (init = -0.0478327)
-    expamplitude:    0.15251176 +/- 298.360973 (195631.45%) (init = 0.04025703)
-    expdecay:       -3.67123919 +/- 2705.94964 (73706.71%) (init = -1.914776)
-[[Correlations]] (unreported correlations are < 0.100)
-    C(intercept, expamplitude)        = -1.000
-    C(intercept, expdecay)            =  1.000
-    C(expamplitude, expdecay)         = -1.000
-    C(slope, expamplitude)            = -0.999
-    C(slope, intercept)               =  0.999
-    C(slope, expdecay)                =  0.998
-    C(peak1amplitude, peak1sigma)     =  0.997
-    C(peak2amplitude, peak2sigma)     =  0.990
-    C(peak1amplitude, peak2center)    = -0.937
-    C(peak1center, peak2sigma)        =  0.937
-    C(peak1center, peak2amplitude)    =  0.933
-    C(peak1sigma, peak2center)        = -0.931
-    C(peak1amplitude, peak2amplitude) =  0.882
-    C(peak2center, slope)             =  0.866
-    C(peak1sigma, peak2amplitude)     =  0.863
-    C(peak2center, expamplitude)      = -0.849
-    C(peak2center, intercept)         =  0.847
-    C(peak2center, expdecay)          =  0.838
-    C(peak1amplitude, peak2sigma)     =  0.825
-    C(peak1sigma, peak2sigma)         =  0.800
-    C(peak1sigma, slope)              = -0.741
-    C(peak1amplitude, slope)          = -0.729
-    C(peak1sigma, expamplitude)       =  0.718
-    C(peak1sigma, intercept)          = -0.714
-    C(peak2amplitude, peak2center)    = -0.710
-    C(peak1amplitude, expamplitude)   =  0.705
-    C(peak1sigma, expdecay)           = -0.702
-    C(peak1amplitude, intercept)      = -0.701
-    C(peak1amplitude, peak1center)    =  0.700
-    C(peak1amplitude, expdecay)       = -0.689
-    C(peak1center, peak1sigma)        =  0.676
-    C(peak2center, peak2sigma)        = -0.642
-    C(peak1center, peak2center)       = -0.479
-    C(peak2amplitude, slope)          = -0.328
-    C(peak2amplitude, expamplitude)   =  0.295
-    C(peak2amplitude, intercept)      = -0.289
-    C(peak2amplitude, expdecay)       = -0.273
-    C(peak2sigma, slope)              = -0.240
-    C(peak2sigma, expamplitude)       =  0.207
-    C(peak2sigma, intercept)          = -0.201
-    C(peak2sigma, expdecay)           = -0.185
+    peak1amplitude:  0.07744240 (init = 0.09841736)
+    peak1center:     2.48920468 (init = 2.473113)
+    peak1sigma:      0.12023690 (init = 0.1367662)
+    peak1fwhm:       0.28313625 == '2.3548200*peak1sigma'
+    peak1height:     0.25695147 == '0.3989423*peak1amplitude/max(2.220446049250313e-16, peak1sigma)'
+    peak2amplitude:  0.04054828 (init = 0.09841736)
+    peak2center:     2.07187185 (init = 2.473113)
+    peak2sigma:      0.13631717 (init = 0.1367662)
+    peak2fwhm:       0.32100239 == '2.3548200*peak2sigma'
+    peak2height:     0.11866755 == '0.3989423*peak2amplitude/max(2.220446049250313e-16, peak2sigma)'
+    slope:          -0.08288179 (init = 0.0862095)
+    intercept:      -0.05844075 (init = -0.0478327)
+    expamplitude:    0.14972108 (init = 0.04025703)
+    expdecay:       -3.64389763 (init = -1.914776)
+    A:               1.00000000 (init = 1)
+    B:               0.00000000 (init = 0)
+    Z:               1.00000000 (init = 1)

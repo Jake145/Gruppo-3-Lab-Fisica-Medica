@@ -19,24 +19,33 @@ filenames=glob.glob('data*.txt')
 
 ###Ora definiamo la funzione di klein nishina
 
-m_electron_c2=511 #in Kev
+m_electron_c2=500 #in Kev
 energy=511 #in Kev
 r_e=8e-30
+alpha=1/137
+def ferg(x,A,B):
+    return m_electron_c2/energy+1-m_electron_c2/(x*A+B)
+def Utility_1(x,A,B):
+    return (1+ferg(x,A,B)**2)/2
+def Utility_2(x,A,B):
+    return (1/(1+alpha*(1-ferg(x,A,B))))**2
+def Utility_3(x,A,B):
+    return (1+((alpha**2)*((1-ferg(x,A,B))**2))/((1+ferg(x,A,B)**2)*(1+alpha*(1-ferg(x,A,B)))))
 
-def ferg(x):
-    return m_electron_c2/energy+1-m_electron_c2/x
-def Utility_1(x):
-    return (1+ferg(x)**2)/2
-def Utility_2(x):
-    return 1/(1+(energy**2)*(1-ferg(x))**2)
-def Utility_3(x):
-    return (energy*(1-ferg(x))**2)/((1+ferg(x)**2)*(1+energy*(1-ferg(x))))
+def kleinnishina(x,A,B,Z):
+    return Z*r_e*Utility_1(x,A,B)*Utility_2(x,A,B)*Utility_3(x,A,B)
 
-def kleinnishina(x):
-    return r_e*Utility_1(x)*Utility_2(x)*(1+Utility_3(x))
+plt.figure('klein-nishina cross section')
+plt.title('klein-nishina cross section')
+xplot=np.linspace((5/11)*energy,energy,10000)
+plt.plot(xplot,kleinnishina(xplot,1,0,1)/np.amax(kleinnishina(xplot,1,0,1)),'g-',label='Normalized Klein Nishina Cross Section')
+plt.legend()
+plt.xlabel('Residual Energy [KeV]')
+plt.ylabel('Normalized Cross Section [u.a.]')
 
-
-
+plt.grid()
+plt.savefig('/Users/JakeHarold/Desktop/workplace/Gruppo-3-Lab-Fisica-Medica/BGORESOLUTION/latex/kleincrosssection.png')
+plt.show()
 ###
 
 
@@ -139,13 +148,15 @@ for i in range(len(filenames)):
     ##klein-Nishina
 
     klein=Model(kleinnishina)
+    parsklein=klein.make_params(A=1,B=0,Z=1)
     if i!=3 and i!=5:
         mod2=peak + klein +noise
-        parss=parspeak+parslinear
+
+        parss=parspeak+parslinear+parsklein
         out2=mod2.fit(y,parss,x=x)
     if i==3 or i==5:
         mod2=peak + klein +noise + tails
-        parss=parspeak+parslinear+parstails
+        parss=parspeak+parslinear+parstails+parsklein
         out2=mod2.fit(y,parss,x=x)
 
 
@@ -167,6 +178,9 @@ for i in range(len(filenames)):
         fwhmk=out2.params['fwhm'].value
         centerk=out2.params['center'].value
         resolutionk=100*fwhmk/centerk
+        A=out2.params['A'].value
+        B=out2.params['B'].value
+        Z=out2.params['A'].value
 ###DOPPIA GAUSSIANA
     elif i==3 or i==5:
         ##
@@ -183,6 +197,7 @@ for i in range(len(filenames)):
         center2k=out2.params['peak2center'].value
         resolution1k=100*fwhm1k/center1k
         resolution2k=100*fwhm2k/center2k
+        A=out2.params['A'].value
 
     else:
         print('error')
@@ -204,7 +219,7 @@ for i in range(len(filenames)):
         plt.plot([], [], ' ', label='Center of Photopeak: %.2f'%center)
         plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise')
         plt.plot([], [], ' ', label='Resolution Klein: %.2f percent'%resolutionk)
-        plt.plot([], [], ' ', label='Center of Photopeak K-N: %.2f'%centerk)
+        plt.plot([], [], ' ', label='Center of Photopeak K-N: %.2f Scale factor: %.2f'%(centerk,Z))
     elif i==3 or i==5:
         plt.plot(x, out2.best_fit, 'b--', label='Klein Nishina noise \w Exponential decay')
         plt.plot([], [], ' ', label='Resolution first peak: %.3f percent'%resolution1)
@@ -215,10 +230,12 @@ for i in range(len(filenames)):
         plt.plot([], [], ' ', label='Center of Klein First Peak K-N: %.3f'%center1k)
         plt.plot([], [], ' ', label='Resolution Klein Second Peak: %.3f percent'%resolution2k)
         plt.plot([], [], ' ', label='Center of Klein Second Peak K-N: %.3f'%center2k)
+        plt.plot([], [], ' ', label='Scale Factor: %.2f'%Z)
 
     plt.grid()
     plt.legend()
     plt.ylabel('frequency')
-    if i!=3 and i!=5:
-        plt.savefig(pathsavefigure)
+    if i==3 or i==5:
+        plt.xlim(0,3)
+    plt.savefig(pathsavefigure)
     plt.show()
