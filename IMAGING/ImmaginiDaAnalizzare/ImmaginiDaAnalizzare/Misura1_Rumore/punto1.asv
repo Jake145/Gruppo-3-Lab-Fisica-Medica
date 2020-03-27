@@ -2,7 +2,6 @@
 files = dir('Temperature65*.tif');
 means1=[]
 stds1=[]
-
 for i=1:length(files)
     name=files(i).name
     I = imread(name);
@@ -14,8 +13,8 @@ for i=1:length(files)
     figname= strrep(name,'.tif','')
     subplot(1,2,2), imhist(I,500000),title('image gray-scale Histogram'),xlim([490 550]),ylim([0 1048576/4])
     saveas(gcf,sprintf('HIS%d.png',figname))
-    mean=mean2(I)
-    std_deviation=std2(I)
+    mean=mean2(name)
+    std_deviation=std2(name)
     means1 = [means1 mean];
     stds1=[stds1 std_deviation];
 end
@@ -33,9 +32,9 @@ for i=1:length(files)
     subplot(1,2,1), imshow(I),title(name)
     figname=strrep(name,'.tif','')
     subplot(1,2,2), imhist(I,500000),title('image gray-scale Histogram'),xlim([490 600]),ylim([0 1048576/4])
-    saveas(gcf,sprintf('HIS%s.png',figname))
-    mean=mean2(I)
-    std_deviation=std2(I)
+    saveas(gcf,sprintf('HIS%d.png',figname))
+    mean=mean2(name)
+    std_deviation=std2(name)
     means2 = [means2 mean];
     stds2=[stds2 std_deviation];
 end
@@ -48,29 +47,31 @@ t2=[1; 10; 60; 120; 180; 240; 300]
 
 f1=fit(t1,means1','poly1')
 
+hold on
+plot(f1,t1,means1'),title('65 degrees Mean vs Time'),errorbar(t1,means1',stds1'),xlabel('time [s]'),ylabel('mean [u.a]');
+hold off
+saveas(gcf,sprintf('fit65.png'))
 f1_2=fit(t1,stds1','poly1')
 
+plot(f1_2,t1,stds1'),title('65 degrees Std Dev vs Time'),xlabel('time [s]'),ylabel('std_dev [u.a]')
+saveas(gcf,sprintf('fit65_2.png'))
 f2=fit(t2,means2','poly1')
 
+hold on
+plot(f2,t2,means2'),title('25 degrees Mean vs Time'),errorbar(t2,means2',stds2'),xlabel('time [s]'),ylabel('mean [u.a]');
+hold off
 
+saveas(gcf,sprintf('fit25.png'))
 f2_2=fit(t2,stds2','poly1')
 
-figure
-grid on
-hold on
-plot(f1,t1,means1'),title(' Mean vs Time'),xlabel('time [s]'),ylabel('mean [u.a]');
-plot(f2,t2,means2');
-hold off
-legend('65 degree data','65 degree fit','25 degree data','25 degree fit')
-saveas(gcf,sprintf('fittotal.png'))
 
-figure
-grid on
+plot(f2_2,t2,stds2'),title('25 degrees Std deviation vs Time'),xlabel('time [s]'),ylabel('std_dev [u.a]');
+
+saveas(gcf,sprintf('fit25_2.png'))
+
+
 hold on
-plot(f1_2,t1,stds1'),title(' Standard Dev vs Time'),xlabel('time [s]'),ylabel('std dev [u.a]');
-plot(f2_2,t2,stds2');
+plot(f1,t1,means1'),title('65 degrees Mean vs Time'),errorbar(t1,means1',stds1'),xlabel('time [s]'),ylabel('mean [u.a]');
 hold off
-legend('65 degree data','65 degree fit','25 degree data','25 degree fit')
-saveas(gcf,sprintf('fittotal_stddev.png'))
-%errorbar(t1,means1',stds1'),
-%,errorbar(t2,means2',stds2')
+saveas(gcf,sprintf('fit65.png'))
+
