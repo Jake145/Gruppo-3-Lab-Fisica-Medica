@@ -1,0 +1,43 @@
+I=imread('Snr_Binning_1.tif');
+
+I_histeq = histeq(I);
+I_histadj=imadjust(I);
+figure;
+
+%hold on
+axis on
+%subplot(1,3,1),imshow(I),title('original');
+%subplot(1,3,2),imshow(I_histadj),title('adjusted'),roi=drawcircle,roi2=drawcircle
+%subplot(1,3,3),imshow(I_histeq),title('equalized');
+
+%hold off
+imshow(I_histadj)
+[xi,yi] = getpts
+
+x1=[]
+y1=[]
+for i=1:length(xi)
+    x1=[x1 round(xi(i))]
+    y1=[y1 round(yi(i))]
+end
+[xoff yoff]=getpts
+
+x2=x1 
+y2=y1 - round(max(y1(i))-yoff(1))
+
+BW1 = roipoly(I_histadj,x1,y1);
+BW1 = double(BW1);
+
+BW1(BW1==0) = NaN;
+filter_I1 = I.*BW1;
+BW2 = roipoly(I_histadj,x2,y2);
+BW2 = double(BW2);
+
+BW2(BW2==0) = NaN;
+filter_I = I.*BW2;
+figure
+axis on
+subplot(1,2,1),imshow(BW1)
+subplot(1,2,2),imshow(BW2)
+
+
